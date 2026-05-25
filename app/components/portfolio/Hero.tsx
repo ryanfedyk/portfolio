@@ -281,10 +281,10 @@ export default function Hero() {
       <div ref={dotRef} className="cur" aria-hidden="true" />
       <div ref={ringRef} className="cur-ring" aria-hidden="true" />
 
-      <Blobs y={y} />
       <Nav scrolled={y > 40} />
 
       <section className="hero">
+        <Blobs y={y} />
         <div className="wrap hero-grid">
           <div className="hero-eyebrow rv">
             <span className="ln" />

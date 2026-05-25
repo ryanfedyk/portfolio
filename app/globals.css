@@ -806,6 +806,12 @@ section {
   }
 }
 
+.res-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .res-yr {
   font-family: var(--mono);
   font-size: 12px;
