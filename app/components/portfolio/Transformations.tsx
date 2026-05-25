@@ -17,8 +17,15 @@ const cases = [
       "Led pivot to AI: Generative Backgrounds, AI layouts, real-time speech translation",
     ],
     tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
-    gradient: "linear-gradient(135deg, rgba(77,124,255,0.12), rgba(168,85,247,0.08))",
     accent: "#4d7cff",
+    featuredImage: "/assets/aienhancedmeetings.gif",
+    gallery: [
+      "/assets/dynamiclayouts.gif",
+      "/assets/portraitframing.gif",
+      "/assets/reactions.gif",
+      "/assets/generativebackgrounds.gif",
+      "/assets/geminimeetings.gif",
+    ],
   },
   {
     index: "02",
@@ -35,8 +42,13 @@ const cases = [
       "Developed the Jigsaw Design System",
     ],
     tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
-    gradient: "linear-gradient(135deg, rgba(6,214,160,0.1), rgba(77,124,255,0.06))",
     accent: "#06d6a0",
+    featuredImage: "/assets/disinfohighleverage.gif",
+    gallery: [
+      "/assets/fightinharassment.png",
+      "/assets/represive%20censorship.png",
+      "/assets/fighting%20disinfo.png",
+    ],
   },
   {
     index: "03",
@@ -53,12 +65,18 @@ const cases = [
       "Founded CSUX Vibe Coding Club — 20+ participants, weekly challenges",
     ],
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
-    gradient: "linear-gradient(135deg, rgba(168,85,247,0.12), rgba(255,107,53,0.06))",
     accent: "#a855f7",
+    featuredImage: "/assets/agenticcommerce.gif",
+    gallery: [
+      "/assets/shoppingaipathways.gif",
+      "/assets/outfitagent.gif",
+      "/assets/implicit%20shopping.png",
+      "/assets/beyondtheprompt.png",
+    ],
   },
   {
     index: "04",
-    company: "Google Classroom / Apps Education",
+    company: "Google Classroom",
     role: "Design Lead & Design Manager",
     title: "Redefining the Future of Education",
     summary:
@@ -70,14 +88,13 @@ const cases = [
       "Managed team of 6 through numerous feature and product releases",
     ],
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
-    gradient: "linear-gradient(135deg, rgba(255,214,0,0.08), rgba(6,214,160,0.06))",
     accent: "#ffd600",
+    featuredImage: "/assets/eduvision.gif",
+    gallery: ["/assets/eduteamleaderhsip.jpg"],
   },
 ];
 
-function CaseCard({ c, index }: { c: typeof cases[0]; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -85,237 +102,299 @@ function CaseCard({ c, index }: { c: typeof cases[0]; index: number }) {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.05 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const cx = (e.clientX - rect.left) / rect.width - 0.5;
-    const cy = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: cy * 6, y: -cx * 6 });
-  }
 
   return (
     <div
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(32px)",
-        transition: `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`,
+        transform: visible ? "none" : "translateY(48px)",
+        transition: `opacity 0.9s ease ${index * 0.1}s, transform 0.9s ease ${index * 0.1}s`,
+        paddingTop: 96,
+        paddingBottom: 80,
+        borderTop: "1px solid var(--border)",
       }}
     >
+      {/* Eyebrow row */}
       <div
-        onMouseMove={handleMouseMove}
-        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
         style={{
-          background: "var(--surface)",
-          border: `1px solid ${expanded ? c.accent + "40" : "var(--border)"}`,
-          borderRadius: 16,
-          padding: "clamp(28px, 3vw, 48px)",
-          position: "relative",
-          overflow: "hidden",
-          transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-          transition: "transform 0.3s ease, border-color 0.3s, box-shadow 0.3s",
-          boxShadow: expanded ? `0 0 40px ${c.accent}18` : "none",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          marginBottom: 20,
         }}
       >
-        {/* Background gradient blob */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: c.gradient,
-          opacity: expanded ? 1 : 0,
-          transition: "opacity 0.4s",
-          pointerEvents: "none",
-        }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <span
+            style={{
+              fontFamily: "var(--font-space)",
+              fontWeight: 700,
+              fontSize: "clamp(16px, 2vw, 22px)",
+              color: "var(--text)",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {c.company}
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 10,
+              color: "var(--text-dim)",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+            }}
+          >
+            {c.role}
+          </span>
+        </div>
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 12,
+            color: c.accent,
+            letterSpacing: "0.12em",
+            opacity: 0.7,
+          }}
+        >
+          {c.index}
+        </span>
+      </div>
 
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                <span style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
-                  color: c.accent,
-                  letterSpacing: "0.1em",
-                }}>
-                  {c.index}
-                </span>
-                <span style={{
-                  padding: "3px 10px",
-                  borderRadius: 4,
-                  border: `1px solid ${c.accent}30`,
-                  background: `${c.accent}10`,
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 11,
-                  color: c.accent,
-                  letterSpacing: "0.06em",
-                }}>
-                  {c.company}
-                </span>
-              </div>
-              <h3 style={{
-                fontFamily: "var(--font-space)",
-                fontWeight: 700,
-                fontSize: "clamp(18px, 2.5vw, 26px)",
-                letterSpacing: "-0.02em",
-                color: "var(--text)",
-                lineHeight: 1.2,
-                marginBottom: 6,
-              }}>
-                {c.title}
-              </h3>
-              <p style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "var(--text-muted)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}>
-                {c.role}
-              </p>
-            </div>
+      {/* Big title */}
+      <h3
+        style={{
+          fontFamily: "var(--font-space)",
+          fontWeight: 800,
+          fontSize: "clamp(32px, 5.5vw, 76px)",
+          letterSpacing: "-0.03em",
+          lineHeight: 1.0,
+          color: "var(--text)",
+          marginBottom: 40,
+          maxWidth: "75%",
+        }}
+      >
+        {c.title}
+      </h3>
 
-            <button
-              onClick={() => setExpanded(!expanded)}
-              data-cursor
+      {/* Featured image — full width, cinematic */}
+      <div
+        style={{
+          width: "100%",
+          height: "clamp(320px, 58vh, 680px)",
+          borderRadius: 10,
+          overflow: "hidden",
+          marginBottom: 52,
+          position: "relative",
+          background: "#0a0d1a",
+        }}
+      >
+        <img
+          src={c.featuredImage}
+          alt={c.title}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        />
+        {/* Subtle color wash at bottom edge */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 120,
+            background: `linear-gradient(to top, ${c.accent}22, transparent)`,
+            pointerEvents: "none",
+          }}
+        />
+      </div>
+
+      {/* Text content — two column */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "clamp(40px, 7vw, 100px)",
+          marginBottom: 48,
+          alignItems: "start",
+        }}
+      >
+        <p
+          style={{
+            color: "var(--text-muted)",
+            fontSize: "clamp(15px, 1.4vw, 18px)",
+            lineHeight: 1.8,
+            fontWeight: 400,
+          }}
+        >
+          {c.summary}
+        </p>
+        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
+          {c.impact.map((item, i) => (
+            <li key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+              <span
+                style={{
+                  color: c.accent,
+                  flexShrink: 0,
+                  fontSize: 13,
+                  marginTop: 2,
+                  opacity: 0.9,
+                }}
+              >
+                →
+              </span>
+              <span style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.7 }}>
+                {item}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Gallery — horizontal scroll */}
+      {c.gallery.length > 0 && (
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            overflowX: "auto",
+            paddingBottom: 4,
+            scrollbarWidth: "none",
+            marginBottom: 36,
+            marginLeft: "-clamp(24px, 6vw, 120px)",
+            marginRight: "-clamp(24px, 6vw, 120px)",
+            paddingLeft: "clamp(24px, 6vw, 120px)",
+            paddingRight: "clamp(24px, 6vw, 120px)",
+          }}
+        >
+          {c.gallery.map((src, i) => (
+            <div
+              key={i}
               style={{
                 flexShrink: 0,
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                border: `1px solid ${expanded ? c.accent : "var(--border)"}`,
-                background: expanded ? `${c.accent}15` : "transparent",
-                color: expanded ? c.accent : "var(--text-muted)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                transition: "all 0.2s",
-                fontSize: 18,
-                fontWeight: 300,
-                transform: expanded ? "rotate(45deg)" : "rotate(0)",
+                width: "clamp(260px, 32vw, 420px)",
+                height: 240,
+                borderRadius: 8,
+                overflow: "hidden",
+                border: "1px solid var(--border)",
+                background: "#0a0d1a",
               }}
             >
-              +
-            </button>
-          </div>
-
-          <p style={{
-            color: "var(--text-muted)",
-            fontSize: "clamp(14px, 1.5vw, 16px)",
-            lineHeight: 1.7,
-            marginTop: 20,
-            marginBottom: expanded ? 0 : 0,
-          }}>
-            {c.summary}
-          </p>
-
-          {/* Expandable detail */}
-          <div style={{
-            maxHeight: expanded ? 600 : 0,
-            overflow: "hidden",
-            transition: "max-height 0.5s ease",
-          }}>
-            <div style={{ paddingTop: 28 }}>
-              <p style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: c.accent,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: 16,
-              }}>
-                What I did
-              </p>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
-                {c.impact.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                    <span style={{ color: c.accent, flexShrink: 0, marginTop: 2, fontSize: 14 }}>→</span>
-                    <span style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.6 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <img
+                src={src}
+                alt=""
+                loading="lazy"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
             </div>
-          </div>
-
-          {/* Tags */}
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 24 }}>
-            {c.tags.map((tag) => (
-              <span key={tag} style={{
-                padding: "4px 10px",
-                borderRadius: 4,
-                border: "1px solid var(--border)",
-                fontFamily: "var(--font-mono)",
-                fontSize: 10,
-                color: "var(--text-dim)",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-              }}>
-                {tag}
-              </span>
-            ))}
-          </div>
+          ))}
         </div>
+      )}
+
+      {/* Tags */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {c.tags.map((tag) => (
+          <span
+            key={tag}
+            style={{
+              padding: "5px 12px",
+              borderRadius: 4,
+              border: `1px solid ${c.accent}28`,
+              background: `${c.accent}07`,
+              fontFamily: "var(--font-mono)",
+              fontSize: 10,
+              color: c.accent,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+            }}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
     </div>
   );
 }
 
 export default function Transformations() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
+
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHeaderVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section
       id="transformations"
       style={{
-        padding: "120px clamp(24px, 6vw, 120px)",
+        padding: "120px clamp(24px, 6vw, 120px) 80px",
         background: "var(--bg)",
       }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 80 }}>
-          <p style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
-            color: "var(--accent)",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            marginBottom: 16,
-          }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        {/* Section header */}
+        <div
+          ref={headerRef}
+          style={{
+            marginBottom: 0,
+            opacity: headerVisible ? 1 : 0,
+            transform: headerVisible ? "none" : "translateY(24px)",
+            transition: "opacity 0.7s ease, transform 0.7s ease",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              color: "var(--text-dim)",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              marginBottom: 20,
+            }}
+          >
             Case Studies
           </p>
-          <h2 style={{
-            fontFamily: "var(--font-space)",
-            fontWeight: 800,
-            fontSize: "clamp(32px, 5vw, 64px)",
-            letterSpacing: "-0.03em",
-            lineHeight: 1.05,
-            color: "var(--text)",
-            marginBottom: 20,
-          }}>
-            These launches come from the<br />
-            <span style={{
-              background: "linear-gradient(135deg, #4d7cff, #a855f7)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              amazing teams I&apos;ve built, led, and been a part of.
-            </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-space)",
+              fontWeight: 800,
+              fontSize: "clamp(40px, 7vw, 96px)",
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
+              color: "var(--text)",
+            }}
+          >
+            Amazing teams.<br />Real impact.
           </h2>
-          <p style={{ color: "var(--text-muted)", fontSize: 16, maxWidth: 540 }}>
-            Click any card to expand the full story. Every number here represents real people whose work changed product trajectories.
-          </p>
         </div>
 
-        {/* Cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          {cases.map((c, i) => (
-            <CaseCard key={c.index} c={c} index={i} />
-          ))}
-        </div>
+        {/* Case studies */}
+        {cases.map((c, i) => (
+          <CaseStudy key={c.index} c={c} index={i} />
+        ))}
       </div>
     </section>
   );
