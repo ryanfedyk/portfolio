@@ -17,14 +17,12 @@ const cases = [
       "Led pivot to AI: Generative Backgrounds, AI layouts, real-time speech translation",
     ],
     tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
-    accent: "#4d7cff",
-    featuredImage: "/assets/aienhancedmeetings.gif",
+    featuredImage: "/assets/geminimeetings.gif",
     gallery: [
+      "/assets/reactions.gif",
       "/assets/dynamiclayouts.gif",
       "/assets/portraitframing.gif",
-      "/assets/reactions.gif",
       "/assets/generativebackgrounds.gif",
-      "/assets/geminimeetings.gif",
     ],
   },
   {
@@ -42,12 +40,11 @@ const cases = [
       "Developed the Jigsaw Design System",
     ],
     tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
-    accent: "#06d6a0",
-    featuredImage: "/assets/disinfohighleverage.gif",
+    featuredImage: "/assets/represive%20censorship.png",
     gallery: [
-      "/assets/fightinharassment.png",
-      "/assets/represive%20censorship.png",
       "/assets/fighting%20disinfo.png",
+      "/assets/fightinharassment.png",
+      "/assets/disinfohighleverage.gif",
     ],
   },
   {
@@ -65,13 +62,12 @@ const cases = [
       "Founded CSUX Vibe Coding Club — 20+ participants, weekly challenges",
     ],
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
-    accent: "#a855f7",
-    featuredImage: "/assets/agenticcommerce.gif",
+    featuredImage: "/assets/beyondtheprompt.png",
     gallery: [
+      "/assets/agenticcommerce.gif",
       "/assets/shoppingaipathways.gif",
       "/assets/outfitagent.gif",
       "/assets/implicit%20shopping.png",
-      "/assets/beyondtheprompt.png",
     ],
   },
   {
@@ -88,11 +84,69 @@ const cases = [
       "Managed team of 6 through numerous feature and product releases",
     ],
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
-    accent: "#ffd600",
-    featuredImage: "/assets/eduvision.gif",
-    gallery: ["/assets/eduteamleaderhsip.jpg"],
+    featuredImage: "/assets/eduteamleaderhsip.jpg",
+    gallery: ["/assets/eduvision.gif"],
   },
 ];
+
+function TextPanel({ c }: { c: (typeof cases)[0] }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 24 }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--accent)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          {c.company}
+        </span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--text-dim)", letterSpacing: "0.12em" }}>
+          {c.index}
+        </span>
+      </div>
+      <h3 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.02, color: "var(--text)", marginBottom: 16 }}>
+        {c.title}
+      </h3>
+      <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 28 }}>
+        {c.role}
+      </p>
+      <p style={{ color: "var(--text-muted)", fontSize: "clamp(15px, 1.3vw, 18px)", lineHeight: 1.75, fontWeight: 400, marginBottom: 32 }}>
+        {c.summary}
+      </p>
+      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14, marginBottom: 32 }}>
+        {c.impact.map((item, i) => (
+          <li key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+            <span style={{ color: "var(--accent)", flexShrink: 0, fontSize: 14, marginTop: 1, fontWeight: 700 }}>→</span>
+            <span style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.6 }}>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {c.tags.map((tag) => (
+          <span key={tag} style={{ padding: "5px 12px", borderRadius: 100, border: "1px solid var(--text-dim)", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-dim)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ImagePanel({ c }: { c: (typeof cases)[0] }) {
+  const gallery = c.gallery.slice(0, 4);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <div style={{ width: "100%", aspectRatio: "16 / 9", borderRadius: 8, overflow: "hidden", background: "var(--surface-2)" }}>
+        <img src={c.featuredImage} alt={c.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      </div>
+      {gallery.length > 0 && (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+          {gallery.map((src, i) => (
+            <div key={i} style={{ width: "100%", aspectRatio: "16 / 9", borderRadius: 6, overflow: "hidden", background: "var(--surface-2)" }}>
+              <img src={src} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -102,17 +156,14 @@ function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
       { threshold: 0.05 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+
+  const textLeft = index % 2 === 0;
 
   return (
     <div
@@ -120,203 +171,21 @@ function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(48px)",
-        transition: `opacity 0.9s ease ${index * 0.1}s, transform 0.9s ease ${index * 0.1}s`,
-        paddingTop: 96,
+        transition: `opacity 0.9s ease ${index * 0.08}s, transform 0.9s ease ${index * 0.08}s`,
+        paddingTop: 100,
         paddingBottom: 80,
         borderTop: "1px solid var(--border)",
+        display: "grid",
+        gridTemplateColumns: textLeft ? "45fr 55fr" : "55fr 45fr",
+        gap: "clamp(40px, 6vw, 96px)",
+        alignItems: "center",
       }}
     >
-      {/* Eyebrow row */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          marginBottom: 20,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-space)",
-              fontWeight: 700,
-              fontSize: "clamp(16px, 2vw, 22px)",
-              color: "var(--text)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {c.company}
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 10,
-              color: "var(--text-dim)",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-            }}
-          >
-            {c.role}
-          </span>
-        </div>
-        <span
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 12,
-            color: c.accent,
-            letterSpacing: "0.12em",
-            opacity: 0.7,
-          }}
-        >
-          {c.index}
-        </span>
-      </div>
-
-      {/* Big title */}
-      <h3
-        style={{
-          fontFamily: "var(--font-space)",
-          fontWeight: 800,
-          fontSize: "clamp(32px, 5.5vw, 76px)",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.0,
-          color: "var(--text)",
-          marginBottom: 40,
-          maxWidth: "75%",
-        }}
-      >
-        {c.title}
-      </h3>
-
-      {/* Featured image — full width, cinematic */}
-      <div
-        style={{
-          width: "100%",
-          height: "clamp(320px, 58vh, 680px)",
-          borderRadius: 10,
-          overflow: "hidden",
-          marginBottom: 52,
-          position: "relative",
-          background: "#0a0d1a",
-        }}
-      >
-        <img
-          src={c.featuredImage}
-          alt={c.title}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 120,
-            background: `linear-gradient(to top, ${c.accent}22, transparent)`,
-            pointerEvents: "none",
-          }}
-        />
-      </div>
-
-      {/* Text content — two column */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(40px, 7vw, 100px)",
-          marginBottom: 48,
-          alignItems: "start",
-        }}
-      >
-        <p
-          style={{
-            color: "var(--text-muted)",
-            fontSize: "clamp(15px, 1.4vw, 18px)",
-            lineHeight: 1.8,
-            fontWeight: 400,
-          }}
-        >
-          {c.summary}
-        </p>
-        <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
-          {c.impact.map((item, i) => (
-            <li key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-              <span
-                style={{
-                  color: c.accent,
-                  flexShrink: 0,
-                  fontSize: 13,
-                  marginTop: 2,
-                  opacity: 0.9,
-                }}
-              >
-                →
-              </span>
-              <span style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.7 }}>
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Gallery — horizontal scroll */}
-      {c.gallery.length > 0 && (
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            overflowX: "auto",
-            paddingBottom: 4,
-            scrollbarWidth: "none",
-            marginBottom: 36,
-          }}
-        >
-          {c.gallery.map((src, i) => (
-            <div
-              key={i}
-              style={{
-                flexShrink: 0,
-                width: "clamp(260px, 32vw, 420px)",
-                height: 240,
-                borderRadius: 8,
-                overflow: "hidden",
-                border: "1px solid var(--border)",
-                background: "#0a0d1a",
-              }}
-            >
-              <img
-                src={src}
-                alt=""
-                loading="lazy"
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-            </div>
-          ))}
-        </div>
+      {textLeft ? (
+        <><TextPanel c={c} /><ImagePanel c={c} /></>
+      ) : (
+        <><ImagePanel c={c} /><TextPanel c={c} /></>
       )}
-
-      {/* Tags */}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {c.tags.map((tag) => (
-          <span
-            key={tag}
-            style={{
-              padding: "5px 12px",
-              borderRadius: 4,
-              border: `1px solid ${c.accent}28`,
-              background: `${c.accent}07`,
-              fontFamily: "var(--font-mono)",
-              fontSize: 10,
-              color: c.accent,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
     </div>
   );
 }
@@ -329,12 +198,7 @@ export default function Transformations() {
     const el = headerRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHeaderVisible(true);
-          obs.disconnect();
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) { setHeaderVisible(true); obs.disconnect(); } },
       { threshold: 0.2 }
     );
     obs.observe(el);
@@ -342,52 +206,15 @@ export default function Transformations() {
   }, []);
 
   return (
-    <section
-      id="transformations"
-      style={{
-        padding: "120px clamp(24px, 6vw, 120px) 80px",
-        background: "var(--bg)",
-      }}
-    >
+    <section id="transformations" style={{ padding: "120px clamp(24px, 6vw, 120px) 80px", background: "var(--bg)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div
-          ref={headerRef}
-          style={{
-            marginBottom: 0,
-            opacity: headerVisible ? 1 : 0,
-            transform: headerVisible ? "none" : "translateY(24px)",
-            transition: "opacity 0.7s ease, transform 0.7s ease",
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "var(--text-dim)",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              marginBottom: 20,
-            }}
-          >
-            Case Studies
-          </p>
-          <h2
-            style={{
-              fontFamily: "var(--font-space)",
-              fontWeight: 800,
-              fontSize: "clamp(40px, 7vw, 96px)",
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
-              color: "var(--text)",
-            }}
-          >
+        <div ref={headerRef} style={{ marginBottom: 0, opacity: headerVisible ? 1 : 0, transform: headerVisible ? "none" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 20 }}>Case Studies</p>
+          <h2 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(40px, 7vw, 96px)", letterSpacing: "-0.04em", lineHeight: 0.95, color: "var(--text)" }}>
             Amazing teams.<br />Real impact.
           </h2>
         </div>
-
-        {cases.map((c, i) => (
-          <CaseStudy key={c.index} c={c} index={i} />
-        ))}
+        {cases.map((c, i) => <CaseStudy key={c.index} c={c} index={i} />)}
       </div>
     </section>
   );

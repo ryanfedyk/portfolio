@@ -60,48 +60,6 @@ function useScramble(text: string, delay = 600) {
   return display;
 }
 
-function GridBackground() {
-  return (
-    <div style={{
-      position: "absolute",
-      inset: 0,
-      backgroundImage: `
-        linear-gradient(rgba(77,124,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(77,124,255,0.04) 1px, transparent 1px)
-      `,
-      backgroundSize: "60px 60px",
-      animation: "grid-drift 8s linear infinite",
-      maskImage: "radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%)",
-      WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%)",
-    }} />
-  );
-}
-
-function FloatingOrbs() {
-  return (
-    <>
-      <div style={{
-        position: "absolute", top: "15%", left: "8%", width: 400, height: 400,
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(77,124,255,0.12) 0%, transparent 70%)",
-        animation: "orb-1 12s ease-in-out infinite", pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute", bottom: "20%", right: "5%", width: 500, height: 500,
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%)",
-        animation: "orb-2 16s ease-in-out infinite", pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute", top: "50%", right: "20%", width: 200, height: 200,
-        borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(6,214,160,0.07) 0%, transparent 70%)",
-        animation: "orb-1 20s ease-in-out infinite reverse", pointerEvents: "none",
-      }} />
-    </>
-  );
-}
-
 function MediaReel() {
   const doubled = [...REEL, ...REEL];
   return (
@@ -170,16 +128,6 @@ export default function Hero() {
         padding: "80px clamp(24px, 6vw, 120px) 240px",
       }}
     >
-      <GridBackground />
-      <FloatingOrbs />
-
-      <div style={{
-        position: "absolute", top: 0, left: 0, right: 0, height: 1,
-        background: "linear-gradient(90deg, transparent, rgba(77,124,255,0.4), transparent)",
-        animation: "scan-line 6s linear infinite",
-        pointerEvents: "none",
-      }} />
-
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 1100 }}>
         <div style={{
           display: "inline-flex",
@@ -187,15 +135,15 @@ export default function Hero() {
           gap: 8,
           marginBottom: 48,
           padding: "6px 16px",
-          border: "1px solid rgba(77,124,255,0.25)",
+          border: "1px solid rgba(197,255,0,0.3)",
           borderRadius: 100,
-          background: "rgba(77,124,255,0.06)",
+          background: "rgba(197,255,0,0.06)",
           animation: "fade-up 0.6s ease 0.2s both",
         }}>
           <span style={{
             width: 6, height: 6, borderRadius: "50%",
-            background: "#06d6a0", boxShadow: "0 0 8px #06d6a0",
-            display: "inline-block", animation: "pulse-ring 2s ease infinite",
+            background: "var(--accent)",
+            display: "inline-block",
           }} />
           <span style={{
             fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-muted)",
@@ -222,11 +170,7 @@ export default function Hero() {
             return (
               <span key={i}>
                 {isAccent ? (
-                  <span style={{
-                    background: "linear-gradient(135deg, #4d7cff, #a855f7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}>{word}</span>
+                  <span style={{ color: "var(--accent)" }}>{word}</span>
                 ) : word}
                 {" "}
               </span>
@@ -264,23 +208,23 @@ export default function Hero() {
             data-cursor-label="explore"
             style={{
               padding: "14px 32px",
-              background: "linear-gradient(135deg, #4d7cff, #a855f7)",
+              background: "var(--accent)",
               border: "none",
               borderRadius: 10,
-              color: "#fff",
+              color: "#080808",
               fontFamily: "var(--font-space)",
               fontSize: 15,
               fontWeight: 600,
               letterSpacing: "0.02em",
-              transition: "transform 0.2s, box-shadow 0.2s",
+              transition: "transform 0.2s, opacity 0.2s",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 30px rgba(77,124,255,0.4)";
+              e.currentTarget.style.opacity = "0.85";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.opacity = "1";
             }}
           >See the work</button>
           <a

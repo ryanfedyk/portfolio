@@ -1,19 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #05070f;
-  --surface: #0a0d1a;
-  --surface-2: #0f1326;
+  --bg: #080808;
+  --surface: #101010;
+  --surface-2: #1a1a1a;
   --border: rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(77, 124, 255, 0.35);
-  --text: #eef2ff;
-  --text-muted: #5a6489;
-  --text-dim: #2d3554;
-  --accent: #4d7cff;
-  --accent-v: #a855f7;
-  --accent-m: #06d6a0;
-  --glow: rgba(77, 124, 255, 0.18);
-  --glow-v: rgba(168, 85, 247, 0.18);
+  --border-hover: rgba(197, 255, 0, 0.3);
+  --text: #f0f0eb;
+  --text-muted: #707070;
+  --text-dim: #3a3a3a;
+  --accent: #C5FF00;
+  --glow: rgba(197, 255, 0, 0.18);
 }
 
 html {
@@ -39,7 +36,7 @@ body {
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-::selection { background: rgba(77, 124, 255, 0.28); color: var(--text); }
+::selection { background: rgba(197, 255, 0, 0.28); color: #080808; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -130,4 +127,9 @@ body {
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+
+@keyframes image-reveal {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: scale(1); }
 }

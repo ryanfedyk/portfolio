@@ -2,69 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 
 const patents = [
-  {
-    id: "PAT-001",
-    title: "Portrait Framing with Background Freeze",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Larger, more consistent face sizes with natural cropping while maintaining the authenticity of natural backgrounds.",
-    color: "#4d7cff",
-    image: "/assets/portraitframing.gif",
-  },
-  {
-    id: "PAT-002",
-    title: "Reinventing the Self View",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.",
-    color: "#a855f7",
-    image: "/assets/screenshare.png",
-  },
-  {
-    id: "PAT-003",
-    title: "Dynamic Layouts",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Rebuild Meet's layout logic to support new hybrid technologies which improve equity and reduce VC fatigue.",
-    color: "#06d6a0",
-    image: "/assets/dynamiclayouts.gif",
-  },
-  {
-    id: "PAT-004",
-    title: "Pop-up Rooms",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.",
-    color: "#4d7cff",
-    image: "/assets/roomsvisoin.gif",
-  },
-  {
-    id: "PAT-005",
-    title: "Vibe Check",
-    product: "Google Meet",
-    status: "Patent Pending",
-    desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.",
-    color: "#a855f7",
-    image: "/assets/reactions.gif",
-  },
-  {
-    id: "PAT-006",
-    title: "Shopping AI Pathways",
-    product: "Google Shopping",
-    status: "Patent Pending",
-    desc: "Novel UX pattern that brings LLM power to the product grid, empowering users to visually browse while intuitively refining their search.",
-    color: "#06d6a0",
-    image: "/assets/shoppingaipathways.gif",
-  },
-  {
-    id: "PAT-007",
-    title: "Outfit Agent",
-    product: "Google Shopping",
-    status: "Patented",
-    desc: "A modern take on the catalog mailer curated by a shopping agent to drive re-engagement with contextual, generative media.",
-    color: "#ffd600",
-    image: "/assets/outfitagent.gif",
-  },
+  { id: "PAT-001", title: "Portrait Framing with Background Freeze", product: "Google Meet", status: "Patented", desc: "Larger, more consistent face sizes with natural cropping while maintaining the authenticity of natural backgrounds.", image: "/assets/portraitframing.gif" },
+  { id: "PAT-002", title: "Reinventing the Self View", product: "Google Meet", status: "Patented", desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.", image: "/assets/screenshare.png" },
+  { id: "PAT-003", title: "Dynamic Layouts", product: "Google Meet", status: "Patented", desc: "Rebuild Meet's layout logic to support new hybrid technologies which improve equity and reduce VC fatigue.", image: "/assets/dynamiclayouts.gif" },
+  { id: "PAT-004", title: "Pop-up Rooms", product: "Google Meet", status: "Patented", desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.", image: "/assets/roomsvisoin.gif" },
+  { id: "PAT-005", title: "Vibe Check", product: "Google Meet", status: "Patent Pending", desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.", image: "/assets/reactions.gif" },
+  { id: "PAT-006", title: "Shopping AI Pathways", product: "Google Shopping", status: "Patent Pending", desc: "Novel UX pattern that brings LLM power to the product grid, empowering users to visually browse while intuitively refining their search.", image: "/assets/shoppingaipathways.gif" },
+  { id: "PAT-007", title: "Outfit Agent", product: "Google Shopping", status: "Patented", desc: "A modern take on the catalog mailer curated by a shopping agent to drive re-engagement with contextual, generative media.", image: "/assets/outfitagent.gif" },
 ];
 
 const googleLaunches = [
@@ -101,6 +45,8 @@ function PatentCard({ p, index }: { p: (typeof patents)[0]; index: number }) {
     return () => obs.disconnect();
   }, []);
 
+  const pending = p.status === "Patent Pending";
+
   return (
     <div
       ref={ref}
@@ -109,48 +55,24 @@ function PatentCard({ p, index }: { p: (typeof patents)[0]; index: number }) {
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(32px)",
-        transition: `opacity 0.6s ease ${index * 0.07}s, transform 0.6s ease ${index * 0.07}s`,
+        transition: `opacity 0.6s ease ${index * 0.07}s, transform 0.6s ease ${index * 0.07}s, border-color 0.25s ease`,
         background: "var(--surface)",
-        border: `1px solid ${hovered ? p.color + "40" : "var(--border)"}`,
+        border: `1px solid ${hovered ? "rgba(197,255,0,0.3)" : "var(--border)"}`,
         borderRadius: 12,
         overflow: "hidden",
-        boxShadow: hovered ? `0 8px 40px ${p.color}18` : "none",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      <div style={{ width: "100%", height: 200, overflow: "hidden", position: "relative", background: "#0a0d1a", flexShrink: 0 }}>
-        <img
-          src={p.image}
-          alt={p.title}
-          loading="lazy"
-          style={{
-            width: "100%", height: "100%", objectFit: "cover", display: "block",
-            transition: "transform 0.5s ease",
-            transform: hovered ? "scale(1.04)" : "scale(1)",
-          }}
-        />
-        <span
-          style={{
-            position: "absolute", top: 12, right: 12,
-            padding: "3px 10px", borderRadius: 4,
-            background: p.status === "Patented" ? `${p.color}cc` : "rgba(255,214,0,0.85)",
-            fontFamily: "var(--font-mono)", fontSize: 9,
-            color: p.status === "Patented" ? "#fff" : "#000",
-            letterSpacing: "0.1em", textTransform: "uppercase",
-            backdropFilter: "blur(8px)",
-          }}
-        >
+      <div style={{ width: "100%", aspectRatio: "16 / 9", overflow: "hidden", position: "relative", background: "var(--surface-2)", flexShrink: 0 }}>
+        <img src={p.image} alt={p.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        <span style={{ position: "absolute", top: 12, right: 12, padding: "3px 10px", borderRadius: 4, background: pending ? "var(--surface)" : "var(--accent)", border: pending ? "1px solid var(--accent)" : "none", fontFamily: "var(--font-mono)", fontSize: 9, color: pending ? "var(--accent)" : "#080808", letterSpacing: "0.1em", textTransform: "uppercase" }}>
           {p.status}
         </span>
       </div>
       <div style={{ padding: "20px 22px 24px", flex: 1 }}>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: p.color, letterSpacing: "0.08em", marginBottom: 8 }}>
-          {p.product} · {p.id}
-        </p>
-        <h4 style={{ fontFamily: "var(--font-space)", fontWeight: 700, fontSize: 16, color: "var(--text)", lineHeight: 1.25, marginBottom: 10, letterSpacing: "-0.01em" }}>
-          {p.title}
-        </h4>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--accent)", letterSpacing: "0.08em", marginBottom: 8 }}>{p.product} · {p.id}</p>
+        <h4 style={{ fontFamily: "var(--font-space)", fontWeight: 700, fontSize: 16, color: "var(--text)", lineHeight: 1.25, marginBottom: 10, letterSpacing: "-0.01em" }}>{p.title}</h4>
         <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.65 }}>{p.desc}</p>
       </div>
     </div>
@@ -173,8 +95,6 @@ function LaunchCard({ l, index }: { l: (typeof googleLaunches)[0]; index: number
     return () => obs.disconnect();
   }, []);
 
-  const accentColor = l.co === "Jigsaw" ? "#06d6a0" : "#4d7cff";
-
   return (
     <div
       ref={ref}
@@ -183,25 +103,18 @@ function LaunchCard({ l, index }: { l: (typeof googleLaunches)[0]; index: number
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(24px)",
-        transition: `opacity 0.6s ease ${index * 0.06}s, transform 0.6s ease ${index * 0.06}s`,
+        transition: `opacity 0.6s ease ${index * 0.06}s, transform 0.6s ease ${index * 0.06}s, border-color 0.25s ease`,
         borderRadius: 10, overflow: "hidden",
-        border: `1px solid ${hovered ? accentColor + "35" : "var(--border)"}`,
+        border: `1px solid ${hovered ? "rgba(197,255,0,0.3)" : "var(--border)"}`,
         background: "var(--surface)",
       }}
     >
-      <div style={{ width: "100%", height: 180, overflow: "hidden", background: "#0a0d1a" }}>
-        <img
-          src={l.image} alt={l.name} loading="lazy"
-          style={{
-            width: "100%", height: "100%", objectFit: "cover", display: "block",
-            transition: "transform 0.5s ease",
-            transform: hovered ? "scale(1.05)" : "scale(1)",
-          }}
-        />
+      <div style={{ width: "100%", aspectRatio: "16 / 9", overflow: "hidden", background: "var(--surface-2)" }}>
+        <img src={l.image} alt={l.name} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
       </div>
       <div style={{ padding: "14px 16px 16px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: accentColor, letterSpacing: "0.08em", textTransform: "uppercase" }}>{l.co}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--accent)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{l.co}</span>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-dim)", letterSpacing: "0.06em" }}>{l.year}</span>
         </div>
         <p style={{ fontSize: 13, color: "var(--text-muted)", fontWeight: 500, lineHeight: 1.4 }}>{l.name}</p>
@@ -262,7 +175,7 @@ export default function Patents() {
         </div>
 
         <div style={{ padding: "40px 48px", border: "1px solid var(--border)", borderRadius: 12, background: "var(--bg)" }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#00a4ef", letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 24 }}>Microsoft</p>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#0078d4", letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 24 }}>Microsoft</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {microsoftLaunches.map((l, i) => (
               <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 20, padding: "14px 0", borderBottom: i < microsoftLaunches.length - 1 ? "1px solid var(--border)" : "none" }}>
