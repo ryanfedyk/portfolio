@@ -1,221 +1,247 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 
-const cases = [
+import { useEffect, useRef } from "react";
+
+interface Philosophy {
+  n: string;
+  h: string;
+  hIt: string | null;
+  p: string;
+}
+
+interface CaseStudy {
+  n: string;
+  year: string;
+  company: string;
+  title: string;
+  titleIt: string;
+  desc: string;
+  tags: string[];
+  image: string;
+}
+
+const PHILOSOPHY: Philosophy[] = [
   {
-    index: "01",
-    company: "Google Meet",
-    role: "Design Lead & Design Manager",
-    title: "Feature Chasing → AI-Focused Differentiators",
-    summary:
-      "During the pandemic Meet evolved rapidly. After my team brought the world back to the office with hybrid work, I pivoted the broader team toward longer-term vision, product differentiators, and increasing product excellence.",
-    impact: [
-      "Led team of 10 designers across hybrid & AI pivots",
-      "Delivered hybrid work to 242 million users",
-      "Launched 7 key features for return-to-office · 89% CSAT",
-      "Launched Board 65 & Series One 27 collaboration devices",
-      "Led pivot to AI: Generative Backgrounds, AI layouts, real-time speech translation",
-    ],
-    tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
-    featuredImage: "/assets/geminimeetings.gif",
-    gallery: [
-      "/assets/reactions.gif",
-      "/assets/dynamiclayouts.gif",
-      "/assets/portraitframing.gif",
-      "/assets/generativebackgrounds.gif",
-    ],
+    n: "01",
+    h: "Build teams, not deliverables",
+    hIt: "teams",
+    p: "Great products come from teams that trust each other. I invest in process, mentorship, and the strategic muscle that turns user research into real business outcomes.",
   },
   {
-    index: "02",
-    company: "Google Jigsaw",
-    role: "Design Lead & Design Manager",
-    title: "Using Technology to Improve Public Safety",
-    summary:
-      "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship.",
-    impact: [
-      "Rebuilt design team: recruiting, process, culture, OKRs",
-      "Perspective API: ML toxicity detection used by 200+ partners including NYTimes",
-      "Co-founded Jigsaw Incubate — company-wide annual hackathon",
-      "Grew Outline to give internet access to people under repressive censorship",
-      "Developed the Jigsaw Design System",
-    ],
-    tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
-    featuredImage: "/assets/represive%20censorship.png",
-    gallery: [
-      "/assets/fighting%20disinfo.png",
-      "/assets/fightinharassment.png",
-      "/assets/disinfohighleverage.gif",
-    ],
+    n: "02",
+    h: "Design for the 126th visit",
+    hIt: "126th",
+    p: "Anyone can make a delightful first impression. The hard part — and the interesting part — is what keeps someone coming back when the novelty is gone.",
   },
   {
-    index: "03",
-    company: "Google Shopping",
-    role: "Design Lead",
-    title: "Beyond the Prompt — The Implicit AI Interface",
-    summary:
-      "In 2-3 years predictive, agentic, and generative UIs will replace conversational interfaces for most tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
-    impact: [
-      "Agentic Commerce: Universal Commerce Protocol — buy in Gemini/AI Mode end-to-end",
-      "Implicit Shopping: predictive journeys, bespoke generated UI responses",
-      "Shopping AI Pathways — novel UX pattern for visual LLM-powered browsing (Patent Pending)",
-      "Outfit Agent — generative catalog mailer curated by a shopping agent (Patent)",
-      "Founded CSUX Vibe Coding Club — 20+ participants, weekly challenges",
-    ],
-    tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
-    featuredImage: "/assets/beyondtheprompt.png",
-    gallery: [
-      "/assets/agenticcommerce.gif",
-      "/assets/shoppingaipathways.gif",
-      "/assets/outfitagent.gif",
-      "/assets/implicit%20shopping.png",
-    ],
-  },
-  {
-    index: "04",
-    company: "Google Classroom",
-    role: "Design Lead & Design Manager",
-    title: "Redefining the Future of Education",
-    summary:
-      "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs and doubled the user base.",
-    impact: [
-      "Doubled Classroom from 20M to 40M users",
-      "Led Classroom redesign across web and mobile (Material 2.0)",
-      "Strategic pivot to Higher Ed resulting in Course Kit (new product)",
-      "Managed team of 6 through numerous feature and product releases",
-    ],
-    tags: ["Education Tech", "Product Strategy", "Design Systems"],
-    featuredImage: "/assets/eduteamleaderhsip.jpg",
-    gallery: ["/assets/eduvision.gif"],
+    n: "03",
+    h: "Make AI feel human",
+    hIt: "human",
+    p: "Useful intelligence is quiet. It earns trust by being legible, controllable, and humble — never by performing its own cleverness at the user.",
   },
 ];
 
-function TextPanel({ c }: { c: (typeof cases)[0] }) {
+const CASES: CaseStudy[] = [
+  {
+    n: "01",
+    year: "2022–2025",
+    company: "Google Meet",
+    title: "Feature Chasing",
+    titleIt: "→ AI-Focused Differentiators",
+    desc: "During the pandemic Meet evolved rapidly. After my team brought the world back to the office with hybrid work, I pivoted the broader team toward longer-term vision, product differentiators, and increasing product excellence.",
+    tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
+    image: "/assets/geminimeetings.gif",
+  },
+  {
+    n: "02",
+    year: "2017–2019",
+    company: "Google Jigsaw",
+    title: "Using Technology to",
+    titleIt: "Improve Public Safety",
+    desc: "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship.",
+    tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
+    image: "/assets/represive%20censorship.png",
+  },
+  {
+    n: "03",
+    year: "2024–2025",
+    company: "Google Shopping",
+    title: "Beyond the Prompt —",
+    titleIt: "The Implicit AI Interface",
+    desc: "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
+    tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
+    image: "/assets/beyondtheprompt.png",
+  },
+  {
+    n: "04",
+    year: "2018–2020",
+    company: "Google Classroom",
+    title: "Redefining the",
+    titleIt: "Future of Education",
+    desc: "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs and doubled the user base.",
+    tags: ["Education Tech", "Product Strategy", "Design Systems"],
+    image: "/assets/eduteamleaderhsip.jpg",
+  },
+];
+
+function renderPhilHeading(h: string, hIt: string | null) {
+  if (!hIt) return h;
+  const idx = h.indexOf(hIt);
+  if (idx === -1) return h;
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 24 }}>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--accent)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          {c.company}
-        </span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--text-dim)", letterSpacing: "0.12em" }}>
-          {c.index}
-        </span>
-      </div>
-      <h3 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 64px)", letterSpacing: "-0.03em", lineHeight: 1.02, color: "var(--text)", marginBottom: 16 }}>
-        {c.title}
-      </h3>
-      <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 28 }}>
-        {c.role}
-      </p>
-      <p style={{ color: "var(--text-muted)", fontSize: "clamp(15px, 1.3vw, 18px)", lineHeight: 1.75, fontWeight: 400, marginBottom: 32 }}>
-        {c.summary}
-      </p>
-      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14, marginBottom: 32 }}>
-        {c.impact.map((item, i) => (
-          <li key={i} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-            <span style={{ color: "var(--accent)", flexShrink: 0, fontSize: 14, marginTop: 1, fontWeight: 700 }}>→</span>
-            <span style={{ color: "var(--text-muted)", fontSize: 14, lineHeight: 1.6 }}>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {c.tags.map((tag) => (
-          <span key={tag} style={{ padding: "5px 12px", borderRadius: 100, border: "1px solid var(--text-dim)", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-dim)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ImagePanel({ c }: { c: (typeof cases)[0] }) {
-  const gallery = c.gallery.slice(0, 4);
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <div style={{ width: "100%", aspectRatio: "16 / 9", borderRadius: 8, overflow: "hidden", background: "var(--surface-2)" }}>
-        <img src={c.featuredImage} alt={c.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-      </div>
-      {gallery.length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
-          {gallery.map((src, i) => (
-            <div key={i} style={{ width: "100%", aspectRatio: "16 / 9", borderRadius: 6, overflow: "hidden", background: "var(--surface-2)" }}>
-              <img src={src} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const textLeft = index % 2 === 0;
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(48px)",
-        transition: `opacity 0.9s ease ${index * 0.08}s, transform 0.9s ease ${index * 0.08}s`,
-        paddingTop: 100,
-        paddingBottom: 80,
-        borderTop: "1px solid var(--border)",
-        display: "grid",
-        gridTemplateColumns: textLeft ? "45fr 55fr" : "55fr 45fr",
-        gap: "clamp(40px, 6vw, 96px)",
-        alignItems: "center",
-      }}
-    >
-      {textLeft ? (
-        <><TextPanel c={c} /><ImagePanel c={c} /></>
-      ) : (
-        <><ImagePanel c={c} /><TextPanel c={c} /></>
-      )}
-    </div>
+    <>
+      {h.slice(0, idx)}
+      <span className="it">{hIt}</span>
+      {h.slice(idx + hIt.length)}
+    </>
   );
 }
 
 export default function Transformations() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setHeaderVisible(true); obs.disconnect(); } },
-      { threshold: 0.2 }
+    const root = rootRef.current;
+    if (!root) return;
+
+    const els = Array.from(root.querySelectorAll<HTMLElement>(".rv"));
+    if (!els.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
+
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   return (
-    <section id="transformations" style={{ padding: "120px clamp(24px, 6vw, 120px) 80px", background: "var(--bg)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div ref={headerRef} style={{ marginBottom: 0, opacity: headerVisible ? 1 : 0, transform: headerVisible ? "none" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 20 }}>Case Studies</p>
-          <h2 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(40px, 7vw, 96px)", letterSpacing: "-0.04em", lineHeight: 0.95, color: "var(--text)" }}>
-            Amazing teams.<br />Real impact.
-          </h2>
+    <div ref={rootRef}>
+      <section id="about">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 01</span>
+            </div>
+            <h2 className="sec-title">
+              A little about the <span className="it">work.</span>
+            </h2>
+          </div>
+
+          <div className="about-grid">
+            <div className="about-block lead rv">
+              <p>
+                I work with companies that build the future with{" "}
+                <span className="ac">creativity, care, and purpose</span>. In a
+                world full of buzzwords — disruption, moonshot, AI everything —
+                true innovation can be tough to find. Right now, I&apos;ve found
+                that spark at Google, where I&apos;m rethinking what hybrid
+                productivity can look like.
+              </p>
+            </div>
+
+            <div className="about-block rv rv-d1">
+              <h3>Building teams</h3>
+              <p>
+                I&apos;m passionate about building and growing UX teams that
+                solve real, complex problems — for users and for businesses. I
+                love helping teams thrive: streamlining process, championing
+                user-centered design, and leveling up the strategic thinking
+                that drives real impact.
+              </p>
+            </div>
+
+            <div className="about-block rv rv-d2">
+              <h3>Creating experiences</h3>
+              <p>
+                What if you designed something people actually wanted to use
+                every day? How do you make someone more productive, more
+                efficient — or just a little happier? What happens on their
+                third visit? Their eighth? Their 126th? I design experiences
+                that are flexible, efficient, and built to keep users engaged —
+                not just once, but over time.
+              </p>
+            </div>
+          </div>
         </div>
-        {cases.map((c, i) => <CaseStudy key={c.index} c={c} index={i} />)}
-      </div>
-    </section>
+      </section>
+
+      <section id="process">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 02</span>
+            </div>
+            <h2 className="sec-title">
+              Three things I <span className="it">believe.</span>
+            </h2>
+          </div>
+
+          <div className="phil rv">
+            {PHILOSOPHY.map((p) => (
+              <div key={p.n} className="phil-cell">
+                <div className="phil-num">{p.n}</div>
+                <h3 className="phil-h">{renderPhilHeading(p.h, p.hIt)}</h3>
+                <p className="phil-p">{p.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 03</span>
+            </div>
+            <h2 className="sec-title">
+              Four things I&apos;m <span className="it">proud of.</span>
+            </h2>
+          </div>
+
+          <div className="cases">
+            {CASES.map((c) => (
+              <div key={c.n} className="case rv" data-cursor>
+                <div className="case-meta">
+                  <span className="case-num">{c.n}</span>
+                  <span className="case-year">{c.year}</span>
+                  <span className="case-num">{c.company}</span>
+                  <div className="case-tags">
+                    {c.tags.map((t) => (
+                      <span key={t} className="case-tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="case-body">
+                  <h3 className="case-title">
+                    {c.title} <span className="it">{c.titleIt}</span>
+                  </h3>
+                  <p className="case-desc">{c.desc}</p>
+                  <span className="case-cta">
+                    View case <span className="arr">→</span>
+                  </span>
+                </div>
+
+                <div className="case-art">
+                  <img src={c.image} alt={`${c.company} — ${c.title}`} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
