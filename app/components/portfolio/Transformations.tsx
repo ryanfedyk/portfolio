@@ -205,7 +205,6 @@ function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
           alt={c.title}
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
-        {/* Subtle color wash at bottom edge */}
         <div
           style={{
             position: "absolute",
@@ -271,10 +270,6 @@ function CaseStudy({ c, index }: { c: (typeof cases)[0]; index: number }) {
             paddingBottom: 4,
             scrollbarWidth: "none",
             marginBottom: 36,
-            marginLeft: "-clamp(24px, 6vw, 120px)",
-            marginRight: "-clamp(24px, 6vw, 120px)",
-            paddingLeft: "clamp(24px, 6vw, 120px)",
-            paddingRight: "clamp(24px, 6vw, 120px)",
           }}
         >
           {c.gallery.map((src, i) => (
@@ -355,7 +350,6 @@ export default function Transformations() {
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        {/* Section header */}
         <div
           ref={headerRef}
           style={{
@@ -391,7 +385,6 @@ export default function Transformations() {
           </h2>
         </div>
 
-        {/* Case studies */}
         {cases.map((c, i) => (
           <CaseStudy key={c.index} c={c} index={i} />
         ))}
