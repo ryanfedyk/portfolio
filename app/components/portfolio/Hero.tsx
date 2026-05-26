@@ -271,7 +271,6 @@ export default function Hero() {
   const y = useScrollY();
   useReveal();
   useCursor();
-  useMagnetic(".case", 0.04);
 
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);

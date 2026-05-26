@@ -43,7 +43,7 @@ const PATENTS: Patent[] = [
     product: "Google Meet",
     status: "Patented",
     desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.",
-    image: "/assets/screenshare.png",
+    image: "/assets/ryan-title+1+copy3.gif",
   },
   {
     id: "PAT-003",
@@ -164,9 +164,6 @@ export default function Patents() {
       <section id="patents">
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 04</span>
-            </div>
             <h2 className="sec-title">
               IP &amp; <span className="it">Launches.</span>
             </h2>
@@ -195,9 +192,6 @@ export default function Patents() {
       <section>
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 05</span>
-            </div>
             <h2 className="sec-title">
               Notable <span className="it">Launches.</span>
             </h2>
@@ -223,9 +217,6 @@ export default function Patents() {
       <section id="resume">
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 06</span>
-            </div>
             <h2 className="sec-title">
               Where I&apos;ve <span className="it">been.</span>
             </h2>
@@ -252,7 +243,7 @@ export default function Patents() {
       <section className="ftr" id="contact">
         <div className="wrap">
           <div className="rv">
-            <span className="eyebrow">§ 07 · Get in touch</span>
+            <span className="eyebrow">Get in touch</span>
             <h2 className="ftr-big">
               Let&apos;s make something people actually
               <br />
