@@ -9,15 +9,22 @@ interface Philosophy {
   p: string;
 }
 
+interface CaseLaunch {
+  year: string;
+  name: string;
+  desc: string;
+  image: string;
+}
+
 interface CaseStudy {
   n: string;
-  year: string;
+  yearRange: string;
   company: string;
   title: string;
   titleIt: string;
-  desc: string;
+  narrative: string;
   tags: string[];
-  image: string;
+  launches: CaseLaunch[];
 }
 
 const PHILOSOPHY: Philosophy[] = [
@@ -44,43 +51,135 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
-    year: "2019–Present",
+    yearRange: "2019–Present",
     company: "Google Meet",
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
-    desc: "During the pandemic Meet evolved rapidly. After my team brought the world back to the office with hybrid work, I pivoted the broader team toward longer-term vision, product differentiators, and increasing product excellence.",
+    narrative:
+      "During the pandemic Meet evolved at a pace few products ever have. After my team brought the world back to the office with hybrid work, I pivoted the broader team toward longer-term vision, product differentiators, and increasing product excellence across a user base of 3B+.",
     tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
-    image: "/assets/geminimeetings.gif",
+    launches: [
+      {
+        year: "2022",
+        name: "Hybrid Work",
+        desc: "Redesigned the in-office experience for a post-pandemic world — blending physical rooms and digital presence into one seamless meeting.",
+        image: "/assets/biometric%20room%20checkin.gif",
+      },
+      {
+        year: "2022",
+        name: "Dynamic Layouts",
+        desc: "Rebuilt Meet's layout engine to support hybrid room configurations and reduce video-conferencing fatigue.",
+        image: "/assets/dynamiclayouts.gif",
+      },
+      {
+        year: "2022",
+        name: "Portrait Framing",
+        desc: "AI-powered camera framing that creates larger, more consistent face sizes with natural cropping — patented.",
+        image: "/assets/portraitframing.gif",
+      },
+      {
+        year: "2023",
+        name: "Generative Backgrounds",
+        desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
+        image: "/assets/generativebackgrounds.gif",
+      },
+      {
+        year: "2025",
+        name: "Real-time Translation",
+        desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
+        image: "/assets/geminimeetings.gif",
+      },
+    ],
   },
   {
     n: "02",
-    year: "2017–2019",
+    yearRange: "2017–2019",
     company: "Google Jigsaw",
     title: "Using Technology to",
     titleIt: "Improve Public Safety",
-    desc: "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship.",
+    narrative:
+      "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship worldwide.",
     tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
-    image: "/assets/represive%20censorship.png",
+    launches: [
+      {
+        year: "2018",
+        name: "Perspective API",
+        desc: "ML toxicity-detection tool deployed with 200+ media partners to reduce online harassment at scale.",
+        image: "/assets/fighting%20disinfo.png",
+      },
+      {
+        year: "2018",
+        name: "Outline VPN",
+        desc: "Open-source VPN helping journalists and activists bypass government censorship in 30+ countries.",
+        image: "/assets/represive%20censorship.png",
+      },
+      {
+        year: "2018",
+        name: "Anti-Harassment Tools",
+        desc: "UX patterns and systems that protect at-risk communities by making online spaces safer by design.",
+        image: "/assets/fightinharassment.png",
+      },
+    ],
   },
   {
     n: "03",
-    year: "2024–Present",
+    yearRange: "2024–Present",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
     titleIt: "The Implicit AI Interface",
-    desc: "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
+    narrative:
+      "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most everyday tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
-    image: "/assets/beyondtheprompt.png",
+    launches: [
+      {
+        year: "2024",
+        name: "Shopping AI Pathways",
+        desc: "Novel UX bringing LLM power to the product grid — letting users browse visually while naturally refining their search.",
+        image: "/assets/shoppingaipathways.gif",
+      },
+      {
+        year: "2024",
+        name: "Outfit Agent",
+        desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media. Patented.",
+        image: "/assets/outfitagent.gif",
+      },
+      {
+        year: "2025",
+        name: "Agentic Commerce",
+        desc: "Next-generation shopping where AI anticipates needs and completes the purchase journey autonomously.",
+        image: "/assets/agenticcommerce.gif",
+      },
+      {
+        year: "2024",
+        name: "Beyond the Prompt",
+        desc: "Strategic framework and design vision for ambient AI commerce that transcends the chat interface.",
+        image: "/assets/beyondtheprompt.png",
+      },
+    ],
   },
   {
     n: "04",
-    year: "2018–2020",
+    yearRange: "2018–2020",
     company: "Google Classroom",
     title: "Redefining the",
     titleIt: "Future of Education",
-    desc: "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs and doubled the user base.",
+    narrative:
+      "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs — doubling the user base and setting a new bar for ed-tech UX.",
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
-    image: "/assets/eduteamleaderhsip.jpg",
+    launches: [
+      {
+        year: "2019",
+        name: "Classroom Redesign",
+        desc: "Complete ground-up redesign that improved core workflows for 50M+ teachers and students worldwide.",
+        image: "/assets/eduteamleaderhsip.jpg",
+      },
+      {
+        year: "2020",
+        name: "Course Kit",
+        desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
+        image: "/assets/eduvision.gif",
+      },
+    ],
   },
 ];
 
@@ -116,7 +215,7 @@ export default function Transformations() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" }
     );
 
     els.forEach((el) => io.observe(el));
@@ -213,7 +312,7 @@ export default function Transformations() {
               <div key={c.n} className="case rv" data-cursor>
                 <div className="case-meta">
                   <span className="case-num">{c.n}</span>
-                  <span className="case-year">{c.year}</span>
+                  <span className="case-year">{c.yearRange}</span>
                   <span className="case-num">{c.company}</span>
                   <div className="case-tags">
                     {c.tags.map((t) => (
@@ -228,14 +327,22 @@ export default function Transformations() {
                   <h3 className="case-title">
                     {c.title} <span className="it">{c.titleIt}</span>
                   </h3>
-                  <p className="case-desc">{c.desc}</p>
-                  <span className="case-cta">
-                    View case <span className="arr">→</span>
-                  </span>
-                </div>
+                  <p className="case-narrative">{c.narrative}</p>
 
-                <div className="case-art">
-                  <img src={c.image} alt={`${c.company} — ${c.title}`} />
+                  <div className="cs-launches">
+                    {c.launches.map((l, i) => (
+                      <div key={i} className="cs-launch">
+                        <div className="cs-launch-img">
+                          <img src={l.image} alt={l.name} />
+                        </div>
+                        <div className="cs-launch-foot">
+                          <div className="cs-launch-yr">{l.year}</div>
+                          <div className="cs-launch-name">{l.name}</div>
+                          <p className="cs-launch-desc">{l.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

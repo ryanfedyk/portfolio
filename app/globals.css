@@ -465,7 +465,7 @@ section {
 
 .case {
   display: grid;
-  grid-template-columns: 200px 1.4fr 1fr;
+  grid-template-columns: 200px 1fr;
   gap: clamp(20px, 3.5vw, 48px);
   padding: clamp(24px, 3.5vw, 40px);
   border-radius: calc(var(--radius) + 4px);
@@ -590,6 +590,83 @@ section {
 
 .case:hover .case-cta .arr {
   transform: translateX(6px);
+}
+
+.case-narrative {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  margin-bottom: 24px;
+  max-width: 72ch;
+}
+
+.cs-launches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.cs-launch {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: border-color .25s, background .25s;
+}
+
+.cs-launch:hover {
+  border-color: color-mix(in oklch, var(--fg) 18%, var(--line));
+  background: color-mix(in oklch, var(--bg) 85%, var(--grad-a) 15%);
+}
+
+.cs-launch-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+
+.cs-launch-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s cubic-bezier(.3, .7, .4, 1);
+}
+
+.cs-launch:hover .cs-launch-img img {
+  transform: scale(1.04);
+}
+
+.cs-launch-foot {
+  padding: 14px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-launch-yr {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.cs-launch-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.15;
+  color: var(--hi);
+}
+
+.cs-launch-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin-top: 4px;
 }
 
 .case-art {
