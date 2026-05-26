@@ -63,7 +63,7 @@ const CASES: CaseStudy[] = [
         year: "2022",
         name: "Hybrid Work",
         desc: "Redesigned the in-office experience for a post-pandemic world — blending physical rooms and digital presence into one seamless meeting.",
-        image: "/assets/biometric%20room%20checkin.gif",
+        image: "/assets/meetdevices.gif",
       },
       {
         year: "2022",
@@ -81,13 +81,13 @@ const CASES: CaseStudy[] = [
         year: "2023",
         name: "Generative Backgrounds",
         desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
-        image: "/assets/generativebackgrounds.gif",
+        image: "/assets/stackableeffects.gif",
       },
       {
         year: "2025",
         name: "Real-time Translation",
         desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
-        image: "/assets/geminimeetings.gif",
+        image: "/assets/utdemosmall.gif",
       },
     ],
   },
@@ -117,7 +117,7 @@ const CASES: CaseStudy[] = [
         year: "2018",
         name: "Anti-Harassment Tools",
         desc: "UX patterns and systems that protect at-risk communities by making online spaces safer by design.",
-        image: "/assets/fightinharassment.png",
+        image: "/assets/VR_Training.gif",
       },
     ],
   },
@@ -227,9 +227,6 @@ export default function Transformations() {
       <section id="about">
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 01</span>
-            </div>
             <h2 className="sec-title">
               A little about the <span className="it">work.</span>
             </h2>
@@ -276,9 +273,6 @@ export default function Transformations() {
       <section id="process">
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 02</span>
-            </div>
             <h2 className="sec-title">
               Three things I <span className="it">believe.</span>
             </h2>
@@ -299,9 +293,6 @@ export default function Transformations() {
       <section id="work">
         <div className="wrap">
           <div className="sec-head rv">
-            <div className="sec-num">
-              <span className="lbl">§ 03</span>
-            </div>
             <h2 className="sec-title">
               Amazing teams.<br /><span className="it">Real impact.</span>
             </h2>

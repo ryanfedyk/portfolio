@@ -314,18 +314,7 @@ section {
 }
 
 .sec-head {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 48px;
   margin-bottom: clamp(40px, 6vw, 72px);
-  align-items: baseline;
-}
-
-@media (max-width: 760px) {
-  .sec-head {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
 }
 
 .sec-num {
