@@ -92,6 +92,7 @@ const LAUNCHES: Launch[] = [
   { yr: "2023", title: "Generative Backgrounds", titleIt: null, co: "Google · Meet", role: "Design Lead" },
   { yr: "2022", title: "Hybrid Work", titleIt: "/ Return to Office", co: "Google · Meet", role: "Design Lead" },
   { yr: "2022", title: "Board 65", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
+  { yr: "2022", title: "Series One 27", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
   { yr: "2019", title: "Classroom", titleIt: "Redesign", co: "Google · Education", role: "Design Lead" },
   { yr: "2018", title: "Perspective API", titleIt: null, co: "Jigsaw · 200+ partners", role: "Design Lead" },
   { yr: "2018", title: "Outline VPN", titleIt: null, co: "Jigsaw · Censorship tool", role: "Design Lead" },
@@ -103,27 +104,27 @@ const LAUNCHES: Launch[] = [
 
 const RESUME: ResumeEntry[] = [
   {
-    yr: "2019 — Now",
-    role: "Staff UX Designer",
+    yr: "2013 — Now",
+    role: "Design Lead & Manager",
     roleIt: "Google",
     co: "Google — Meet · Jigsaw · Shopping · Classroom",
-    desc: "Leading design for AI-forward products. Building teams and strategy. Hands-on across vision, systems, and shipped surfaces.",
-    loc: "Bay Area",
+    desc: "Leading design for AI-forward products across Google. Built and grew multiple UX teams. Championed user-centered design at scale.",
+    loc: "San Francisco",
   },
   {
-    yr: "2013 — 2019",
-    role: "Senior UX Designer",
+    yr: "2009 — 2013",
+    role: "UX Designer",
     roleIt: "Microsoft",
-    co: "Microsoft — Bing · Xbox · Windows",
-    desc: "Design across consumer products including Xbox Kinect, Windows Phone 7, Bing Maps, and Windows Translator.",
+    co: "Microsoft — Windows · Xbox · Bing",
+    desc: "Shipped design across Windows Phone 7, Xbox Kinect, Bing Maps, and Windows Translator.",
     loc: "Seattle",
   },
   {
-    yr: "2010 — 2013",
-    role: "UX Designer",
+    yr: "2007 — 2009",
+    role: "Design Educator",
     roleIt: "NYU",
     co: "New York University",
-    desc: "Taught interaction design. Built the foundations for teaching human-centered design to the next generation.",
+    desc: "Taught interaction design. Helped build the foundations of human-centered design education at NYU.",
     loc: "New York",
   },
 ];
@@ -262,7 +263,7 @@ export default function Patents() {
           <div className="ftr-grid rv rv-d1">
             <div className="ftr-col">
               <h4>Email</h4>
-              <a href="mailto:hello@ryanfedyk.com">hello@ryanfedyk.com</a>
+              <a href="mailto:ryanfedyk@gmail.com">ryanfedyk@gmail.com</a>
             </div>
             <div className="ftr-col">
               <h4>Elsewhere</h4>
@@ -276,7 +277,7 @@ export default function Patents() {
             </div>
             <div className="ftr-col">
               <h4>Currently</h4>
-              <a href="#about">Staff UX Designer @ Google</a>
+              <a href="#about">Design Lead &amp; Manager @ Google</a>
             </div>
           </div>
 

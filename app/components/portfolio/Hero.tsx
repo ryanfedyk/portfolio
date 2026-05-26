@@ -7,11 +7,11 @@ const FONT_HREF =
 
 const MARQUEE = [
   "Building teams",
-  "Designing for the 8th visit",
-  "AI that whispers",
-  "Hybrid presence",
-  "Trust as a primitive",
-  "Less novelty, more care",
+  "Designing for the 126th visit",
+  "AI-forward products",
+  "Hybrid productivity",
+  "User-centered design",
+  "Real impact at scale",
 ];
 
 function useFonts() {
@@ -288,7 +288,7 @@ export default function Hero() {
         <div className="wrap hero-grid">
           <div className="hero-eyebrow rv">
             <span className="ln" />
-            <span className="eyebrow">Portfolio · 2013 — 2026</span>
+            <span className="eyebrow">Portfolio · 2009 — 2026</span>
           </div>
 
           <h1 className="rv rv-d1">
@@ -309,26 +309,26 @@ export default function Hero() {
           </h1>
 
           <p className="hero-sub rv rv-d2">
-            Ryan Fedyk — a UX designer making AI quietly useful at Google.
-            Builder of teams, shipper of systems, student of the 126th visit.
+            I design experiences that are flexible, efficient, and built to keep
+            users engaged — not just once, but over time.
           </p>
 
           <dl className="hero-meta rv rv-d3">
             <div>
               <dt>Role</dt>
-              <dd>Staff UX Designer</dd>
+              <dd>Design Lead &amp; Manager</dd>
             </div>
             <div>
-              <dt>At</dt>
-              <dd>Google · 10+ years</dd>
+              <dt>Currently</dt>
+              <dd>Google · 2013–Present</dd>
             </div>
             <div>
-              <dt>Based</dt>
-              <dd>Google Meet · Jigsaw · Classroom</dd>
+              <dt>Focus</dt>
+              <dd>AI-Forward Products</dd>
             </div>
             <div>
-              <dt>Open to</dt>
-              <dd>LinkedIn · Conversations · Speaking</dd>
+              <dt>Impact</dt>
+              <dd>7 Patents · 242M+ users</dd>
             </div>
           </dl>
         </div>

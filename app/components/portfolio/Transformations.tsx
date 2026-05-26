@@ -44,7 +44,7 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
-    year: "2022–2025",
+    year: "2019–Present",
     company: "Google Meet",
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
@@ -64,7 +64,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "03",
-    year: "2024–2025",
+    year: "2024–Present",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
     titleIt: "The Implicit AI Interface",
@@ -144,7 +144,7 @@ export default function Transformations() {
                 world full of buzzwords — disruption, moonshot, AI everything —
                 true innovation can be tough to find. Right now, I&apos;ve found
                 that spark at Google, where I&apos;m rethinking what hybrid
-                productivity can look like.
+                productivity can look like with Google Meet.
               </p>
             </div>
 
@@ -153,9 +153,9 @@ export default function Transformations() {
               <p>
                 I&apos;m passionate about building and growing UX teams that
                 solve real, complex problems — for users and for businesses. I
-                love helping teams thrive: streamlining process, championing
-                user-centered design, and leveling up the strategic thinking
-                that drives real impact.
+                love helping teams thrive: streamlining processes, championing
+                user-centered design, and leveling up strategic thinking to
+                drive real impact.
               </p>
             </div>
 
@@ -204,7 +204,7 @@ export default function Transformations() {
               <span className="lbl">§ 03</span>
             </div>
             <h2 className="sec-title">
-              Four things I&apos;m <span className="it">proud of.</span>
+              Amazing teams.<br /><span className="it">Real impact.</span>
             </h2>
           </div>
 
