@@ -1,192 +1,292 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 
-const patents = [
-  { id: "PAT-001", title: "Portrait Framing with Background Freeze", product: "Google Meet", status: "Patented", desc: "Larger, more consistent face sizes with natural cropping while maintaining the authenticity of natural backgrounds.", image: "/assets/portraitframing.gif" },
-  { id: "PAT-002", title: "Reinventing the Self View", product: "Google Meet", status: "Patented", desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.", image: "/assets/screenshare.png" },
-  { id: "PAT-003", title: "Dynamic Layouts", product: "Google Meet", status: "Patented", desc: "Rebuild Meet's layout logic to support new hybrid technologies which improve equity and reduce VC fatigue.", image: "/assets/dynamiclayouts.gif" },
-  { id: "PAT-004", title: "Pop-up Rooms", product: "Google Meet", status: "Patented", desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.", image: "/assets/roomsvisoin.gif" },
-  { id: "PAT-005", title: "Vibe Check", product: "Google Meet", status: "Patent Pending", desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.", image: "/assets/reactions.gif" },
-  { id: "PAT-006", title: "Shopping AI Pathways", product: "Google Shopping", status: "Patent Pending", desc: "Novel UX pattern that brings LLM power to the product grid, empowering users to visually browse while intuitively refining their search.", image: "/assets/shoppingaipathways.gif" },
-  { id: "PAT-007", title: "Outfit Agent", product: "Google Shopping", status: "Patented", desc: "A modern take on the catalog mailer curated by a shopping agent to drive re-engagement with contextual, generative media.", image: "/assets/outfitagent.gif" },
-];
+import { useEffect, useRef } from "react";
 
-const googleLaunches = [
-  { name: "Google Meet Generative Backgrounds", year: "2023", co: "Google", image: "/assets/generativebackgrounds.gif" },
-  { name: "Real-time Speech Translation", year: "2025", co: "Google", image: "/assets/realtimespeech%20translation.gif" },
-  { name: "Hybrid Work / Return to Office", year: "2022", co: "Google", image: "/assets/biometric%20room%20checkin.gif" },
-  { name: "Board 65 Collaboration Device", year: "2022", co: "Google", image: "/assets/audiomesh.gif" },
-  { name: "Series One 27 Device", year: "2022", co: "Google", image: "/assets/AIrepresentationinmeet.gif" },
-  { name: "Google Classroom Redesign", year: "2019", co: "Google", image: "/assets/eduteamleaderhsip.jpg" },
-  { name: "Perspective API (200+ partners)", year: "2018", co: "Jigsaw", image: "/assets/fighting%20disinfo.png" },
-  { name: "Outline VPN / Censorship Tool", year: "2018", co: "Jigsaw", image: "/assets/represive%20censorship.png" },
-];
-
-const microsoftLaunches = [
-  { name: "Windows Phone 7", year: "2010" },
-  { name: "Xbox Kinect", year: "2010" },
-  { name: "Bing Maps", year: "2011" },
-  { name: "Windows Translator", year: "2012" },
-];
-
-function PatentCard({ p, index }: { p: (typeof patents)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.08 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const pending = p.status === "Patent Pending";
-
-  return (
-    <div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(32px)",
-        transition: `opacity 0.6s ease ${index * 0.07}s, transform 0.6s ease ${index * 0.07}s, border-color 0.25s ease`,
-        background: "var(--surface)",
-        border: `1px solid ${hovered ? "rgba(197,255,0,0.3)" : "var(--border)"}`,
-        borderRadius: 12,
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div style={{ width: "100%", aspectRatio: "16 / 9", overflow: "hidden", position: "relative", background: "var(--surface-2)", flexShrink: 0 }}>
-        <img src={p.image} alt={p.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-        <span style={{ position: "absolute", top: 12, right: 12, padding: "3px 10px", borderRadius: 4, background: pending ? "var(--surface)" : "var(--accent)", border: pending ? "1px solid var(--accent)" : "none", fontFamily: "var(--font-mono)", fontSize: 9, color: pending ? "var(--accent)" : "#080808", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-          {p.status}
-        </span>
-      </div>
-      <div style={{ padding: "20px 22px 24px", flex: 1 }}>
-        <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--accent)", letterSpacing: "0.08em", marginBottom: 8 }}>{p.product} · {p.id}</p>
-        <h4 style={{ fontFamily: "var(--font-space)", fontWeight: 700, fontSize: 16, color: "var(--text)", lineHeight: 1.25, marginBottom: 10, letterSpacing: "-0.01em" }}>{p.title}</h4>
-        <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.65 }}>{p.desc}</p>
-      </div>
-    </div>
-  );
+interface Patent {
+  id: string;
+  title: string;
+  product: string;
+  status: string;
+  desc: string;
+  image: string;
 }
 
-function LaunchCard({ l, index }: { l: (typeof googleLaunches)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
+interface Launch {
+  yr: string;
+  title: string;
+  titleIt: string | null;
+  co: string;
+  role: string;
+}
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+interface ResumeEntry {
+  yr: string;
+  role: string;
+  roleIt: string;
+  co: string;
+  desc: string;
+  loc: string;
+}
 
-  return (
-    <div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(24px)",
-        transition: `opacity 0.6s ease ${index * 0.06}s, transform 0.6s ease ${index * 0.06}s, border-color 0.25s ease`,
-        borderRadius: 10, overflow: "hidden",
-        border: `1px solid ${hovered ? "rgba(197,255,0,0.3)" : "var(--border)"}`,
-        background: "var(--surface)",
-      }}
-    >
-      <div style={{ width: "100%", aspectRatio: "16 / 9", overflow: "hidden", background: "var(--surface-2)" }}>
-        <img src={l.image} alt={l.name} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-      </div>
-      <div style={{ padding: "14px 16px 16px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--accent)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{l.co}</span>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--text-dim)", letterSpacing: "0.06em" }}>{l.year}</span>
-        </div>
-        <p style={{ fontSize: 13, color: "var(--text-muted)", fontWeight: 500, lineHeight: 1.4 }}>{l.name}</p>
-      </div>
-    </div>
-  );
+const PATENTS: Patent[] = [
+  {
+    id: "PAT-001",
+    title: "Portrait Framing with Background Freeze",
+    product: "Google Meet",
+    status: "Patented",
+    desc: "Larger, more consistent face sizes with natural cropping while maintaining authenticity of natural backgrounds.",
+    image: "/assets/portraitframing.gif",
+  },
+  {
+    id: "PAT-002",
+    title: "Reinventing the Self View",
+    product: "Google Meet",
+    status: "Patented",
+    desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.",
+    image: "/assets/screenshare.png",
+  },
+  {
+    id: "PAT-003",
+    title: "Dynamic Layouts",
+    product: "Google Meet",
+    status: "Patented",
+    desc: "Rebuild Meet's layout logic to support new hybrid technologies which improve equity and reduce VC fatigue.",
+    image: "/assets/dynamiclayouts.gif",
+  },
+  {
+    id: "PAT-004",
+    title: "Pop-up Rooms",
+    product: "Google Meet",
+    status: "Patented",
+    desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.",
+    image: "/assets/roomsvisoin.gif",
+  },
+  {
+    id: "PAT-005",
+    title: "Vibe Check",
+    product: "Google Meet",
+    status: "Patent Pending",
+    desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.",
+    image: "/assets/reactions.gif",
+  },
+  {
+    id: "PAT-006",
+    title: "Shopping AI Pathways",
+    product: "Google Shopping",
+    status: "Patent Pending",
+    desc: "Novel UX pattern that brings LLM power to the product grid, empowering users to visually browse while refining their search.",
+    image: "/assets/shoppingaipathways.gif",
+  },
+  {
+    id: "PAT-007",
+    title: "Outfit Agent",
+    product: "Google Shopping",
+    status: "Patented",
+    desc: "A modern take on the catalog mailer curated by a shopping agent to drive re-engagement with contextual, generative media.",
+    image: "/assets/outfitagent.gif",
+  },
+];
+
+const LAUNCHES: Launch[] = [
+  { yr: "2025", title: "Real-time Speech Translation", titleIt: null, co: "Google · Meet", role: "Design Lead" },
+  { yr: "2023", title: "Generative Backgrounds", titleIt: null, co: "Google · Meet", role: "Design Lead" },
+  { yr: "2022", title: "Hybrid Work", titleIt: "/ Return to Office", co: "Google · Meet", role: "Design Lead" },
+  { yr: "2022", title: "Board 65", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
+  { yr: "2022", title: "Series One 27", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
+  { yr: "2019", title: "Classroom", titleIt: "Redesign", co: "Google · Education", role: "Design Lead" },
+  { yr: "2018", title: "Perspective API", titleIt: null, co: "Jigsaw · 200+ partners", role: "Design Lead" },
+  { yr: "2018", title: "Outline VPN", titleIt: null, co: "Jigsaw · Censorship tool", role: "Design Lead" },
+  { yr: "2012", title: "Windows Translator", titleIt: null, co: "Microsoft", role: "Designer" },
+  { yr: "2011", title: "Bing Maps", titleIt: null, co: "Microsoft", role: "Designer" },
+  { yr: "2010", title: "Xbox Kinect", titleIt: null, co: "Microsoft", role: "Designer" },
+  { yr: "2010", title: "Windows Phone 7", titleIt: null, co: "Microsoft", role: "Designer" },
+];
+
+const RESUME: ResumeEntry[] = [
+  {
+    yr: "2013 — Now",
+    role: "Design Lead & Manager",
+    roleIt: "Google",
+    co: "Google — Meet · Jigsaw · Shopping · Classroom",
+    desc: "Leading design for AI-forward products across Google. Built and grew multiple UX teams. Championed user-centered design at scale.",
+    loc: "San Francisco",
+  },
+  {
+    yr: "2009 — 2013",
+    role: "UX Designer",
+    roleIt: "Microsoft",
+    co: "Microsoft — Windows · Xbox · Bing",
+    desc: "Shipped design across Windows Phone 7, Xbox Kinect, Bing Maps, and Windows Translator.",
+    loc: "Seattle",
+  },
+  {
+    yr: "2007 — 2009",
+    role: "Design Educator",
+    roleIt: "NYU",
+    co: "New York University",
+    desc: "Taught interaction design. Helped build the foundations of human-centered design education at NYU.",
+    loc: "New York",
+  },
+];
+
+function statusClass(status: string): string {
+  return status.toLowerCase().includes("pending") ? "pending" : "granted";
 }
 
 export default function Patents() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const launchHeaderRef = useRef<HTMLDivElement>(null);
-  const [launchHeaderVisible, setLaunchHeaderVisible] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setHeaderVisible(true); obs.disconnect(); } },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+    const root = rootRef.current;
+    if (!root) return;
 
-  useEffect(() => {
-    const el = launchHeaderRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setLaunchHeaderVisible(true); obs.disconnect(); } },
-      { threshold: 0.2 }
+    const els = Array.from(root.querySelectorAll<HTMLElement>(".rv"));
+    if (!els.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
-    obs.observe(el);
-    return () => obs.disconnect();
+
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   return (
-    <section id="patents" style={{ padding: "120px clamp(24px, 6vw, 120px)", background: "var(--surface)", borderTop: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+    <div ref={rootRef}>
+      <section id="patents">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 04</span>
+            </div>
+            <h2 className="sec-title">
+              IP &amp; <span className="it">Launches.</span>
+            </h2>
+          </div>
 
-        <div ref={headerRef} style={{ marginBottom: 64, opacity: headerVisible ? 1 : 0, transform: headerVisible ? "none" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 20 }}>Intellectual Property</p>
-          <h2 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(40px, 7vw, 96px)", letterSpacing: "-0.04em", lineHeight: 0.95, color: "var(--text)" }}>Patents</h2>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 16, marginBottom: 120 }}>
-          {patents.map((p, i) => <PatentCard key={p.id} p={p} index={i} />)}
-        </div>
-
-        <div ref={launchHeaderRef} style={{ marginBottom: 52, opacity: launchHeaderVisible ? 1 : 0, transform: launchHeaderVisible ? "none" : "translateY(24px)", transition: "opacity 0.7s ease, transform 0.7s ease", borderTop: "1px solid var(--border)", paddingTop: 80 }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 20 }}>Selected Work</p>
-          <h2 style={{ fontFamily: "var(--font-space)", fontWeight: 800, fontSize: "clamp(40px, 7vw, 96px)", letterSpacing: "-0.04em", lineHeight: 0.95, color: "var(--text)", marginBottom: 16 }}>Notable Launches</h2>
-          <p style={{ color: "var(--text-dim)", fontSize: 13, fontFamily: "var(--font-mono)", letterSpacing: "0.06em" }}>Contact me to view detailed work samples</p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14, marginBottom: 64 }}>
-          {googleLaunches.map((l, i) => <LaunchCard key={i} l={l} index={i} />)}
-        </div>
-
-        <div style={{ padding: "40px 48px", border: "1px solid var(--border)", borderRadius: 12, background: "var(--bg)" }}>
-          <p style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#0078d4", letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 24 }}>Microsoft</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {microsoftLaunches.map((l, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 20, padding: "14px 0", borderBottom: i < microsoftLaunches.length - 1 ? "1px solid var(--border)" : "none" }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--text-dim)", minWidth: 36, letterSpacing: "0.04em" }}>{l.year}</span>
-                <span style={{ fontFamily: "var(--font-space)", fontWeight: 600, fontSize: "clamp(15px, 2vw, 20px)", color: "var(--text-muted)", letterSpacing: "-0.01em" }}>{l.name}</span>
+          <div className="pat-grid">
+            {PATENTS.map((p) => (
+              <div key={p.id} className="pat-card rv">
+                <div className="pat-img">
+                  <img src={p.image} alt={p.title} />
+                </div>
+                <div className="pat-body">
+                  <span className={"pat-status " + statusClass(p.status)}>
+                    {p.status}
+                  </span>
+                  <p className="pat-product">{p.product}</p>
+                  <h4 className="pat-title">{p.title}</h4>
+                  <p className="pat-desc">{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+      <section>
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 05</span>
+            </div>
+            <h2 className="sec-title">
+              Notable <span className="it">Launches.</span>
+            </h2>
+          </div>
+
+          <div className="arch rv">
+            {LAUNCHES.map((l, i) => (
+              <div key={`${l.yr}-${i}`} className="arch-row">
+                <span className="arch-yr">{l.yr}</span>
+                <span className="arch-ttl">
+                  {l.title}
+                  {l.titleIt ? <span className="it"> {l.titleIt}</span> : null}
+                </span>
+                <span className="arch-co">{l.co}</span>
+                <span className="arch-role">{l.role}</span>
+                <span className="arch-arr">↗</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="resume">
+        <div className="wrap">
+          <div className="sec-head rv">
+            <div className="sec-num">
+              <span className="lbl">§ 06</span>
+            </div>
+            <h2 className="sec-title">
+              Where I&apos;ve <span className="it">been.</span>
+            </h2>
+          </div>
+
+          <div className="res rv">
+            {RESUME.map((r, i) => (
+              <div key={`${r.yr}-${i}`} className="res-row">
+                <span className="res-yr">{r.yr}</span>
+                <div className="res-body">
+                  <h3 className="res-role">
+                    {r.role} <span className="it">{r.roleIt}</span>
+                  </h3>
+                  <div className="res-co">{r.co}</div>
+                  <p className="res-desc">{r.desc}</p>
+                </div>
+                <span className="res-loc">{r.loc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="ftr" id="contact">
+        <div className="wrap">
+          <div className="rv">
+            <span className="eyebrow">§ 07 · Get in touch</span>
+            <h2 className="ftr-big">
+              Let&apos;s make something people actually
+              <br />
+              <span className="it">want</span>.
+            </h2>
+          </div>
+
+          <div className="ftr-grid rv rv-d1">
+            <div className="ftr-col">
+              <h4>Email</h4>
+              <a href="mailto:ryanfedyk@gmail.com">ryanfedyk@gmail.com</a>
+            </div>
+            <div className="ftr-col">
+              <h4>Elsewhere</h4>
+              <a
+                href="https://www.linkedin.com/in/ryanfedyk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn ↗
+              </a>
+            </div>
+            <div className="ftr-col">
+              <h4>Currently</h4>
+              <a href="#about">Design Lead &amp; Manager @ Google</a>
+            </div>
+          </div>
+
+          <div className="ftr-meta rv rv-d2">
+            <span>© 2026 Ryan Fedyk</span>
+            <span>Built with intention</span>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
