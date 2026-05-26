@@ -52,50 +52,13 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
-    yearRange: "2020–2022",
-    company: "Google Meet",
-    title: "Bringing the Workforce",
-    titleIt: "Back to the Office",
-    narrative:
-      "During the pandemic video conferencing evolved dramatically but no one knew how to bring that back into the office. My team delivered the promise of hybrid work to Meet's 242 million users and established hybrid as the future of work.",
-    heroImage: "/assets/biometric%20room%20checkin.gif",
-    tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
-    launches: [
-      {
-        year: "2022",
-        name: "Hybrid Work",
-        desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
-        image: "/assets/audiomesh.gif",
-      },
-      {
-        year: "2022",
-        name: "Dynamic Layouts",
-        desc: "Rebuilt Meet's base grid to be more people-focused and equitable for hybrid rooms, reducing video-conferencing fatigue.",
-        image: "/assets/dynamiclayouts.gif",
-      },
-      {
-        year: "2022",
-        name: "Portrait Framing",
-        desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience. Patented.",
-        image: "/assets/portraitframing.gif",
-      },
-      {
-        year: "2022",
-        name: "Board 65 & Series One 27",
-        desc: "Launched 2 new collaboration devices with 89% CSAT — bringing Meet's hardware portfolio back online for the hybrid era.",
-        image: "/assets/meetingslm.png",
-      },
-    ],
-  },
-  {
-    n: "02",
     yearRange: "2022–Present",
     company: "Google Meet",
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
     narrative:
       "After establishing hybrid work as the future of meetings, I pivoted the broader Meet team toward longer-term vision and AI-powered product differentiators — building features that would set Meet apart across a user base of 3B+.",
-    heroImage: "/assets/AIrepresentationinmeet.gif",
+    heroImage: "/assets/realtimespeech%20translation.gif",
     tags: ["AI", "Generative UX", "Design Leadership", "Patents"],
     launches: [
       {
@@ -108,7 +71,7 @@ const CASES: CaseStudy[] = [
         year: "2023",
         name: "Vibe Check",
         desc: "Using AI to detect non-verbal cues and amplify colors and visual treatment in each participant's tile. Patented.",
-        image: "/assets/reactions.gif",
+        image: "/assets/sonicboom.gif",
       },
       {
         year: "2025",
@@ -125,7 +88,7 @@ const CASES: CaseStudy[] = [
     ],
   },
   {
-    n: "03",
+    n: "02",
     yearRange: "2017–2019",
     company: "Google Jigsaw",
     title: "Using Technology to",
@@ -156,7 +119,7 @@ const CASES: CaseStudy[] = [
     ],
   },
   {
-    n: "04",
+    n: "03",
     yearRange: "2024–Present",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
@@ -187,7 +150,7 @@ const CASES: CaseStudy[] = [
     ],
   },
   {
-    n: "05",
+    n: "04",
     yearRange: "2018–2020",
     company: "Google Classroom",
     title: "Redefining the",
@@ -201,13 +164,62 @@ const CASES: CaseStudy[] = [
         year: "2019",
         name: "Classroom Redesign",
         desc: "Complete ground-up redesign that improved core workflows for 50M+ teachers and students worldwide.",
-        image: "/assets/eduteamleaderhsip.jpg",
+        image: "/assets/docslive.gif",
       },
       {
         year: "2020",
         name: "Course Kit",
         desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
-        image: "/assets/docslive.gif",
+        image: "/assets/eduteamleaderhsip.jpg",
+      },
+    ],
+  },
+  {
+    n: "05",
+    yearRange: "2020–2022",
+    company: "Google Meet",
+    title: "Bringing the Workforce",
+    titleIt: "Back to the Office",
+    narrative:
+      "During the pandemic video conferencing evolved dramatically but no one knew how to bring that back into the office. My team delivered the promise of hybrid work to Meet's 242 million users and established hybrid as the future of work.",
+    heroImage: "/assets/aienhancedmeetings.gif",
+    tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
+    launches: [
+      {
+        year: "2022",
+        name: "Hybrid Work",
+        desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
+        image: "/assets/audiomesh.gif",
+      },
+      {
+        year: "2022",
+        name: "Dynamic Layouts",
+        desc: "Rebuilt Meet's base grid to be more people-focused and equitable for hybrid rooms, reducing video-conferencing fatigue.",
+        image: "/assets/dynamiclayouts.gif",
+      },
+      {
+        year: "2022",
+        name: "Portrait Framing",
+        desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience. Patented.",
+        image: "/assets/portraitframing.gif",
+      },
+      {
+        year: "2022",
+        name: "Emoji Reactions",
+        desc: "Expressive in-meeting reactions that bring energy and non-verbal communication back to hybrid and remote meetings.",
+        image: "/assets/reactions.gif",
+      },
+      {
+        year: "2022",
+        name: "Pop-up Rooms",
+        desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience. Patented.",
+        image: "/assets/roomsvisoin.gif",
+      },
+      {
+        year: "2022",
+        name: "Board 65 & Series One 27",
+        desc: "Launched 2 new collaboration devices with 89% CSAT — bringing Meet's hardware portfolio back online for the hybrid era.",
+        image: "/assets/touchcontrollerredesign.gif",
       },
     ],
   },

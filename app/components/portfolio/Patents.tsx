@@ -43,7 +43,7 @@ const PATENTS: Patent[] = [
     product: "Google Meet",
     status: "Patented",
     desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.",
-    image: "/assets/ryan-title+1+copy3.gif",
+    image: "/assets/screenshare.png",
   },
   {
     id: "PAT-003",
@@ -67,7 +67,7 @@ const PATENTS: Patent[] = [
     product: "Google Meet",
     status: "Patent Pending",
     desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.",
-    image: "/assets/reactions.gif",
+    image: "/assets/sonicboom.gif",
   },
   {
     id: "PAT-006",
