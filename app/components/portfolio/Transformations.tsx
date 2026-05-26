@@ -309,11 +309,10 @@ export default function Transformations() {
 
           <div className="cases">
             {CASES.map((c) => (
-              <div key={c.n} className="case rv" data-cursor>
+              <div key={c.n} className="case rv">
                 <div className="case-meta">
                   <span className="case-num">{c.n}</span>
                   <span className="case-year">{c.yearRange}</span>
-                  <span className="case-num">{c.company}</span>
                   <div className="case-tags">
                     {c.tags.map((t) => (
                       <span key={t} className="case-tag">
@@ -324,6 +323,7 @@ export default function Transformations() {
                 </div>
 
                 <div className="case-body">
+                  <div className="case-co">{c.company}</div>
                   <h3 className="case-title">
                     {c.title} <span className="it">{c.titleIt}</span>
                   </h3>
