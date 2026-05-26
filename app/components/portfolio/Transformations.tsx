@@ -23,6 +23,7 @@ interface CaseStudy {
   title: string;
   titleIt: string;
   narrative: string;
+  heroImage: string;
   tags: string[];
   launches: CaseLaunch[];
 }
@@ -51,54 +52,87 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
-    yearRange: "2019–Present",
+    yearRange: "2020–2022",
     company: "Google Meet",
-    title: "Feature Chasing",
-    titleIt: "→ AI-Focused Differentiators",
+    title: "Bringing the Workforce",
+    titleIt: "Back to the Office",
     narrative:
-      "During the pandemic Meet evolved at a pace few products ever have. After my team brought the world back to the office with hybrid work, I pivoted the broader team toward longer-term vision, product differentiators, and increasing product excellence across a user base of 3B+.",
-    tags: ["AI", "Hybrid Work", "Design Leadership", "Patents"],
+      "During the pandemic video conferencing evolved dramatically but no one knew how to bring that back into the office. My team delivered the promise of hybrid work to Meet's 242 million users and established hybrid as the future of work.",
+    heroImage: "/assets/biometric%20room%20checkin.gif",
+    tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
     launches: [
       {
         year: "2022",
         name: "Hybrid Work",
-        desc: "Redesigned the in-office experience for a post-pandemic world — blending physical rooms and digital presence into one seamless meeting.",
-        image: "/assets/meetdevices.gif",
+        desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
+        image: "/assets/audiomesh.gif",
       },
       {
         year: "2022",
         name: "Dynamic Layouts",
-        desc: "Rebuilt Meet's layout engine to support hybrid room configurations and reduce video-conferencing fatigue.",
+        desc: "Rebuilt Meet's base grid to be more people-focused and equitable for hybrid rooms, reducing video-conferencing fatigue.",
         image: "/assets/dynamiclayouts.gif",
       },
       {
         year: "2022",
         name: "Portrait Framing",
-        desc: "AI-powered camera framing that creates larger, more consistent face sizes with natural cropping — patented.",
+        desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience. Patented.",
         image: "/assets/portraitframing.gif",
       },
       {
-        year: "2023",
-        name: "Generative Backgrounds",
-        desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
-        image: "/assets/stackableeffects.gif",
-      },
-      {
-        year: "2025",
-        name: "Real-time Translation",
-        desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
-        image: "/assets/utdemosmall.gif",
+        year: "2022",
+        name: "Board 65 & Series One 27",
+        desc: "Launched 2 new collaboration devices with 89% CSAT — bringing Meet's hardware portfolio back online for the hybrid era.",
+        image: "/assets/meetingslm.png",
       },
     ],
   },
   {
     n: "02",
+    yearRange: "2022–Present",
+    company: "Google Meet",
+    title: "Feature Chasing",
+    titleIt: "→ AI-Focused Differentiators",
+    narrative:
+      "After establishing hybrid work as the future of meetings, I pivoted the broader Meet team toward longer-term vision and AI-powered product differentiators — building features that would set Meet apart across a user base of 3B+.",
+    heroImage: "/assets/AIrepresentationinmeet.gif",
+    tags: ["AI", "Generative UX", "Design Leadership", "Patents"],
+    launches: [
+      {
+        year: "2023",
+        name: "Generative Backgrounds",
+        desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
+        image: "/assets/generativebackgrounds.gif",
+      },
+      {
+        year: "2023",
+        name: "Vibe Check",
+        desc: "Using AI to detect non-verbal cues and amplify colors and visual treatment in each participant's tile. Patented.",
+        image: "/assets/reactions.gif",
+      },
+      {
+        year: "2025",
+        name: "Gemini in Meet",
+        desc: "Embedded Gemini intelligence that surfaces insights, action items, and smart summaries throughout the meeting flow.",
+        image: "/assets/geminimeetings.gif",
+      },
+      {
+        year: "2025",
+        name: "Real-time Translation",
+        desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
+        image: "/assets/realtimespeech%20translation.gif",
+      },
+    ],
+  },
+  {
+    n: "03",
     yearRange: "2017–2019",
     company: "Google Jigsaw",
     title: "Using Technology to",
     titleIt: "Improve Public Safety",
     narrative:
       "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship worldwide.",
+    heroImage: "/assets/disinfohighleverage.gif",
     tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
     launches: [
       {
@@ -117,18 +151,19 @@ const CASES: CaseStudy[] = [
         year: "2018",
         name: "Anti-Harassment Tools",
         desc: "UX patterns and systems that protect at-risk communities by making online spaces safer by design.",
-        image: "/assets/VR_Training.gif",
+        image: "/assets/fightinharassment.png",
       },
     ],
   },
   {
-    n: "03",
+    n: "04",
     yearRange: "2024–Present",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
     titleIt: "The Implicit AI Interface",
     narrative:
       "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most everyday tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
+    heroImage: "/assets/beyondtheprompt.png",
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
     launches: [
       {
@@ -149,22 +184,17 @@ const CASES: CaseStudy[] = [
         desc: "Next-generation shopping where AI anticipates needs and completes the purchase journey autonomously.",
         image: "/assets/agenticcommerce.gif",
       },
-      {
-        year: "2024",
-        name: "Beyond the Prompt",
-        desc: "Strategic framework and design vision for ambient AI commerce that transcends the chat interface.",
-        image: "/assets/beyondtheprompt.png",
-      },
     ],
   },
   {
-    n: "04",
+    n: "05",
     yearRange: "2018–2020",
     company: "Google Classroom",
     title: "Redefining the",
     titleIt: "Future of Education",
     narrative:
       "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs — doubling the user base and setting a new bar for ed-tech UX.",
+    heroImage: "/assets/eduvision.gif",
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
     launches: [
       {
@@ -177,7 +207,7 @@ const CASES: CaseStudy[] = [
         year: "2020",
         name: "Course Kit",
         desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
-        image: "/assets/eduvision.gif",
+        image: "/assets/docslive.gif",
       },
     ],
   },
@@ -319,6 +349,10 @@ export default function Transformations() {
                     {c.title} <span className="it">{c.titleIt}</span>
                   </h3>
                   <p className="case-narrative">{c.narrative}</p>
+
+                  <div className="case-hero">
+                    <img src={c.heroImage} alt={`${c.company} — ${c.title}`} />
+                  </div>
 
                   <div className="cs-launches">
                     {c.launches.map((l, i) => (
