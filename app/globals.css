@@ -371,20 +371,43 @@ section {
   color: var(--fg-2);
 }
 
-.co-grid {
+.co-companies {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.co-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.co-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.co-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: clamp(40px, 6vw, 72px);
+  gap: 8px;
 }
 
 .co-chip {
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-2);
-  padding: 8px 16px;
+  padding: 6px 14px;
   border: 1px solid var(--line);
   border-radius: 100px;
   background: var(--card);
@@ -1165,15 +1188,14 @@ section {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  width: 18px;
-  height: 18px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--grad-a);
-  mix-blend-mode: multiply;
   transform: translate(-50%, -50%);
   transition: width .25s, height .25s;
   will-change: transform;
-  opacity: .9;
+  opacity: 1;
 }
 
 .cur.lg {
@@ -1188,10 +1210,10 @@ section {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 1px solid color-mix(in oklch, var(--fg) 35%, transparent);
+  border: 1.5px solid color-mix(in oklch, var(--grad-a) 55%, transparent);
   transform: translate(-50%, -50%);
   transition: width .3s, height .3s, opacity .3s;
   will-change: transform;

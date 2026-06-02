@@ -54,6 +54,12 @@ const PHILOSOPHY: Philosophy[] = [
     hIt: "human",
     p: "Useful intelligence is quiet. It earns trust by being legible, controllable, and humble — never by performing its own cleverness at the user.",
   },
+  {
+    n: "04",
+    h: "Think like a tinkerer",
+    hIt: "tinkerer",
+    p: "I prototype before I propose, run small experiments to pressure-test assumptions, and stay close to the craft even as teams scale. Paired with a clear strategic vision, it creates teams that don't just execute — they invent.",
+  },
 ];
 
 const CASES: CaseStudy[] = [
@@ -142,23 +148,11 @@ const CASES: CaseStudy[] = [
         year: "2023",
         name: "Face Match",
         desc: "AI that identifies and matches participants across meeting tiles — ensuring every face is represented equitably regardless of camera or environment.",
-        image: "/assets/AIrepresentationinmeet.gif",
+        image: "/assets/biometric%20room%20checkin.gif",
         links: [
           {
             label: "Announcement",
             url: "https://youtu.be/uIIhjKCe0Ao?si=f7-Xh8Yzj4yOJIUI&t=563",
-          },
-        ],
-      },
-      {
-        year: "2023",
-        name: "Vibe Check",
-        desc: "Using AI to detect non-verbal cues and amplify colors and visual treatment in each participant's tile. Patented.",
-        image: "/assets/aiarchetypes.gif",
-        links: [
-          {
-            label: "Announcement",
-            url: "https://youtu.be/uIIhjKCe0Ao?si=GxBTUjCJew0kK_VG&t=567",
           },
         ],
       },
@@ -395,7 +389,7 @@ const CASES: CaseStudy[] = [
       },
       {
         year: "2022",
-        name: "Emoji Reactions",
+        name: "Gamified Reactions",
         desc: "Expressive in-meeting reactions that bring energy and non-verbal communication back to hybrid and remote meetings.",
         image: "/assets/reactions.gif",
         links: [
@@ -492,26 +486,24 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              A little about the <span className="it">work.</span>
+              About the <span className="it">work.</span>
             </h2>
           </div>
 
-          <div className="co-grid rv">
+          <div className="co-companies rv">
             {[
-              "Google Docs",
-              "Google Meet",
-              "Google Gemini",
-              "Google Shopping",
-              "Google Classroom",
-              "Google Search",
-              "Google Glass",
-              "Google X",
-              "Jigsaw",
-              "Xbox Kinect",
-              "Windows Phone",
-              "Bing Maps",
-            ].map((name) => (
-              <div key={name} className="co-chip">{name}</div>
+              { co: "Google",    products: ["Docs", "Meet", "Gemini", "Shopping", "Classroom", "Search", "Glass", "X"] },
+              { co: "Jigsaw",    products: ["Perspective API", "Outline VPN", "Anti-Harassment"] },
+              { co: "Microsoft", products: ["Xbox Kinect", "Windows Phone", "Bing Maps"] },
+            ].map(({ co, products }) => (
+              <div key={co} className="co-row">
+                <span className="co-label">{co}</span>
+                <div className="co-chips">
+                  {products.map(p => (
+                    <div key={p} className="co-chip">{p}</div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
 
@@ -523,29 +515,6 @@ export default function Transformations() {
                 now, I&apos;ve found that spark at Google, where I&apos;m
                 rethinking what hybrid productivity and AI-powered documents can
                 look like at scale.
-              </p>
-            </div>
-
-            <div className="about-block rv rv-d1">
-              <h3>Think like a tinkerer</h3>
-              <p>
-                My leadership philosophy starts at the bench. I prototype before
-                I propose, run small experiments to pressure-test assumptions,
-                and stay close to the craft even as teams scale. Paired with a
-                clear strategic vision, it creates teams that don&apos;t just
-                execute — they invent.
-              </p>
-            </div>
-
-            <div className="about-block rv rv-d2">
-              <h3>Creating experiences</h3>
-              <p>
-                What if you designed something people actually wanted to use
-                every day? How do you make someone more productive, more
-                efficient — or just a little happier? What happens on their
-                third visit? Their eighth? Their 126th? I design experiences
-                that are flexible, efficient, and built to keep users engaged —
-                not just once, but over time.
               </p>
             </div>
           </div>
