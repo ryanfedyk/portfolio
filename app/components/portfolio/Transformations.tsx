@@ -502,37 +502,43 @@ export default function Transformations() {
               {
                 co: "Google",
                 products: [
-                  { name: "Docs",      tip: "Sr. Principal Design Lead — Transforming Docs into an agent-forward, AI-native document platform." },
-                  { name: "Meet",      tip: "Sr. Principal Design Lead — Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences." },
-                  { name: "Gemini",    tip: "Sr. Principal Designer — End-to-end shopping experiences through conversational AI." },
-                  { name: "Shopping",  tip: "Sr. Principal Designer — Implicit, personalized shopping powered by agentic AI." },
-                  { name: "Classroom", tip: "UX Design Lead — Redesigned Google Classroom for 50M+ teachers and students." },
-                  { name: "Search",    tip: "AI Shopping Agents in AI Mode." },
-                  { name: "Glass",     tip: "Voice interfaces for wearables." },
+                  { name: "Docs",      role: "Sr. Principal Design Lead",  desc: "Transforming Docs into an agent-forward, AI-native document platform." },
+                  { name: "Meet",      role: "Sr. Principal Design Lead",  desc: "Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences." },
+                  { name: "Gemini",    role: "Sr. Principal Designer",     desc: "End-to-end shopping experiences through conversational AI." },
+                  { name: "Shopping",  role: "Sr. Principal Designer",     desc: "Implicit, personalized shopping powered by agentic AI." },
+                  { name: "Classroom", role: "UX Design Lead",             desc: "Redesigned Google Classroom for 50M+ teachers and students." },
+                  { name: "Search",    role: null,                         desc: "AI Shopping Agents in AI Mode." },
+                  { name: "Glass",     role: null,                         desc: "Voice interfaces for wearables." },
                 ],
               },
               {
                 co: "Jigsaw",
                 products: [
-                  { name: "Perspective API", tip: "ML toxicity detection deployed with 200+ media partners." },
-                  { name: "Outline VPN",     tip: "Open-source VPN for journalists and activists in 30+ countries." },
-                  { name: "Anti-Harassment", tip: "UX systems protecting at-risk communities by design." },
+                  { name: "Perspective API", role: null, desc: "ML toxicity detection deployed with 200+ media partners." },
+                  { name: "Outline VPN",     role: null, desc: "Open-source VPN for journalists and activists in 30+ countries." },
+                  { name: "Anti-Harassment", role: null, desc: "UX systems protecting at-risk communities by design." },
                 ],
               },
               {
                 co: "Microsoft",
                 products: [
-                  { name: "Xbox Kinect",    tip: "Motion and gesture interaction for living room gaming." },
-                  { name: "Windows Phone",  tip: "Core UX design for Windows Phone 7." },
-                  { name: "Bing Maps",      tip: "Mapping and local search experiences." },
+                  { name: "Xbox Kinect",   role: null, desc: "Motion and gesture interaction for living room gaming." },
+                  { name: "Windows Phone", role: null, desc: "Core UX design for Windows Phone 7." },
+                  { name: "Bing Maps",     role: null, desc: "Mapping and local search experiences." },
                 ],
               },
             ].map(({ co, products }) => (
               <div key={co} className="co-row">
                 <span className="co-label">{co}</span>
                 <div className="co-chips">
-                  {products.map(({ name, tip }) => (
-                    <div key={name} className="co-chip" data-tip={tip}>{name}</div>
+                  {products.map(({ name, role, desc }) => (
+                    <div key={name} className="co-chip">
+                      {name}
+                      <span className="co-tip">
+                        {role && <span className="co-tip-role">{role}</span>}
+                        <span className="co-tip-desc">{desc}</span>
+                      </span>
+                    </div>
                   ))}
                 </div>
               </div>
