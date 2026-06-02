@@ -38,26 +38,20 @@ interface CaseStudy {
 const PHILOSOPHY: Philosophy[] = [
   {
     n: "01",
-    h: "Build teams, not deliverables",
-    hIt: "teams",
-    p: "Great products come from teams that trust each other. I invest in process, mentorship, and the strategic muscle that turns user research into real business outcomes.",
-  },
-  {
-    n: "02",
     h: "Design for the 126th visit",
     hIt: "126th",
     p: "Anyone can make a delightful first impression. The hard part — and the interesting part — is what keeps someone coming back when the novelty is gone.",
   },
   {
-    n: "03",
+    n: "02",
     h: "Make AI feel human",
     hIt: "human",
     p: "Useful intelligence is quiet. It earns trust by being legible, controllable, and humble — never by performing its own cleverness at the user.",
   },
   {
-    n: "04",
-    h: "Think like a tinkerer",
-    hIt: "tinkerer",
+    n: "03",
+    h: "Strategic tinkering",
+    hIt: "tinkering",
     p: "I prototype before I propose, run small experiments to pressure-test assumptions, and stay close to the craft even as teams scale. Paired with a clear strategic vision, it creates teams that don't just execute — they invent.",
   },
 ];
@@ -526,7 +520,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Three things I <span className="it">believe.</span>
+              Three things I <span className="it">live by.</span>
             </h2>
           </div>
 
