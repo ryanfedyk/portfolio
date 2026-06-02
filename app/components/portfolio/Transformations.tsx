@@ -100,7 +100,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "02",
-    yearRange: "2022–Present",
+    yearRange: "2021–2025",
     company: "Google Meet",
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
@@ -358,7 +358,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "06",
-    yearRange: "2020–2022",
+    yearRange: "2021–2025",
     company: "Google Meet",
     title: "Bringing the Workforce",
     titleIt: "Back to the Office",
