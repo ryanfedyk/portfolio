@@ -437,6 +437,8 @@ section {
   flex-direction: column;
   gap: 5px;
   width: 220px;
+  white-space: normal;
+  word-break: normal;
 
   background: color-mix(in oklch, var(--card) 92%, var(--bg));
   border: 1px solid color-mix(in oklch, var(--line) 70%, var(--grad-a) 30%);
