@@ -493,7 +493,7 @@ export default function Transformations() {
 
           <div className="co-companies rv">
             {[
-              { co: "Google",    products: ["Docs", "Meet", "Gemini", "Shopping", "Classroom", "Search", "Glass", "X"] },
+              { co: "Google",    products: ["Docs", "Meet", "Gemini", "Shopping", "Classroom", "Search", "Glass", "Google X"] },
               { co: "Jigsaw",    products: ["Perspective API", "Outline VPN", "Anti-Harassment"] },
               { co: "Microsoft", products: ["Xbox Kinect", "Windows Phone", "Bing Maps"] },
             ].map(({ co, products }) => (
