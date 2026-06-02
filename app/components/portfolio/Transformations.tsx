@@ -9,11 +9,17 @@ interface Philosophy {
   p: string;
 }
 
+interface CaseLink {
+  label: string;
+  url: string;
+}
+
 interface CaseLaunch {
   year: string;
   name: string;
   desc: string;
   image: string;
+  links?: CaseLink[];
 }
 
 interface CaseStudy {
@@ -23,7 +29,7 @@ interface CaseStudy {
   title: string;
   titleIt: string;
   narrative: string;
-  heroImage: string;
+  heroProject: CaseLaunch;
   tags: string[];
   launches: CaseLaunch[];
 }
@@ -52,13 +58,66 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
+    yearRange: "2024–Present",
+    company: "Google Docs",
+    title: "Redefining the",
+    titleIt: "Future of Documents",
+    narrative:
+      "As AI reshapes every productivity surface, I led the design vision for Google Docs' next generation — helping define what documents look like when they become intelligent, real-time, and deeply collaborative at scale.",
+    heroProject: {
+      year: "2025",
+      name: "Docs Live",
+      desc: "A real-time, AI-native document experience that transforms static pages into living, collaborative workspaces — announced at Google I/O 2025.",
+      image: "/assets/docslive.gif",
+      links: [
+        {
+          label: "Watch Announcement",
+          url: "https://www.youtube.com/live/wYSncx9zLIU?si=smd5fX8PDfJvcfsK&t=541",
+        },
+      ],
+    },
+    tags: ["AI", "Documents", "Product Vision", "Design Leadership"],
+    launches: [
+      {
+        year: "2025",
+        name: "Future of Docs",
+        desc: "A long-range product vision redefining how AI transforms collaborative documents — from static canvases to dynamic, intelligent workspaces that understand context and intent.",
+        image: "/assets/fod.gif",
+      },
+      {
+        year: "2026",
+        name: "Help Me Create",
+        desc: "AI that takes you from blank page to brilliance — generating structured, contextually-aware content inside Docs using Gemini.",
+        image: "/assets/helpmecreate.gif",
+        links: [
+          {
+            label: "Workspace Updates",
+            url: "https://workspaceupdates.googleblog.com/2026/04/new-gemini-capabilities-in-google-docs-help-you-go-from-blank-page-to-brilliance.html",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    n: "02",
     yearRange: "2022–Present",
     company: "Google Meet",
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
     narrative:
       "After establishing hybrid work as the future of meetings, I pivoted the broader Meet team toward longer-term vision and AI-powered product differentiators — building features that would set Meet apart across a user base of 3B+.",
-    heroImage: "/assets/realtimespeech%20translation.gif",
+    heroProject: {
+      year: "2025",
+      name: "Real-time Translation",
+      desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
+      image: "/assets/realtimespeech%20translation.gif",
+      links: [
+        {
+          label: "TechCrunch",
+          url: "https://techcrunch.com/2025/05/20/google-meet-is-getting-real-time-speech-translation/",
+        },
+      ],
+    },
     tags: ["AI", "Generative UX", "Design Leadership", "Patents"],
     launches: [
       {
@@ -66,69 +125,187 @@ const CASES: CaseStudy[] = [
         name: "Generative Backgrounds",
         desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
         image: "/assets/generativebackgrounds.gif",
+        links: [
+          {
+            label: "The Verge",
+            url: "https://www.theverge.com/2023/7/18/23799459/google-meet-ai-generated-videoconferencing-background-image",
+          },
+          {
+            label: "Announcement",
+            url: "https://youtu.be/uIIhjKCe0Ao?si=ppHlg1kHI1R2T1Nc&t=483",
+          },
+        ],
+      },
+      {
+        year: "2023",
+        name: "Face Match",
+        desc: "AI that identifies and matches participants across meeting tiles — ensuring every face is represented equitably regardless of camera or environment.",
+        image: "/assets/AIrepresentationinmeet.gif",
+        links: [
+          {
+            label: "Announcement",
+            url: "https://youtu.be/uIIhjKCe0Ao?si=f7-Xh8Yzj4yOJIUI&t=563",
+          },
+        ],
       },
       {
         year: "2023",
         name: "Vibe Check",
         desc: "Using AI to detect non-verbal cues and amplify colors and visual treatment in each participant's tile. Patented.",
-        image: "/assets/sonicboom.gif",
+        image: "/assets/aiarchetypes.gif",
+        links: [
+          {
+            label: "Announcement",
+            url: "https://youtu.be/uIIhjKCe0Ao?si=GxBTUjCJew0kK_VG&t=567",
+          },
+        ],
+      },
+      {
+        year: "2025",
+        name: "Studio Makeup",
+        desc: "AI-powered studio lighting and beauty effects that help users look their best on camera — automatically enhancing presence in any lighting environment.",
+        image: "/assets/studiomakeup.png",
+        links: [
+          {
+            label: "Workspace Updates",
+            url: "https://workspaceupdates.googleblog.com/2025/10/ai-powered-makeup-in-google-meet.html",
+          },
+        ],
       },
       {
         year: "2025",
         name: "Gemini in Meet",
         desc: "Embedded Gemini intelligence that surfaces insights, action items, and smart summaries throughout the meeting flow.",
-        image: "/assets/geminimeetings.gif",
-      },
-      {
-        year: "2025",
-        name: "Real-time Translation",
-        desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
-        image: "/assets/realtimespeech%20translation.gif",
+        image: "/assets/aienhancedmeetings.gif",
       },
     ],
   },
   {
-    n: "02",
+    n: "03",
     yearRange: "2017–2019",
     company: "Google Jigsaw",
     title: "Using Technology to",
     titleIt: "Improve Public Safety",
     narrative:
       "At Jigsaw I rebuilt the design team from scratch and redirected its mission around user-centered design. My team developed tools to improve information hygiene, combat misinformation, fight harassment, and end repressive censorship worldwide.",
-    heroImage: "/assets/disinfohighleverage.gif",
+    heroProject: {
+      year: "2018",
+      name: "Reducing Police Violence",
+      desc: "A VR-based training experience designed to build empathy and de-escalation skills in law enforcement — reducing use-of-force incidents through perspective-taking.",
+      image: "/assets/VR_Training.gif",
+      links: [
+        {
+          label: "Case Study",
+          url: "https://www.alistairrobertson.com/home/project-one-589g2",
+        },
+        {
+          label: "Medium",
+          url: "https://medium.com/@JigsawTeam/adaptive-technology-to-help-advance-public-safety-b4256388dd3",
+        },
+      ],
+    },
     tags: ["Safety Tech", "ML/AI", "Team Building", "Design Systems"],
     launches: [
+      {
+        year: "2018",
+        name: "Countering Disinformation",
+        desc: "High-leverage strategies and tools to combat coordinated disinformation campaigns — working with media partners and platforms at scale.",
+        image: "/assets/disinfohighleverage.gif",
+        links: [
+          {
+            label: "NY Times",
+            url: "https://www.nytimes.com/2020/02/04/technology/jigsaw-doctored-images-disinformation.html",
+          },
+        ],
+      },
       {
         year: "2018",
         name: "Perspective API",
         desc: "ML toxicity-detection tool deployed with 200+ media partners to reduce online harassment at scale.",
         image: "/assets/fighting%20disinfo.png",
+        links: [
+          {
+            label: "perspectiveapi.com",
+            url: "http://perspectiveapi.com/",
+          },
+        ],
       },
       {
         year: "2018",
         name: "Outline VPN",
         desc: "Open-source VPN helping journalists and activists bypass government censorship in 30+ countries.",
         image: "/assets/represive%20censorship.png",
+        links: [
+          {
+            label: "getoutline.org",
+            url: "http://getoutline.org",
+          },
+        ],
       },
       {
         year: "2018",
         name: "Anti-Harassment Tools",
         desc: "UX patterns and systems that protect at-risk communities by making online spaces safer by design.",
         image: "/assets/fightinharassment.png",
+        links: [
+          {
+            label: "perspectiveapi.com",
+            url: "http://perspectiveapi.com/",
+          },
+        ],
+      },
+      {
+        year: "2018",
+        name: "Reducing Toxic Language Online",
+        desc: "Real-time toxicity scoring that helps publishers, platforms, and moderators identify and reduce harmful language at scale — powering safer communities across the web.",
+        image: "/assets/perspective.gif",
+        links: [
+          {
+            label: "Google Blog",
+            url: "https://blog.google/innovation-and-ai/products/new-york-times-using-ai-host-better-conversations/",
+          },
+        ],
       },
     ],
   },
   {
-    n: "03",
+    n: "04",
     yearRange: "2024–Present",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
     titleIt: "The Implicit AI Interface",
     narrative:
       "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most everyday tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
-    heroImage: "/assets/beyondtheprompt.png",
+    heroProject: {
+      year: "2025",
+      name: "Universal Cart & Universal Context Protocol",
+      desc: "Reimagined Google's e-commerce journey by replacing separate merchant checkouts with a unified, single-basket stream. The feature allows users to buy from multiple brands instantly in one shot, drastically reducing abandoned carts and transforming how people shop across the platform.",
+      image: "/assets/universal cart.png",
+      links: [
+        {
+          label: "Google Blog",
+          url: "https://blog.google/products-and-platforms/products/shopping/google-shopping-cart/",
+        },
+        {
+          label: "Watch Announcement",
+          url: "https://www.youtube.com/live/wYSncx9zLIU?si=FLm96VOQhEnIaMHJ&t=3523",
+        },
+      ],
+    },
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
     launches: [
+      {
+        year: "2025",
+        name: "Agentic Commerce",
+        desc: "Next-generation shopping where AI anticipates needs and completes the purchase journey autonomously.",
+        image: "/assets/agenticshopping.png",
+      },
+      {
+        year: "2024",
+        name: "Implicit Interfaces",
+        desc: "A strategic framework for the next frontier in UX — where interfaces anticipate needs and act on them before users have to ask.",
+        image: "/assets/implicit shopping.png",
+      },
       {
         year: "2024",
         name: "Shopping AI Pathways",
@@ -141,30 +318,35 @@ const CASES: CaseStudy[] = [
         desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media. Patented.",
         image: "/assets/outfitagent.gif",
       },
-      {
-        year: "2025",
-        name: "Agentic Commerce",
-        desc: "Next-generation shopping where AI anticipates needs and completes the purchase journey autonomously.",
-        image: "/assets/agenticcommerce.gif",
-      },
     ],
   },
   {
-    n: "04",
+    n: "05",
     yearRange: "2018–2020",
     company: "Google Classroom",
     title: "Redefining the",
     titleIt: "Future of Education",
     narrative:
       "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs — doubling the user base and setting a new bar for ed-tech UX.",
-    heroImage: "/assets/eduvision.gif",
+    heroProject: {
+      year: "2018",
+      name: "Google Classroom Vision",
+      desc: "A long-range product vision for Classroom — reimagining how digital tools support the full spectrum of teaching and learning at scale.",
+      image: "/assets/eduvision.gif",
+    },
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
     launches: [
       {
         year: "2019",
         name: "Classroom Redesign",
         desc: "Complete ground-up redesign that improved core workflows for 50M+ teachers and students worldwide.",
-        image: "/assets/docslive.gif",
+        image: "/assets/Google Classroom Redesign.webp",
+        links: [
+          {
+            label: "Google Blog",
+            url: "https://blog.google/outreach-initiatives/education/new-year-new-classroom/",
+          },
+        ],
       },
       {
         year: "2020",
@@ -175,27 +357,32 @@ const CASES: CaseStudy[] = [
     ],
   },
   {
-    n: "05",
+    n: "06",
     yearRange: "2020–2022",
     company: "Google Meet",
     title: "Bringing the Workforce",
     titleIt: "Back to the Office",
     narrative:
       "During the pandemic video conferencing evolved dramatically but no one knew how to bring that back into the office. My team delivered the promise of hybrid work to Meet's 242 million users and established hybrid as the future of work.",
-    heroImage: "/assets/aienhancedmeetings.gif",
+    heroProject: {
+      year: "2022",
+      name: "Hybrid Work",
+      desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
+      image: "/assets/audiomesh.gif",
+    },
     tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
     launches: [
-      {
-        year: "2022",
-        name: "Hybrid Work",
-        desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
-        image: "/assets/audiomesh.gif",
-      },
       {
         year: "2022",
         name: "Dynamic Layouts",
         desc: "Rebuilt Meet's base grid to be more people-focused and equitable for hybrid rooms, reducing video-conferencing fatigue.",
         image: "/assets/dynamiclayouts.gif",
+        links: [
+          {
+            label: "Video Overview",
+            url: "https://www.youtube.com/watch?v=4lXwF95jY2I",
+          },
+        ],
       },
       {
         year: "2022",
@@ -208,6 +395,12 @@ const CASES: CaseStudy[] = [
         name: "Emoji Reactions",
         desc: "Expressive in-meeting reactions that bring energy and non-verbal communication back to hybrid and remote meetings.",
         image: "/assets/reactions.gif",
+        links: [
+          {
+            label: "Google Blog",
+            url: "https://blog.google/products/workspace/we-heart-behind-meeting-emoji-meet/",
+          },
+        ],
       },
       {
         year: "2022",
@@ -219,7 +412,33 @@ const CASES: CaseStudy[] = [
         year: "2022",
         name: "Board 65 & Series One 27",
         desc: "Launched 2 new collaboration devices with 89% CSAT — bringing Meet's hardware portfolio back online for the hybrid era.",
-        image: "/assets/touchcontrollerredesign.gif",
+        image: "/assets/meetdevices.gif",
+        links: [
+          {
+            label: "Board 65",
+            url: "https://www.avocor.com/products/google-series-one-board-65/",
+          },
+          {
+            label: "Series One 27",
+            url: "https://www.avocor.com/products/google-series-one-desk-27/",
+          },
+          {
+            label: "Watch Video",
+            url: "https://www.youtube.com/watch?v=PJmJLAWphB0",
+          },
+        ],
+      },
+      {
+        year: "2025",
+        name: "Touch Controller Redesign",
+        desc: "A refreshed UI for Google Meet hardware touch controllers — bringing a cleaner, more intuitive room control experience to hybrid meeting spaces.",
+        image: "/assets/Google_Series_One_Touch_Controller_Editorial_2.gif",
+        links: [
+          {
+            label: "Workspace Updates",
+            url: "https://workspaceupdates.googleblog.com/2025/08/early-preview-rooms-refreshed-ui-google-meet-hardware-touch-controllers_0734236953.html",
+          },
+        ],
       },
     ],
   },
@@ -362,8 +581,33 @@ export default function Transformations() {
                   </h3>
                   <p className="case-narrative">{c.narrative}</p>
 
-                  <div className="case-hero">
-                    <img src={c.heroImage} alt={`${c.company} — ${c.title}`} />
+                  <div className="cs-hero-proj">
+                    <div className="cs-hero-proj-img">
+                      <img src={c.heroProject.image} alt={c.heroProject.name} />
+                    </div>
+                    <div className="cs-hero-proj-foot">
+                      <span className="cs-launch-yr">{c.heroProject.year}</span>
+                      <div className="cs-hero-proj-name">{c.heroProject.name}</div>
+                      <p className="cs-launch-desc">{c.heroProject.desc}</p>
+                      {c.heroProject.links && c.heroProject.links.length > 0 && (
+                        <div className="cs-hero-proj-links">
+                          {c.heroProject.links.map((l, i) => (
+                            <a
+                              key={i}
+                              href={l.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="cs-hero-proj-link"
+                            >
+                              {l.label}
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="cs-launches">
@@ -376,6 +620,24 @@ export default function Transformations() {
                           <div className="cs-launch-yr">{l.year}</div>
                           <div className="cs-launch-name">{l.name}</div>
                           <p className="cs-launch-desc">{l.desc}</p>
+                          {l.links && l.links.length > 0 && (
+                            <div className="cs-hero-proj-links">
+                              {l.links.map((link, li) => (
+                                <a
+                                  key={li}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="cs-hero-proj-link"
+                                >
+                                  {link.label}
+                                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                                    <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                </a>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </div>
                     ))}
