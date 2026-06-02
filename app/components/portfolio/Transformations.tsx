@@ -76,6 +76,7 @@ const CASES: CaseStudy[] = [
       name: "Docs Live",
       desc: "A real-time, AI-native document experience that transforms static pages into living, collaborative workspaces — announced at Google I/O 2025.",
       image: "/assets/docslive.gif",
+      video: "/assets/docslive_announcement.mp4",
       links: [
         {
           label: "Watch Announcement",
