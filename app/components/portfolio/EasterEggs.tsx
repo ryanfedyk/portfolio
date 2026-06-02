@@ -67,9 +67,9 @@ export default function EasterEggs() {
   const konamiIdx  = useRef(0);
   const typed      = useRef("");
   const dotClicks  = useRef(0);
-  const dotTimer   = useRef<ReturnType<typeof setTimeout>>(null);
+  const dotTimer   = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const mounted    = useRef(false);
-  const toastTimer = useRef<ReturnType<typeof setTimeout>>(null);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const showToast = (msg: string, dur = 4000) => {
     clearTimeout(toastTimer.current);
