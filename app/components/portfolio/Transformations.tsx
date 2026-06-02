@@ -19,6 +19,7 @@ interface CaseLaunch {
   name: string;
   desc: string;
   image: string;
+  video?: string;
   links?: CaseLink[];
 }
 
@@ -111,6 +112,7 @@ const CASES: CaseStudy[] = [
       name: "Real-time Translation",
       desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
       image: "/assets/realtimespeech%20translation.gif",
+      video: "/assets/utdemo_small.mp4",
       links: [
         {
           label: "TechCrunch",
@@ -333,6 +335,7 @@ const CASES: CaseStudy[] = [
       name: "Google Classroom Vision",
       desc: "A long-range product vision for Classroom — reimagining how digital tools support the full spectrum of teaching and learning at scale.",
       image: "/assets/eduvision.gif",
+      video: "/assets/eduvision_small.mp4",
     },
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
     launches: [
@@ -600,13 +603,29 @@ export default function Transformations() {
                   <p className="case-narrative">{c.narrative}</p>
 
                   <div className="cs-hero-proj">
-                    <div className="cs-hero-proj-img">
-                      <img src={c.heroProject.image} alt={c.heroProject.name} />
-                    </div>
+                    {c.heroProject.video ? (
+                      <video
+                        className="cs-hero-proj-media"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        poster={c.heroProject.image}
+                      >
+                        <source src={c.heroProject.video} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <img
+                        className="cs-hero-proj-media"
+                        src={c.heroProject.image}
+                        alt={c.heroProject.name}
+                      />
+                    )}
+                    <div className="cs-hero-proj-scrim" aria-hidden="true" />
                     <div className="cs-hero-proj-foot">
-                      <span className="cs-launch-yr">{c.heroProject.year}</span>
+                      <span className="cs-hero-proj-yr">{c.heroProject.year}</span>
                       <div className="cs-hero-proj-name">{c.heroProject.name}</div>
-                      <p className="cs-launch-desc">{c.heroProject.desc}</p>
+                      <p className="cs-hero-proj-desc">{c.heroProject.desc}</p>
                       {c.heroProject.links && c.heroProject.links.length > 0 && (
                         <div className="cs-hero-proj-links">
                           {c.heroProject.links.map((l, i) => (

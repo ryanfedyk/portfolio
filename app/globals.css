@@ -602,46 +602,72 @@ section {
 }
 
 .cs-hero-proj {
+  position: relative;
   width: 100%;
-  background: var(--card);
-  border: 1px solid var(--line);
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius);
   overflow: hidden;
   margin-bottom: 28px;
-}
-
-.cs-hero-proj-img {
-  width: 100%;
-  aspect-ratio: 21 / 9;
-  overflow: hidden;
   background: var(--bg-2);
 }
 
-.cs-hero-proj-img img {
+.cs-hero-proj-media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .5s cubic-bezier(.3, .7, .4, 1);
+  transition: transform .7s cubic-bezier(.3, .7, .4, 1);
 }
 
-.cs-hero-proj:hover .cs-hero-proj-img img {
+.cs-hero-proj:hover .cs-hero-proj-media {
   transform: scale(1.03);
 }
 
+.cs-hero-proj-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 20%,
+    oklch(8% 0.006 55 / 0.4) 55%,
+    oklch(8% 0.006 55 / 0.92) 100%
+  );
+  pointer-events: none;
+}
+
 .cs-hero-proj-foot {
-  padding: 20px 24px 24px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 32px 32px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border-top: 1px solid var(--line);
+  gap: 7px;
+}
+
+.cs-hero-proj-yr {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
 }
 
 .cs-hero-proj-name {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: clamp(22px, 3vw, 38px);
   line-height: 1.1;
-  color: var(--hi);
+  color: #fff;
+}
+
+.cs-hero-proj-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
 }
 
 .cs-hero-proj-links {
@@ -659,19 +685,20 @@ section {
   font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg);
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
   padding: 7px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 999px;
-  background: var(--bg);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
   transition: border-color .2s, color .2s, background .2s;
 }
 
 .cs-hero-proj-link:hover {
-  border-color: var(--fg);
-  color: var(--hi);
-  background: color-mix(in oklch, var(--bg) 85%, var(--grad-a) 15%);
+  border-color: rgba(255,255,255,0.6);
+  color: #fff;
+  background: rgba(255,255,255,0.16);
 }
 
 .cs-hero-proj-link svg {
