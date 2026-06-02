@@ -493,6 +493,25 @@ export default function Transformations() {
             </h2>
           </div>
 
+          <div className="co-grid rv">
+            {[
+              "Google Docs",
+              "Google Meet",
+              "Google Gemini",
+              "Google Shopping",
+              "Google Classroom",
+              "Google Search",
+              "Google Glass",
+              "Google X",
+              "Jigsaw",
+              "Xbox Kinect",
+              "Windows Phone",
+              "Bing Maps",
+            ].map((name) => (
+              <div key={name} className="co-chip">{name}</div>
+            ))}
+          </div>
+
           <div className="about-grid">
             <div className="about-block lead rv">
               <p>

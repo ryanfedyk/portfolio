@@ -88,9 +88,14 @@ const PATENTS: Patent[] = [
 ];
 
 const LAUNCHES: Launch[] = [
+  { yr: "2026", title: "Docs Live", titleIt: null, co: "Google · Docs", role: "Design Lead" },
+  { yr: "2026", title: "Generative Docs", titleIt: null, co: "Google · Docs", role: "Design Lead" },
+  { yr: "2026", title: "Universal Cart", titleIt: null, co: "Gemini", role: "Design Lead" },
+  { yr: "2026", title: "Universal Commerce Protocol", titleIt: null, co: "Gemini", role: "Design Lead" },
   { yr: "2025", title: "Real-time Speech Translation", titleIt: null, co: "Google · Meet", role: "Design Lead" },
   { yr: "2023", title: "Generative Backgrounds", titleIt: null, co: "Google · Meet", role: "Design Lead" },
   { yr: "2022", title: "Hybrid Work", titleIt: "/ Return to Office", co: "Google · Meet", role: "Design Lead" },
+  { yr: "2022", title: "Gamified Reactions", titleIt: null, co: "Google · Meet", role: "Design Lead" },
   { yr: "2022", title: "Board 65", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
   { yr: "2022", title: "Series One 27", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
   { yr: "2019", title: "Classroom", titleIt: "Redesign", co: "Google · Education", role: "Design Lead" },

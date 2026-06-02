@@ -371,6 +371,33 @@ section {
   color: var(--fg-2);
 }
 
+.co-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.co-chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--card);
+  white-space: nowrap;
+  transition: color .2s, border-color .2s, background .2s;
+}
+
+.co-chip:hover {
+  color: var(--fg);
+  border-color: color-mix(in oklch, var(--grad-a) 60%, var(--line));
+  background: color-mix(in oklch, var(--grad-a) 6%, var(--card));
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

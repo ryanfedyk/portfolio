@@ -239,10 +239,6 @@ function Nav({ scrolled }: { scrolled: boolean }) {
         <a href="#patents">Patents</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div className="nav-status">
-        <span className="live" />
-        Currently @ Google
-      </div>
     </header>
   );
 }
