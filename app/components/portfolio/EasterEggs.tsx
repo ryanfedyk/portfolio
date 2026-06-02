@@ -62,7 +62,7 @@ export default function EasterEggs() {
   const [helpOpen, setHelpOpen]   = useState(false);
   const [toast,    setToast]      = useState<string | null>(null);
   const [rainbow,  setRainbow]    = useState(false);
-  const [dark,     setDark]       = useState(false);
+  const [light,    setLight]      = useState(false);
 
   const konamiIdx  = useRef(0);
   const typed      = useRef("");
@@ -103,9 +103,9 @@ export default function EasterEggs() {
           typed.current = "";
           showToast("👋 Let's talk — ryan@ryanfedyk.com", 6000);
         }
-        if (typed.current.endsWith("dark")) {
+        if (typed.current.endsWith("light")) {
           typed.current = "";
-          setDark(d => !d);
+          setLight(l => !l);
         }
       }
     };
@@ -138,12 +138,12 @@ export default function EasterEggs() {
     return () => clearTimeout(t);
   }, []);
 
-  // ── Apply dark mode class ──────────────────────────────────────────
+  // ── Apply light mode class ─────────────────────────────────────────
   useEffect(() => {
     if (!mounted.current) { mounted.current = true; return; }
-    document.documentElement.classList.toggle("ee-dark", dark);
-    showToast(dark ? "🌙 Dark mode on." : "🌅 Light mode restored.");
-  }, [dark]);
+    document.documentElement.classList.toggle("ee-light", light);
+    showToast(light ? "🌅 Light mode on." : "🌙 Dark mode restored.");
+  }, [light]);
 
   // ── Apply rainbow cursor class ─────────────────────────────────────
   useEffect(() => {
@@ -153,7 +153,7 @@ export default function EasterEggs() {
   const HINTS = [
     { icon: "🎮", name: "The Classic",     hint: "A legendary cheat code from 1986 still works here." },
     { icon: "🌈", name: "Rainbow Mode",    hint: "Click the orange dot in the nav 5 times quickly." },
-    { icon: "🌙", name: "Night Owl",       hint: "Type the opposite of light — anywhere on the page." },
+    { icon: "🌅", name: "Day Mode",         hint: "Type the opposite of dark — anywhere on the page." },
     { icon: "👋", name: "Make Your Move",  hint: "Type what you'd say to a recruiter." },
   ];
 

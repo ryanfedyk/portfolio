@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
 :root {
+  --bg: oklch(13% 0.008 55);
+  --bg-2: oklch(17% 0.012 55);
+  --fg: oklch(88% 0.012 70);
+  --fg-2: oklch(68% 0.014 65);
+  --mute: oklch(46% 0.012 60);
+  --line: oklch(27% 0.018 55);
+  --card: oklch(17% 0.01 55);
+  --hi: oklch(93% 0.008 68);
+  --grad-a: oklch(85% 0.10 50);
+  --grad-b: oklch(82% 0.09 25);
+  --grad-c: oklch(88% 0.06 90);
+  --grad-opacity: 0.08;
+  --radius: 18px;
+  --serif: "Instrument Serif", "Times New Roman", serif;
+  --sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+html.ee-light {
   --bg: oklch(96.5% 0.012 70);
   --bg-2: oklch(93% 0.018 65);
   --fg: oklch(20% 0.025 50);
@@ -9,14 +28,7 @@
   --line: oklch(85% 0.018 60);
   --card: oklch(98% 0.008 70);
   --hi: oklch(22% 0.025 50);
-  --grad-a: oklch(85% 0.10 50);
-  --grad-b: oklch(82% 0.09 25);
-  --grad-c: oklch(88% 0.06 90);
   --grad-opacity: 0.20;
-  --radius: 18px;
-  --serif: "Instrument Serif", "Times New Roman", serif;
-  --sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
 }
 
 * {
@@ -178,11 +190,16 @@ h1, h2, h3, h4 {
 }
 
 .nav-status .live {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: oklch(70% 0.16 145);
-  box-shadow: 0 0 0 3px color-mix(in oklch, oklch(70% 0.16 145) 30%, transparent);
+  width: 7px;
+  height: 10px;
+  background: var(--grad-a);
+  opacity: 0.85;
+  animation: cursor-blink 1.1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 0; }
 }
 
 .hero {
@@ -192,6 +209,18 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+  mix-blend-mode: luminosity;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-grid {

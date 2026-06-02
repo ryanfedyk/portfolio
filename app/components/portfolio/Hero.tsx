@@ -283,6 +283,16 @@ export default function Hero() {
       <Nav scrolled={y > 40} />
 
       <section className="hero">
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden={true}
+        >
+          <source src="/assets/ux_folio_v1.mp4" type="video/mp4" />
+        </video>
         <Blobs y={y} />
         <div className="wrap hero-grid">
           <div className="hero-eyebrow rv">
@@ -307,15 +317,10 @@ export default function Hero() {
             </svg>
           </h1>
 
-          <p className="hero-sub rv rv-d2">
-            I design experiences that are flexible, efficient, and built to keep
-            users engaged — not just once, but over time.
-          </p>
-
-          <dl className="hero-meta rv rv-d3">
+          <dl className="hero-meta rv rv-d2">
             <div>
               <dt>Role</dt>
-              <dd>Design Lead &amp; Manager</dd>
+              <dd>Design Lead, Manager &amp; Tinkerer</dd>
             </div>
             <div>
               <dt>Currently</dt>
@@ -327,7 +332,7 @@ export default function Hero() {
             </div>
             <div>
               <dt>Impact</dt>
-              <dd>7 Patents · 242M+ users</dd>
+              <dd>22 Patents · 1.5B+ DAU</dd>
             </div>
           </dl>
         </div>

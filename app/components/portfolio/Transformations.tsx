@@ -497,22 +497,21 @@ export default function Transformations() {
             <div className="about-block lead rv">
               <p>
                 I work with companies that build the future with{" "}
-                <span className="ac">creativity, care, and purpose</span>. In a
-                world full of buzzwords — disruption, moonshot, AI everything —
-                true innovation can be tough to find. Right now, I&apos;ve found
-                that spark at Google, where I&apos;m rethinking what hybrid
-                productivity can look like with Google Meet.
+                <span className="ac">creativity, care, and purpose</span>. Right
+                now, I&apos;ve found that spark at Google, where I&apos;m
+                rethinking what hybrid productivity and AI-powered documents can
+                look like at scale.
               </p>
             </div>
 
             <div className="about-block rv rv-d1">
-              <h3>Building teams</h3>
+              <h3>Think like a tinkerer</h3>
               <p>
-                I&apos;m passionate about building and growing UX teams that
-                solve real, complex problems — for users and for businesses. I
-                love helping teams thrive: streamlining processes, championing
-                user-centered design, and leveling up strategic thinking to
-                drive real impact.
+                My leadership philosophy starts at the bench. I prototype before
+                I propose, run small experiments to pressure-test assumptions,
+                and stay close to the craft even as teams scale. Paired with a
+                clear strategic vision, it creates teams that don&apos;t just
+                execute — they invent.
               </p>
             </div>
 
@@ -555,7 +554,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Amazing teams.<br /><span className="it">Real impact.</span>
+              Work I&apos;m proud of,<br />with <span className="it">people I&apos;m grateful for.</span>
             </h2>
           </div>
 
