@@ -402,6 +402,7 @@ section {
 }
 
 .co-chip {
+  position: relative;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -419,6 +420,43 @@ section {
   color: var(--fg);
   border-color: color-mix(in oklch, var(--grad-a) 60%, var(--line));
   background: color-mix(in oklch, var(--grad-a) 6%, var(--card));
+}
+
+.co-chip[data-tip]:hover::before {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 10px;
+  width: max-content;
+  max-width: 260px;
+  white-space: normal;
+  z-index: 200;
+  pointer-events: none;
+  box-shadow: 0 8px 32px oklch(0% 0 0 / 0.35);
+}
+
+.co-chip[data-tip]:hover::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--line);
+  z-index: 200;
+  pointer-events: none;
 }
 
 .about-grid {

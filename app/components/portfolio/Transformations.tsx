@@ -485,23 +485,6 @@ export default function Transformations() {
             </h2>
           </div>
 
-          <div className="co-companies rv">
-            {[
-              { co: "Google",    products: ["Docs", "Meet", "Gemini", "Shopping", "Classroom", "Search", "Glass", "Google X"] },
-              { co: "Jigsaw",    products: ["Perspective API", "Outline VPN", "Anti-Harassment"] },
-              { co: "Microsoft", products: ["Xbox Kinect", "Windows Phone", "Bing Maps"] },
-            ].map(({ co, products }) => (
-              <div key={co} className="co-row">
-                <span className="co-label">{co}</span>
-                <div className="co-chips">
-                  {products.map(p => (
-                    <div key={p} className="co-chip">{p}</div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
           <div className="about-grid">
             <div className="about-block lead rv">
               <p>
@@ -512,6 +495,48 @@ export default function Transformations() {
                 look like at scale.
               </p>
             </div>
+          </div>
+
+          <div className="co-companies rv">
+            {[
+              {
+                co: "Google",
+                products: [
+                  { name: "Docs",      tip: "Sr. Principal Design Lead — Transforming Docs into an agent-forward, AI-native document platform." },
+                  { name: "Meet",      tip: "Sr. Principal Design Lead — Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences." },
+                  { name: "Gemini",    tip: "Sr. Principal Designer — End-to-end shopping experiences through conversational AI." },
+                  { name: "Shopping",  tip: "Sr. Principal Designer — Implicit, personalized shopping powered by agentic AI." },
+                  { name: "Classroom", tip: "UX Design Lead — Redesigned Google Classroom for 50M+ teachers and students." },
+                  { name: "Search",    tip: "AI Shopping Agents in AI Mode." },
+                  { name: "Glass",     tip: "Voice interfaces for wearables." },
+                ],
+              },
+              {
+                co: "Jigsaw",
+                products: [
+                  { name: "Perspective API", tip: "ML toxicity detection deployed with 200+ media partners." },
+                  { name: "Outline VPN",     tip: "Open-source VPN for journalists and activists in 30+ countries." },
+                  { name: "Anti-Harassment", tip: "UX systems protecting at-risk communities by design." },
+                ],
+              },
+              {
+                co: "Microsoft",
+                products: [
+                  { name: "Xbox Kinect",    tip: "Motion and gesture interaction for living room gaming." },
+                  { name: "Windows Phone",  tip: "Core UX design for Windows Phone 7." },
+                  { name: "Bing Maps",      tip: "Mapping and local search experiences." },
+                ],
+              },
+            ].map(({ co, products }) => (
+              <div key={co} className="co-row">
+                <span className="co-label">{co}</span>
+                <div className="co-chips">
+                  {products.map(({ name, tip }) => (
+                    <div key={name} className="co-chip" data-tip={tip}>{name}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
