@@ -2,9 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const FONT_HREF =
-  "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
-
 const MARQUEE = [
   "Building teams",
   "Designing for the 126th visit",
@@ -14,15 +11,13 @@ const MARQUEE = [
   "Real impact at scale",
 ];
 
-function useFonts() {
-  useEffect(() => {
-    if (document.querySelector(`link[href="${FONT_HREF}"]`)) return;
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = FONT_HREF;
-    document.head.appendChild(link);
-  }, []);
-}
+const NAV_LINKS = [
+  { href: "#about",   label: "About"   },
+  { href: "#process", label: "Process" },
+  { href: "#work",    label: "Work"    },
+  { href: "#patents", label: "Patents" },
+  { href: "#contact", label: "Contact" },
+];
 
 function useScrollY(): number {
   const [y, setY] = useState(0);
@@ -226,20 +221,65 @@ function useMagnetic(selector: string, strength: number) {
 }
 
 function Nav({ scrolled }: { scrolled: boolean }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   return (
-    <header className={"nav" + (scrolled ? " scrolled" : "")}>
-      <div className="nav-id">
-        <span className="nav-dot" />
-        Ryan Fedyk
+    <>
+      <header className={"nav" + (scrolled ? " scrolled" : "")}>
+        <div className="nav-id">
+          <span className="nav-dot" />
+          Ryan Fedyk
+        </div>
+
+        {/* Desktop nav */}
+        <nav className="nav-links">
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href}>{l.label}</a>
+          ))}
+        </nav>
+
+        {/* Hamburger — mobile only */}
+        <button
+          className={"nav-ham" + (menuOpen ? " open" : "")}
+          onClick={() => setMenuOpen((m) => !m)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+        </button>
+      </header>
+
+      {/* Mobile fullscreen menu */}
+      <div
+        className={"nav-mob" + (menuOpen ? " open" : "")}
+        aria-hidden={!menuOpen}
+        onClick={() => setMenuOpen(false)}
+      >
+        <nav className="nav-mob-links" onClick={(e) => e.stopPropagation()}>
+          {NAV_LINKS.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <div className="nav-mob-meta">
+          <span>Design Lead &amp; Manager</span>
+          <span>Google · 2013 — Present</span>
+        </div>
       </div>
-      <nav className="nav-links">
-        <a href="#about">About</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
-        <a href="#patents">Patents</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    </>
   );
 }
 
@@ -263,7 +303,6 @@ function Blobs({ y }: { y: number }) {
 }
 
 export default function Hero() {
-  useFonts();
   const y = useScrollY();
   useReveal();
   useCursor();

@@ -178,6 +178,107 @@ h1, h2, h3, h4 {
   color: var(--fg);
 }
 
+/* ── Hamburger — mobile only ───────────────────────────── */
+.nav-ham {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.nav-ham span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--fg);
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1), opacity .25s ease;
+  transform-origin: center;
+}
+
+.nav-ham.open span:nth-child(1) {
+  transform: translateY(3.75px) rotate(45deg);
+}
+.nav-ham.open span:nth-child(2) {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .nav-ham   { display: flex; }
+}
+
+/* ── Mobile fullscreen menu ─────────────────────────────── */
+.nav-mob {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.nav-mob.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-mob-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.nav-mob-links a {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(44px, 13vw, 72px);
+  line-height: 1.15;
+  color: var(--fg-2);
+  text-decoration: none;
+  opacity: 0;
+  transition: color .2s;
+}
+
+.nav-mob.open .nav-mob-links a {
+  animation: fade-up .5s cubic-bezier(.2, .7, .2, 1)
+    calc(0.04s + var(--i, 0) * 0.07s) both;
+}
+
+.nav-mob-links a:hover {
+  color: var(--hi);
+}
+
+.nav-mob-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  opacity: 0;
+}
+
+.nav-mob.open .nav-mob-meta {
+  animation: fade-up .5s cubic-bezier(.2, .7, .2, 1) 0.4s both;
+}
+
 .nav-status {
   display: flex;
   align-items: center;
@@ -293,6 +394,30 @@ h1, h2, h3, h4 {
 @media (max-width: 760px) {
   .hero-meta {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 112px 0 72px;
+  }
+  .hero h1 {
+    line-height: 0.95;
+  }
+  .squiggle {
+    width: 90px;
+    height: 26px;
+  }
+  .hero-meta {
+    gap: 18px;
+    padding-top: 24px;
+  }
+  .hero-meta dt {
+    font-size: 9.5px;
+    margin-bottom: 4px;
+  }
+  .hero-meta dd {
+    font-size: 13px;
   }
 }
 
@@ -557,6 +682,15 @@ section {
   }
 }
 
+@media (max-width: 640px) {
+  .phil-cell {
+    padding: 30px 22px;
+  }
+  .phil-h {
+    font-size: 26px;
+  }
+}
+
 .phil-cell {
   background: var(--card);
   padding: 40px 32px;
@@ -616,6 +750,40 @@ section {
   .case {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .case {
+    padding: clamp(36px, 8vw, 64px) 0;
+    gap: 14px;
+  }
+  /* Case meta becomes a compact inline row */
+  .case-meta {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding-top: 0;
+    flex-wrap: wrap;
+  }
+  /* Tags add noise on small screens — hide them */
+  .case-tags { display: none; }
+  /* Hero project bleeds edge-to-edge for cinematic feel */
+  .cs-hero-proj {
+    border-radius: 12px;
+    margin-left: calc(-1 * clamp(20px, 4vw, 56px));
+    margin-right: calc(-1 * clamp(20px, 4vw, 56px));
+    border-radius: 0;
+  }
+  .cs-hero-proj-foot {
+    padding: 20px 24px 24px;
+  }
+  .cs-hero-proj-name {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+  .case-narrative {
+    font-size: 15px;
+    margin-bottom: 20px;
   }
 }
 
@@ -811,8 +979,23 @@ section {
 }
 
 @media (max-width: 640px) {
+  /* Horizontal swipe carousel on mobile */
   .cs-launches {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* Bleed past the wrap padding so cards feel edge-to-edge */
+    margin-right: calc(-1 * clamp(20px, 4vw, 56px));
+    padding-right: clamp(20px, 4vw, 56px);
+  }
+  .cs-launches::-webkit-scrollbar { display: none; }
+  .cs-launch {
+    flex: 0 0 76vw;
+    max-width: 300px;
   }
 }
 
@@ -980,6 +1163,19 @@ section {
   }
 }
 
+@media (max-width: 640px) {
+  .arch-row {
+    padding: 16px 20px;
+    gap: 14px;
+  }
+  .arch-yr {
+    font-size: 11px;
+  }
+  .arch-ttl {
+    font-size: 16px;
+  }
+}
+
 .pat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1065,6 +1261,31 @@ section {
   font-size: 13px;
   color: var(--fg-2);
   line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  /* Patent cards become a swipe carousel on mobile */
+  .pat-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    gap: 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-right: calc(-1 * clamp(20px, 4vw, 56px));
+    padding-right: clamp(20px, 4vw, 56px);
+    margin-bottom: clamp(48px, 8vw, 80px);
+  }
+  .pat-grid::-webkit-scrollbar { display: none; }
+  .pat-card {
+    flex: 0 0 76vw;
+    max-width: 300px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
 }
 
 .res {
@@ -1252,6 +1473,13 @@ section {
   transition-delay: .32s;
 }
 
+/* ── Sync hero reveal with page-veil lift ──────────────── */
+/* Veil starts dissolving at 300ms, fully gone at ~1000ms   */
+/* These delays let elements emerge as the veil fades.      */
+.hero .rv      { transition-delay: .50s; }
+.hero .rv-d1   { transition-delay: .65s; }
+.hero .rv-d2   { transition-delay: .82s; }
+
 .cur {
   position: fixed;
   top: 0;
@@ -1410,6 +1638,46 @@ button {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+/* ── Page veil — covers during font load, lifts elegantly ─────────────── */
+/*   display:block starts at 300ms, fades over 700ms → gone at ~1000ms    */
+.page-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9985;
+  background: var(--bg);
+  pointer-events: none;
+  animation: veil-lift .7s cubic-bezier(.4, 0, .2, 1) .3s both;
+}
+
+@keyframes veil-lift {
+  from { opacity: 1; }
+  to   { opacity: 0; visibility: hidden; }
+}
+
+/* ── Accessibility: skip all motion for users who prefer it ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .page-veil {
+    display: none;
+  }
+  .rv,
+  .rv.in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .hero .rv,
+  .hero .rv-d1,
+  .hero .rv-d2 {
+    transition-delay: 0s !important;
+  }
+  .nav-mob.open .nav-mob-links a,
+  .nav-mob.open .nav-mob-meta {
+    animation: none !important;
+    opacity: 1 !important;
   }
 }
 
