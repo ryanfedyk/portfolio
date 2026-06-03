@@ -758,16 +758,6 @@ section {
     padding: clamp(36px, 8vw, 64px) 0;
     gap: 14px;
   }
-  /* Case meta becomes a compact inline row */
-  .case-meta {
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
-    padding-top: 0;
-    flex-wrap: wrap;
-  }
-  /* Tags add noise on small screens — hide them */
-  .case-tags { display: none; }
   /* Hero project bleeds edge-to-edge for cinematic feel */
   .cs-hero-proj {
     border-radius: 12px;
@@ -826,6 +816,18 @@ section {
   color: var(--fg-2);
   background: var(--bg);
   width: fit-content;
+}
+
+/* Mobile case-meta overrides (after base rules so cascade is correct) */
+@media (max-width: 640px) {
+  .case-tags { display: none; }
+  .case-meta {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 0;
+  }
 }
 
 .case-body {
