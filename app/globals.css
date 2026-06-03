@@ -401,12 +401,15 @@ h1, h2, h3, h4 {
   .hero {
     padding: 112px 0 72px;
   }
+  /* Smaller size + more generous line-height so wrapped lines don't crowd */
   .hero h1 {
-    line-height: 0.95;
+    font-size: clamp(40px, 10.5vw, 70px);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
   }
   .squiggle {
-    width: 90px;
-    height: 26px;
+    width: 80px;
+    height: 24px;
   }
   .hero-meta {
     gap: 18px;
@@ -494,6 +497,13 @@ section {
 .sec-title .it {
   font-style: italic;
   color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+  .sec-title {
+    font-size: clamp(28px, 8.5vw, 50px);
+    line-height: 1.08;
+  }
 }
 
 .co-companies {
@@ -758,19 +768,6 @@ section {
     padding: clamp(36px, 8vw, 64px) 0;
     gap: 14px;
   }
-  /* Hero project bleeds edge-to-edge for cinematic feel */
-  .cs-hero-proj {
-    border-radius: 12px;
-    margin-left: calc(-1 * clamp(20px, 4vw, 56px));
-    margin-right: calc(-1 * clamp(20px, 4vw, 56px));
-    border-radius: 0;
-  }
-  .cs-hero-proj-foot {
-    padding: 20px 24px 24px;
-  }
-  .cs-hero-proj-name {
-    font-size: clamp(20px, 6vw, 32px);
-  }
   .case-narrative {
     font-size: 15px;
     margin-bottom: 20px;
@@ -972,6 +969,38 @@ section {
 .cs-hero-proj-link:hover svg {
   opacity: 1;
   transform: translate(1px, -1px);
+}
+
+/* ── Mobile hero-project: full-bleed + taller ratio ─────── */
+/* (placed after base rules so cascade is correct)           */
+@media (max-width: 640px) {
+  .cs-hero-proj {
+    width: 100vw;
+    margin-left: calc(-1 * clamp(20px, 4vw, 56px));
+    border-radius: 0;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 20px;
+  }
+  /* Scrim: image visible at top, text readable at bottom */
+  .cs-hero-proj-scrim {
+    background: linear-gradient(
+      to bottom,
+      transparent 35%,
+      oklch(8% 0.006 55 / 0.5) 58%,
+      oklch(8% 0.006 55 / 0.95) 100%
+    );
+  }
+  /* Compact footer: year + name + CTA only */
+  .cs-hero-proj-foot {
+    padding: 16px 20px 22px;
+    gap: 5px;
+  }
+  /* Hide description — too much text for small image area */
+  .cs-hero-proj-desc { display: none; }
+  .cs-hero-proj-name {
+    font-size: clamp(22px, 6.5vw, 36px);
+    line-height: 1.1;
+  }
 }
 
 .cs-launches {
@@ -1381,6 +1410,13 @@ section {
   line-height: 0.92;
   letter-spacing: -0.03em;
   color: var(--hi);
+}
+
+@media (max-width: 640px) {
+  .ftr-big {
+    font-size: clamp(44px, 12vw, 100px);
+    line-height: 0.97;
+  }
 }
 
 .ftr-big .it {
