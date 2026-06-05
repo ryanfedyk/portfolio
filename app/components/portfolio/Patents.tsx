@@ -20,13 +20,18 @@ interface Launch {
   url: string;
 }
 
-interface ResumeEntry {
+interface ResumeEra {
   yr: string;
+  team: string;
   role: string;
-  roleIt: string;
-  co: string;
   desc: string;
+}
+
+interface ResumeCompany {
+  co: string;
+  yr: string;
   loc: string;
+  eras: ResumeEra[];
 }
 
 const PATENTS: Patent[] = [
@@ -288,30 +293,81 @@ const LAUNCHES: Launch[] = [
 
 const INITIAL_VISIBLE = 15;
 
-const RESUME: ResumeEntry[] = [
+const RESUME: ResumeCompany[] = [
   {
-    yr: "2013 — Now",
-    role: "Design Lead & Manager",
-    roleIt: "Google",
-    co: "Google — Meet · Jigsaw · Shopping · Classroom",
-    desc: "Leading design for AI-forward products across Google. Built and grew multiple UX teams. Championed user-centered design at scale.",
+    co: "Google",
+    yr: "2013 — Present",
     loc: "San Francisco",
+    eras: [
+      {
+        yr: "2024 — Now",
+        team: "Docs",
+        role: "Sr. Principal Design Lead",
+        desc: "Leading the design vision for Google Docs' next generation — redefining what documents look like when they're intelligent, real-time, and deeply collaborative at scale.",
+      },
+      {
+        yr: "2024 — Now",
+        team: "Shopping & Gemini",
+        role: "Sr. Principal Designer",
+        desc: "Defining the next frontier of agentic commerce — from implicit shopping interfaces to Universal Cart and conversational checkout used by hundreds of millions.",
+      },
+      {
+        yr: "2021 — 2025",
+        team: "Meet",
+        role: "Sr. Principal Design Lead",
+        desc: "Shipped hybrid work for 3B+ users, then pivoted the team toward AI-powered experiences — real-time speech translation, generative backgrounds, and intelligent notetaking.",
+      },
+      {
+        yr: "2018 — 2020",
+        team: "Classroom",
+        role: "UX Design Lead",
+        desc: "Rebuilt Google Classroom from the ground up for 50M+ teachers and students, doubling the user base and setting a new bar for ed-tech UX.",
+      },
+      {
+        yr: "2017 — 2019",
+        team: "Jigsaw",
+        role: "Design Lead",
+        desc: "Built the design team from scratch and redirected its mission around user-centered design. Created tools to fight censorship, harassment, and disinformation worldwide.",
+      },
+    ],
   },
   {
+    co: "Microsoft",
     yr: "2009 — 2013",
-    role: "UX Designer",
-    roleIt: "Microsoft",
-    co: "Microsoft — Windows · Xbox · Bing",
-    desc: "Shipped design across Windows Phone 7, Xbox Kinect, Bing Maps, and Windows Translator.",
     loc: "Seattle",
+    eras: [
+      {
+        yr: "2010 — 2013",
+        team: "Windows & Surface",
+        role: "UX Designer",
+        desc: "Shipped Windows Phone 7 and Surface V1 — helping define Microsoft's entry into mobile and the tablet era.",
+      },
+      {
+        yr: "2010",
+        team: "Xbox & Kinect",
+        role: "UX Designer",
+        desc: "Designed motion and gesture interaction for Xbox Kinect — one of the fastest-selling consumer electronics devices ever made at launch.",
+      },
+      {
+        yr: "2011 — 2013",
+        team: "Bing & Research",
+        role: "UX Designer",
+        desc: "Mapping, local search, and Photosynth V2 — bringing spatial and contextual intelligence to Bing's product suite.",
+      },
+    ],
   },
   {
-    yr: "2007 — 2009",
-    role: "Design Educator",
-    roleIt: "NYU",
     co: "New York University",
-    desc: "Taught interaction design. Helped build the foundations of human-centered design education at NYU.",
+    yr: "2007 — 2009",
     loc: "New York",
+    eras: [
+      {
+        yr: "2007 — 2009",
+        team: "ITP Program",
+        role: "Design Educator",
+        desc: "Taught interaction design and helped build the foundations of human-centered design education at NYU's Tisch School of the Arts.",
+      },
+    ],
   },
 ];
 
@@ -429,18 +485,29 @@ export default function Patents() {
             </h2>
           </div>
 
-          <div className="res rv">
-            {RESUME.map((r, i) => (
-              <div key={`${r.yr}-${i}`} className="res-row">
-                <span className="res-yr">{r.yr}</span>
-                <div className="res-body">
-                  <h3 className="res-role">
-                    {r.role} <span className="it">{r.roleIt}</span>
-                  </h3>
-                  <div className="res-co">{r.co}</div>
-                  <p className="res-desc">{r.desc}</p>
+          <div className="rv">
+            {RESUME.map((company) => (
+              <div key={company.co} className="res-co-block">
+                <div className="res-co-hd">
+                  <div className="res-co-name">{company.co}</div>
+                  <div className="res-co-meta">
+                    <span>{company.yr}</span>
+                    <span className="res-co-sep">·</span>
+                    <span>{company.loc}</span>
+                  </div>
                 </div>
-                <span className="res-loc">{r.loc}</span>
+                <div className="res-eras">
+                  {company.eras.map((era, ei) => (
+                    <div key={ei} className="res-era">
+                      <span className="res-era-yr">{era.yr}</span>
+                      <div>
+                        <div className="res-era-team">{era.team}</div>
+                        <div className="res-era-role">{era.role}</div>
+                      </div>
+                      <p className="res-era-desc">{era.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -452,9 +519,7 @@ export default function Patents() {
           <div className="rv">
             <span className="eyebrow">Get in touch</span>
             <h2 className="ftr-big">
-              Let&apos;s make something people actually
-              <br />
-              <span className="it">want</span>.
+              Let&apos;s make something <span className="it">useful</span>.
             </h2>
           </div>
 
