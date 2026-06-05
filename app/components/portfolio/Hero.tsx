@@ -340,16 +340,7 @@ export default function Hero() {
             <br />
             improve people&apos;s
             <br />
-            lives.
-            <svg
-              width="140"
-              height="40"
-              viewBox="0 0 140 40"
-              className="squiggle"
-              aria-hidden="true"
-            >
-              <path d="M2 22 C 22 4, 44 40, 70 20 S 118 4, 138 22" />
-            </svg>
+            lives
           </h1>
 
           <dl className="hero-meta rv rv-d2">

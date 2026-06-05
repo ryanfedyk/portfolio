@@ -481,7 +481,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              About the <span className="it">work.</span>
+              About the <span className="it">work</span>
             </h2>
           </div>
 
@@ -551,7 +551,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Three things I <span className="it">live by.</span>
+              Three things I <span className="it">live by</span>
             </h2>
           </div>
 
@@ -571,7 +571,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Work I&apos;m proud of,<br />with <span className="it">people I&apos;m grateful for.</span>
+              Work I&apos;m proud of,<br />with <span className="it">people I&apos;m grateful for</span>
             </h2>
           </div>
 

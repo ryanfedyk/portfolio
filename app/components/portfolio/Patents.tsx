@@ -411,7 +411,7 @@ export default function Patents() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              IP &amp; <span className="it">Launches.</span>
+              IP &amp; <span className="it">Launches</span>
             </h2>
           </div>
 
@@ -439,7 +439,7 @@ export default function Patents() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Notable <span className="it">Launches.</span>
+              Notable <span className="it">Launches</span>
             </h2>
           </div>
 
@@ -481,7 +481,7 @@ export default function Patents() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Where I&apos;ve <span className="it">been.</span>
+              Where I&apos;ve <span className="it">been</span>
             </h2>
           </div>
 
@@ -519,7 +519,7 @@ export default function Patents() {
           <div className="rv">
             <span className="eyebrow">Get in touch</span>
             <h2 className="ftr-big">
-              Let&apos;s make something <span className="it">useful</span>.
+              Let&apos;s make something <span className="it">useful</span>
             </h2>
           </div>
 
