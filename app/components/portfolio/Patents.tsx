@@ -291,7 +291,7 @@ const LAUNCHES: Launch[] = [
   },
 ];
 
-const INITIAL_VISIBLE = 15;
+const INITIAL_VISIBLE = 10;
 
 const RESUME: ResumeCompany[] = [
   {
