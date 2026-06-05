@@ -297,7 +297,7 @@ const RESUME: ResumeCompany[] = [
   {
     co: "Google",
     yr: "2013 — Present",
-    loc: "San Francisco",
+    loc: "New York",
     eras: [
       {
         yr: "2026 — Present",
