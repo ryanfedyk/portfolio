@@ -59,7 +59,7 @@ const PHILOSOPHY: Philosophy[] = [
 const CASES: CaseStudy[] = [
   {
     n: "01",
-    yearRange: "2024–Present",
+    yearRange: "2026–Present",
     company: "Google Docs",
     title: "Redefining the",
     titleIt: "Future of Documents",
@@ -173,7 +173,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "03",
-    yearRange: "2017–2019",
+    yearRange: "2017–2020",
     company: "Google Jigsaw",
     title: "Using Technology to",
     titleIt: "Improve Public Safety",
@@ -261,7 +261,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "04",
-    yearRange: "2024–Present",
+    yearRange: "2025–2026",
     company: "Google Shopping",
     title: "Beyond the Prompt —",
     titleIt: "The Implicit AI Interface",
@@ -313,7 +313,7 @@ const CASES: CaseStudy[] = [
   },
   {
     n: "05",
-    yearRange: "2018–2020",
+    yearRange: "2016–2019",
     company: "Google Classroom",
     title: "Redefining the",
     titleIt: "Future of Education",
