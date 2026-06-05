@@ -300,13 +300,13 @@ const RESUME: ResumeCompany[] = [
     loc: "San Francisco",
     eras: [
       {
-        yr: "2024 — Now",
+        yr: "2026 — Present",
         team: "Docs",
         role: "Sr. Principal Design Lead",
         desc: "Leading the design vision for Google Docs' next generation — redefining what documents look like when they're intelligent, real-time, and deeply collaborative at scale.",
       },
       {
-        yr: "2024 — Now",
+        yr: "2025 — 2026",
         team: "Shopping & Gemini",
         role: "Sr. Principal Designer",
         desc: "Defining the next frontier of agentic commerce — from implicit shopping interfaces to Universal Cart and conversational checkout used by hundreds of millions.",
@@ -318,13 +318,13 @@ const RESUME: ResumeCompany[] = [
         desc: "Shipped hybrid work for 3B+ users, then pivoted the team toward AI-powered experiences — real-time speech translation, generative backgrounds, and intelligent notetaking.",
       },
       {
-        yr: "2018 — 2020",
+        yr: "2016 — 2019",
         team: "Classroom",
         role: "UX Design Lead",
         desc: "Rebuilt Google Classroom from the ground up for 50M+ teachers and students, doubling the user base and setting a new bar for ed-tech UX.",
       },
       {
-        yr: "2017 — 2019",
+        yr: "2017 — 2020",
         team: "Jigsaw",
         role: "Design Lead",
         desc: "Built the design team from scratch and redirected its mission around user-centered design. Created tools to fight censorship, harassment, and disinformation worldwide.",
