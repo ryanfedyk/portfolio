@@ -344,7 +344,7 @@ const CASES: CaseStudy[] = [
         year: "2020",
         name: "Course Kit",
         desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
-        image: "/assets/eduteamleaderhsip.jpg",
+        image: "/assets/coursekit.png",
       },
     ],
   },
