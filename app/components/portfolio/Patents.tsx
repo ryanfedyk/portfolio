@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Patent {
   id: string;
@@ -17,6 +17,7 @@ interface Launch {
   titleIt: string | null;
   co: string;
   role: string;
+  url: string;
 }
 
 interface ResumeEntry {
@@ -88,24 +89,204 @@ const PATENTS: Patent[] = [
 ];
 
 const LAUNCHES: Launch[] = [
-  { yr: "2026", title: "Docs Live", titleIt: null, co: "Google · Docs", role: "Design Lead" },
-  { yr: "2026", title: "Generative Docs", titleIt: null, co: "Google · Docs", role: "Design Lead" },
-  { yr: "2026", title: "Universal Cart", titleIt: null, co: "Gemini", role: "Design Lead" },
-  { yr: "2026", title: "Universal Commerce Protocol", titleIt: null, co: "Gemini", role: "Design Lead" },
-  { yr: "2025", title: "Real-time Speech Translation", titleIt: null, co: "Google · Meet", role: "Design Lead" },
-  { yr: "2023", title: "Generative Backgrounds", titleIt: null, co: "Google · Meet", role: "Design Lead" },
-  { yr: "2022", title: "Hybrid Work", titleIt: "/ Return to Office", co: "Google · Meet", role: "Design Lead" },
-  { yr: "2022", title: "Gamified Reactions", titleIt: null, co: "Google · Meet", role: "Design Lead" },
-  { yr: "2022", title: "Board 65", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
-  { yr: "2022", title: "Series One 27", titleIt: "Collaboration Device", co: "Google · Meet", role: "Design Lead" },
-  { yr: "2019", title: "Classroom", titleIt: "Redesign", co: "Google · Education", role: "Design Lead" },
-  { yr: "2018", title: "Perspective API", titleIt: null, co: "Jigsaw · 200+ partners", role: "Design Lead" },
-  { yr: "2018", title: "Outline VPN", titleIt: null, co: "Jigsaw · Censorship tool", role: "Design Lead" },
-  { yr: "2012", title: "Windows Translator", titleIt: null, co: "Microsoft", role: "Designer" },
-  { yr: "2011", title: "Bing Maps", titleIt: null, co: "Microsoft", role: "Designer" },
-  { yr: "2010", title: "Xbox Kinect", titleIt: null, co: "Microsoft", role: "Designer" },
-  { yr: "2010", title: "Windows Phone 7", titleIt: null, co: "Microsoft", role: "Designer" },
+  // ── 2026 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2026",
+    title: "Docs Live",
+    titleIt: null,
+    co: "Google · Docs",
+    role: "Design Lead",
+    url: "https://workspace.googleblog.com/2026/05/new-ways-to-create-and-get-things-done-in-google-workspace.html",
+  },
+  {
+    yr: "2026",
+    title: "Generative Docs",
+    titleIt: null,
+    co: "Google · Docs",
+    role: "Design Lead",
+    url: "https://workspace.googleblog.com/2026/03/google-shares-gemini-updates-to-docs-sheets-slides-drive.html",
+  },
+  {
+    yr: "2026",
+    title: "Universal Cart",
+    titleIt: null,
+    co: "Google · Gemini",
+    role: "Design Lead",
+    url: "https://blog.google/products-and-platforms/products/shopping/google-shopping-cart/",
+  },
+  {
+    yr: "2026",
+    title: "Universal Commerce Protocol",
+    titleIt: null,
+    co: "Google · Gemini",
+    role: "Design Lead",
+    url: "https://blog.google/technology/developers/google-universal-commerce-protocol/",
+  },
+  // ── 2025 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2025",
+    title: "Real-time Speech Translation",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://techcrunch.com/2025/05/20/google-meet-is-getting-real-time-speech-translation/",
+  },
+  {
+    yr: "2025",
+    title: "Studio Makeup",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2025/10/ai-powered-makeup-in-google-meet.html",
+  },
+  {
+    yr: "2025",
+    title: "Dynamic Layouts",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-google-meet.html",
+  },
+  {
+    yr: "2025",
+    title: "Face Match",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-google-meet.html",
+  },
+  {
+    yr: "2025",
+    title: "Connect Room",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2025/12/connect-room-google-meet-hardware.html",
+  },
+  // ── 2024 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2024",
+    title: "Generative Backgrounds",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2024/06/generative-backgrounds-google-meet.html",
+  },
+  {
+    yr: "2024",
+    title: "Stackable Effects",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2024/08/video-effects-google-meet.html",
+  },
+  {
+    yr: "2024",
+    title: "AI Notetaking",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2024/08/take-notes-for-me-google-meet.html",
+  },
+  {
+    yr: "2024",
+    title: "Adaptive Audio",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2024/05/adaptive-audio-google-meet.html",
+  },
+  // ── 2022 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2022",
+    title: "Gamified Reactions",
+    titleIt: null,
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://blog.google/products/workspace/we-heart-behind-meeting-emoji-meet/",
+  },
+  // ── 2021 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2021",
+    title: "Board 65",
+    titleIt: "Collaboration Device",
+    co: "Google · Meet",
+    role: "Design Lead",
+    url: "https://www.avocor.com/products/google-series-one-board-65/",
+  },
+  // ── 2019 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2019",
+    title: "Classroom",
+    titleIt: "Redesign",
+    co: "Google · Education",
+    role: "Design Lead",
+    url: "https://blog.google/outreach-initiatives/education/new-year-new-classroom/",
+  },
+  // ── 2018 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2018",
+    title: "Course Kit",
+    titleIt: null,
+    co: "Google · Education",
+    role: "Design Lead",
+    url: "https://workspaceupdates.googleblog.com/2018/07/introducing-course-kit-beta.html",
+  },
+  {
+    yr: "2018",
+    title: "Outline VPN",
+    titleIt: null,
+    co: "Jigsaw",
+    role: "Design Lead",
+    url: "https://jigsaw.google.com/the-current/outlineVPN/",
+  },
+  // ── 2017 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2017",
+    title: "Perspective API",
+    titleIt: null,
+    co: "Jigsaw",
+    role: "Design Lead",
+    url: "https://medium.com/jigsaw/toxicity-tone-not-the-same-thing-analyzing-the-new-google-api-on-toxicity-fd3e94685b22",
+  },
+  // ── 2013 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2013",
+    title: "Photosynth V2",
+    titleIt: null,
+    co: "Microsoft",
+    role: "Designer",
+    url: "https://www.dpreview.com/articles/5688888145/photosynth-can-now-create-interactive-3d-scenes",
+  },
+  // ── 2012 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2012",
+    title: "Microsoft Surface V1",
+    titleIt: null,
+    co: "Microsoft",
+    role: "Designer",
+    url: "https://en.wikipedia.org/wiki/Microsoft_Surface",
+  },
+  // ── 2010 ──────────────────────────────────────────────────────────────────
+  {
+    yr: "2010",
+    title: "Xbox Kinect",
+    titleIt: null,
+    co: "Microsoft",
+    role: "Designer",
+    url: "https://en.wikipedia.org/wiki/Kinect",
+  },
+  {
+    yr: "2010",
+    title: "Windows Phone 7",
+    titleIt: null,
+    co: "Microsoft",
+    role: "Designer",
+    url: "https://en.wikipedia.org/wiki/Windows_Phone_7",
+  },
 ];
+
+const INITIAL_VISIBLE = 15;
 
 const RESUME: ResumeEntry[] = [
   {
@@ -140,6 +321,10 @@ function statusClass(status: string): string {
 
 export default function Patents() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleLaunches = showAll ? LAUNCHES : LAUNCHES.slice(0, INITIAL_VISIBLE);
+  const hasMore = !showAll && LAUNCHES.length > INITIAL_VISIBLE;
 
   useEffect(() => {
     const root = rootRef.current;
@@ -203,8 +388,14 @@ export default function Patents() {
           </div>
 
           <div className="arch rv">
-            {LAUNCHES.map((l, i) => (
-              <div key={`${l.yr}-${i}`} className="arch-row">
+            {visibleLaunches.map((l, i) => (
+              <a
+                key={`${l.yr}-${i}`}
+                className="arch-row"
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="arch-yr">{l.yr}</span>
                 <span className="arch-ttl">
                   {l.title}
@@ -213,9 +404,20 @@ export default function Patents() {
                 <span className="arch-co">{l.co}</span>
                 <span className="arch-role">{l.role}</span>
                 <span className="arch-arr">↗</span>
-              </div>
+              </a>
             ))}
           </div>
+
+          {hasMore && (
+            <div className="arch-more">
+              <button
+                className="arch-more-btn"
+                onClick={() => setShowAll(true)}
+              >
+                Load {LAUNCHES.length - INITIAL_VISIBLE} more launches
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

@@ -1183,6 +1183,32 @@ section {
   color: var(--fg);
 }
 
+.arch-more {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 0;
+}
+
+.arch-more-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 11px 28px;
+  transition: color .2s, border-color .2s, background .2s, transform .2s;
+}
+
+.arch-more-btn:hover {
+  color: var(--hi);
+  border-color: var(--grad-a);
+  background: color-mix(in oklch, var(--grad-a) 8%, var(--card));
+  transform: translateY(-1px);
+}
+
 @media (max-width: 900px) {
   .arch-row {
     grid-template-columns: 60px 1fr;
