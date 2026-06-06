@@ -506,12 +506,20 @@ section {
   }
 }
 
-.co-companies {
+/* ── Two-panel showcase ─────────────────────────────────── */
+.co-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  margin-top: clamp(32px, 4vw, 52px);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.co-chips-panel {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: clamp(32px, 4vw, 52px);
-  margin-bottom: clamp(40px, 6vw, 72px);
 }
 
 .co-row {
@@ -539,6 +547,7 @@ section {
 
 .co-chip {
   position: relative;
+  overflow: hidden;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -549,81 +558,118 @@ section {
   border-radius: 100px;
   background: var(--card);
   white-space: nowrap;
-  transition: color .2s, border-color .2s, background .2s;
+  cursor: default;
+  transition: color .25s, border-color .25s, background .25s;
 }
 
-.co-chip:hover {
-  color: var(--fg);
-  border-color: color-mix(in oklch, var(--grad-a) 60%, var(--line));
-  background: color-mix(in oklch, var(--grad-a) 6%, var(--card));
+.co-chip.active {
+  color: var(--hi);
+  border-color: var(--grad-a);
+  background: color-mix(in oklch, var(--grad-a) 10%, var(--card));
 }
 
-/* ── Tooltip ─────────────────────────────────────────── */
-.co-tip {
+/* Progress sweep on active chip */
+.co-chip-prog {
   position: absolute;
-  bottom: calc(100% + 14px);
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 300;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--grad-a);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: chip-prog 2.8s linear forwards;
+}
 
+@keyframes chip-prog {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Preview card ───────────────────────────────────────── */
+.co-preview-panel {
+  position: sticky;
+  top: 90px;
+}
+
+.co-preview-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow:
+    0 4px 12px oklch(0% 0 0 / 0.25),
+    0 16px 40px oklch(0% 0 0 / 0.3);
+  animation: co-preview-in .4s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+@keyframes co-preview-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.co-preview-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+
+.co-preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.co-preview-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--grad-a) 8%, var(--bg-2)) 0%,
+    var(--bg-2) 100%
+  );
+}
+
+.co-preview-body {
+  padding: 18px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 220px;
-  white-space: normal;
-  word-break: normal;
-
-  background: color-mix(in oklch, var(--card) 92%, var(--bg));
-  border: 1px solid color-mix(in oklch, var(--line) 70%, var(--grad-a) 30%);
-  border-radius: 12px;
-  padding: 12px 14px 13px;
-
-  box-shadow:
-    0 2px 8px oklch(0% 0 0 / 0.25),
-    0 8px 24px oklch(0% 0 0 / 0.35),
-    0 24px 48px oklch(0% 0 0 / 0.25),
-    inset 0 1px 0 oklch(100% 0 0 / 0.04);
-
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  gap: 6px;
 }
 
-/* caret */
-.co-tip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: color-mix(in oklch, var(--line) 70%, var(--grad-a) 30%);
-}
-
-.co-chip:hover .co-tip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-.co-tip-role {
-  display: block;
+.co-preview-co {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--grad-a);
-  line-height: 1.3;
+  color: var(--mute);
 }
 
-.co-tip-desc {
-  display: block;
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0;
-  text-transform: none;
-  line-height: 1.55;
+.co-preview-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--grad-a);
+}
+
+.co-preview-desc {
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--fg-2);
-  font-weight: 400;
+  margin-top: 2px;
+}
+
+@media (max-width: 760px) {
+  .co-showcase {
+    grid-template-columns: 1fr;
+  }
+  .co-preview-panel {
+    position: static;
+    order: -1;
+  }
 }
 
 .about-grid {
