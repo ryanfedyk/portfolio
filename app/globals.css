@@ -1152,8 +1152,22 @@ section {
   transition: color .2s;
 }
 
+.arch-ttl::after {
+  content: " ↗";
+  font-family: var(--mono);
+  font-size: 11px;
+  opacity: 0.4;
+  display: inline-block;
+  transition: opacity .2s, transform .2s;
+}
+
 .arch-ttl:hover {
   color: var(--grad-a);
+}
+
+.arch-ttl:hover::after {
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
 
 .arch-ttl .it {
