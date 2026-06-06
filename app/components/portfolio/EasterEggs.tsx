@@ -101,7 +101,7 @@ export default function EasterEggs() {
 
         if (typed.current.endsWith("hire")) {
           typed.current = "";
-          showToast("👋 Let's talk — ryan@ryanfedyk.com", 6000);
+          showToast("👋 Let's talk: ryan@ryanfedyk.com", 6000);
         }
         if (typed.current.endsWith("light")) {
           typed.current = "";
@@ -153,7 +153,7 @@ export default function EasterEggs() {
   const HINTS = [
     { icon: "🎮", name: "The Classic",     hint: "A legendary cheat code from 1986 still works here." },
     { icon: "🌈", name: "Rainbow Mode",    hint: "Click the orange dot in the nav 5 times quickly." },
-    { icon: "🌅", name: "Day Mode",         hint: "Type the opposite of dark — anywhere on the page." },
+    { icon: "🌅", name: "Day Mode",         hint: "Type the opposite of dark, anywhere on the page." },
     { icon: "👋", name: "Make Your Move",  hint: "Type what you'd say to a recruiter." },
   ];
 

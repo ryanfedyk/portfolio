@@ -41,19 +41,19 @@ const PHILOSOPHY: Philosophy[] = [
     n: "01",
     h: "Design for the 126th visit",
     hIt: "126th",
-    p: "Anyone can make a delightful first impression. The hard part — and the interesting part — is what keeps someone coming back when the novelty is gone.",
+    p: "Anyone can make a delightful first impression. The hard part (and the interesting part) is what keeps someone coming back when the novelty is gone.",
   },
   {
     n: "02",
     h: "Make AI feel human",
     hIt: "human",
-    p: "Useful intelligence is quiet. It earns trust by being legible, controllable, and humble — never by performing its own cleverness at the user.",
+    p: "Useful intelligence is quiet. It earns trust by being legible, controllable, and humble, never by performing its own cleverness at the user.",
   },
   {
     n: "03",
     h: "Strategic tinkering",
     hIt: "tinkering",
-    p: "I prototype before I propose, run small experiments to pressure-test assumptions, and stay close to the craft even as teams scale. Paired with a clear strategic vision, it creates teams that don't just execute — they invent.",
+    p: "I prototype before I propose, run small experiments to pressure-test assumptions, and stay close to the craft even as teams scale. Paired with a clear strategic vision, it creates teams that don't just execute. They invent.",
   },
 ];
 
@@ -65,11 +65,11 @@ const CASES: CaseStudy[] = [
     title: "Launching the",
     titleIt: "Future of Documents",
     narrative:
-      "As AI reshapes every productivity surface, I led the design vision for Google Docs' next generation — helping define what documents look like when they become intelligent, real-time, and deeply collaborative at scale.",
+      "As AI reshapes every productivity surface, I led the design vision for Google Docs' next generation, helping define what documents look like when they become intelligent, real-time, and deeply collaborative at scale.",
     heroProject: {
       year: "2026",
       name: "Docs Live",
-      desc: "A real-time, AI-native document experience that transforms static pages into living, collaborative workspaces — announced at Google I/O 2025.",
+      desc: "A real-time, AI-native document experience that transforms static pages into living, collaborative workspaces, announced at Google I/O 2025.",
       image: "/assets/docslive.gif",
       video: "/assets/docslive_announcement.mp4",
       links: [
@@ -88,14 +88,14 @@ const CASES: CaseStudy[] = [
       {
         year: "2026",
         name: "Future of Docs",
-        desc: "A long-range product vision redefining how AI transforms collaborative documents — from static canvases to dynamic, intelligent workspaces that understand context and intent.",
+        desc: "A long-range product vision redefining how AI transforms collaborative documents, moving from static canvases to dynamic, intelligent workspaces that understand context and intent.",
         image: "/assets/fod.gif",
         patent: "Patented",
       },
       {
         year: "2026",
         name: "Help Me Create",
-        desc: "AI that takes you from blank page to brilliance — generating structured, contextually-aware content inside Docs using Gemini.",
+        desc: "AI that takes you from blank page to brilliance, generating structured, contextually-aware content inside Docs using Gemini.",
         image: "/assets/helpmecreate.gif",
         links: [
           {
@@ -113,7 +113,7 @@ const CASES: CaseStudy[] = [
     title: "Feature Chasing",
     titleIt: "→ AI-Focused Differentiators",
     narrative:
-      "After establishing hybrid work as the future of meetings, I pivoted the broader Meet team toward longer-term vision and AI-powered product differentiators — building features that would set Meet apart across a user base of 3B+.",
+      "After establishing hybrid work as the future of meetings, I pivoted the broader Meet team toward longer-term vision and AI-powered product differentiators, building features that would set Meet apart across a user base of 3B+.",
     heroProject: {
       year: "2025",
       name: "Real-time Translation",
@@ -154,7 +154,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2023",
         name: "Face Match",
-        desc: "AI that identifies and matches participants across meeting tiles — ensuring every face is represented equitably regardless of camera or environment.",
+        desc: "AI that identifies and matches participants across meeting tiles, ensuring every face is represented equitably regardless of camera or environment.",
         image: "/assets/biometric%20room%20checkin.gif",
         links: [
           {
@@ -166,7 +166,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2025",
         name: "Studio Makeup",
-        desc: "AI-powered studio lighting and beauty effects that help users look their best on camera — automatically enhancing presence in any lighting environment.",
+        desc: "AI-powered studio lighting and beauty effects that help users look their best on camera, automatically enhancing presence in any lighting environment.",
         image: "/assets/studiomakeup.png",
         links: [
           {
@@ -178,7 +178,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2024",
         name: "Stackable Effects",
-        desc: "Combine multiple video effects simultaneously — filters, backgrounds, lighting adjustments, and more — layered in real time for a fully personalised camera presence.",
+        desc: "Combine multiple video effects simultaneously: filters, backgrounds, lighting adjustments, and more, layered in real time for a fully personalised camera presence.",
         image: "/assets/stackableeffects.gif",
         links: [
           {
@@ -212,7 +212,7 @@ const CASES: CaseStudy[] = [
     heroProject: {
       year: "2018",
       name: "Reducing Police Violence",
-      desc: "A VR-based training experience designed to build empathy and de-escalation skills in law enforcement — reducing use-of-force incidents through perspective-taking.",
+      desc: "A VR-based training experience designed to build empathy and de-escalation skills in law enforcement, reducing use-of-force incidents through perspective-taking.",
       image: "/assets/VR_Training.gif",
       links: [
         {
@@ -230,7 +230,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2018",
         name: "Countering Disinformation",
-        desc: "High-leverage strategies and tools to combat coordinated disinformation campaigns — working with media partners and platforms at scale.",
+        desc: "High-leverage strategies and tools to combat coordinated disinformation campaigns, working with media partners and platforms at scale.",
         image: "/assets/disinfohighleverage.gif",
         links: [
           {
@@ -254,7 +254,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2018",
         name: "Anti-Harassment Tools",
-        desc: "ML toxicity-detection tool deployed with 200+ media partners, and UX systems designed to protect at-risk communities — making online spaces safer by design.",
+        desc: "ML toxicity-detection tool deployed with 200+ media partners, and UX systems designed to protect at-risk communities, making online spaces safer by design.",
         image: "/assets/fightinharassment.png",
         links: [
           {
@@ -266,7 +266,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2018",
         name: "Reducing Toxic Language Online",
-        desc: "Real-time toxicity scoring that helps publishers, platforms, and moderators identify and reduce harmful language at scale — powering safer communities across the web.",
+        desc: "Real-time toxicity scoring that helps publishers, platforms, and moderators identify and reduce harmful language at scale, powering safer communities across the web.",
         image: "/assets/perspective.gif",
         links: [
           {
@@ -281,7 +281,7 @@ const CASES: CaseStudy[] = [
     n: "04",
     yearRange: "2025–2026",
     company: "Google Shopping",
-    title: "Beyond the Prompt —",
+    title: "Beyond the Prompt:",
     titleIt: "The Implicit AI Interface",
     narrative:
       "In 2–3 years predictive, agentic, and generative UIs will replace conversational interfaces for most everyday tasks. I led the strategic vision and design explorations that are defining what that near-term future looks like for commerce.",
@@ -312,20 +312,20 @@ const CASES: CaseStudy[] = [
       {
         year: "2025",
         name: "Implicit Interfaces",
-        desc: "A strategic framework for the next frontier in UX — where interfaces anticipate needs and act on them before users have to ask.",
+        desc: "A strategic framework for the next frontier in UX, where interfaces anticipate needs and act on them before users have to ask.",
         image: "/assets/implicit shopping.png",
       },
       {
         year: "2025",
         name: "Shopping AI Pathways",
-        desc: "Novel UX bringing LLM power to the product grid — letting users browse visually while naturally refining their search.",
+        desc: "Novel UX bringing LLM power to the product grid, letting users browse visually while naturally refining their search.",
         image: "/assets/shoppingaipathways.gif",
         patent: "Patent Pending",
       },
       {
         year: "2025",
         name: "Outfit Agent",
-        desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media.",
+        desc: "A modern take on the catalog mailer, curated by a shopping agent using contextual, generative media.",
         image: "/assets/outfitagent.gif",
         patent: "Patented",
       },
@@ -338,11 +338,11 @@ const CASES: CaseStudy[] = [
     title: "Redefining the",
     titleIt: "Future of Education",
     narrative:
-      "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs — doubling the user base and setting a new bar for ed-tech UX.",
+      "As classrooms went digital, teachers needed more robust tools for planning, grading, and assignment distribution. My team rebuilt Google Classroom to meet those needs, doubling the user base and setting a new bar for ed-tech UX.",
     heroProject: {
       year: "2018",
       name: "Google Classroom Vision",
-      desc: "A long-range product vision for Classroom — reimagining how digital tools support the full spectrum of teaching and learning at scale.",
+      desc: "A long-range product vision for Classroom, reimagining how digital tools support the full spectrum of teaching and learning at scale.",
       image: "/assets/eduvision.gif",
       video: "/assets/eduvision_small.mp4",
     },
@@ -385,7 +385,7 @@ const CASES: CaseStudy[] = [
     heroProject: {
       year: "2022",
       name: "Adaptive Audio",
-      desc: "A breakthrough in multi-device meeting audio — letting multiple laptops in the same room join a call without echo or feedback, enabling spontaneous hybrid collaboration.",
+      desc: "A breakthrough in multi-device meeting audio, letting multiple laptops in the same room join a call without echo or feedback, enabling spontaneous hybrid collaboration.",
       image: "/assets/audiomesh.gif",
       links: [
         {
@@ -443,14 +443,14 @@ const CASES: CaseStudy[] = [
       {
         year: "2022",
         name: "Vibe Check",
-        desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile — making emotional presence visible in hybrid meetings.",
+        desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile, making emotional presence visible in hybrid meetings.",
         image: "/assets/vibecheck.gif",
         patent: "Patent Pending",
       },
       {
         year: "2022",
         name: "Board 65 & Series One 27",
-        desc: "Launched 2 new collaboration devices with 89% CSAT — bringing Meet's hardware portfolio back online for the hybrid era.",
+        desc: "Launched 2 new collaboration devices with 89% CSAT, bringing Meet's hardware portfolio back online for the hybrid era.",
         image: "/assets/meetdevices.gif",
         links: [
           {
@@ -470,7 +470,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2025",
         name: "Touch Controller Redesign",
-        desc: "A refreshed UI for Google Meet hardware touch controllers — bringing a cleaner, more intuitive room control experience to hybrid meeting spaces.",
+        desc: "A refreshed UI for Google Meet hardware touch controllers, bringing a cleaner, more intuitive room control experience to hybrid meeting spaces.",
         image: "/assets/Google_Series_One_Touch_Controller_Editorial_2.gif",
         links: [
           {

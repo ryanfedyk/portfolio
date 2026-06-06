@@ -276,7 +276,7 @@ function Nav({ scrolled }: { scrolled: boolean }) {
         </nav>
         <div className="nav-mob-meta">
           <span>Design Lead &amp; Manager</span>
-          <span>Google · 2013 — Present</span>
+          <span>Google · 2013–Present</span>
         </div>
       </div>
     </>
@@ -332,7 +332,7 @@ export default function Hero() {
         <div className="wrap hero-grid">
           <div className="hero-eyebrow rv">
             <span className="ln" />
-            <span className="eyebrow">Portfolio · 2009 — 2026</span>
+            <span className="eyebrow">Portfolio · 2009–2026</span>
           </div>
 
           <h1 className="rv rv-d1">

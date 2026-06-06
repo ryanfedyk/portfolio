@@ -313,35 +313,35 @@ const INITIAL_VISIBLE = 10;
 const RESUME: ResumeCompany[] = [
   {
     co: "Google",
-    yr: "2013 — Present",
+    yr: "2013–Present",
     loc: "New York",
     eras: [
       {
-        yr: "2026 — Present",
+        yr: "2026–Present",
         team: "Docs",
         role: "Sr. Principal Design Lead",
-        desc: "Leading the design vision for Google Docs' next generation — redefining what documents look like when they're intelligent, real-time, and deeply collaborative at scale.",
+        desc: "Leading the design vision for Google Docs' next generation, redefining what documents look like when they're intelligent, real-time, and deeply collaborative at scale.",
       },
       {
-        yr: "2025 — 2026",
+        yr: "2025–2026",
         team: "Shopping & Gemini",
         role: "Sr. Principal Designer",
-        desc: "Defining the next frontier of agentic commerce — from implicit shopping interfaces to Universal Cart and conversational checkout used by hundreds of millions.",
+        desc: "Defining the next frontier of agentic commerce, from implicit shopping interfaces to Universal Cart and conversational checkout used by hundreds of millions.",
       },
       {
-        yr: "2021 — 2025",
+        yr: "2021–2025",
         team: "Meet",
         role: "Sr. Principal Design Lead",
-        desc: "Shipped hybrid work for 3B+ users, then pivoted the team toward AI-powered experiences — real-time speech translation, generative backgrounds, and intelligent notetaking.",
+        desc: "Shipped hybrid work for 3B+ users, then pivoted the team toward AI-powered experiences: real-time speech translation, generative backgrounds, and intelligent notetaking.",
       },
       {
-        yr: "2016 — 2019",
+        yr: "2016–2019",
         team: "Classroom",
         role: "UX Design Lead",
         desc: "Rebuilt Google Classroom from the ground up for 50M+ teachers and students, doubling the user base and setting a new bar for ed-tech UX.",
       },
       {
-        yr: "2017 — 2020",
+        yr: "2017–2020",
         team: "Jigsaw",
         role: "Design Lead",
         desc: "Built the design team from scratch and redirected its mission around user-centered design. Created tools to fight censorship, harassment, and disinformation worldwide.",
@@ -350,36 +350,36 @@ const RESUME: ResumeCompany[] = [
   },
   {
     co: "Microsoft",
-    yr: "2009 — 2013",
+    yr: "2009–2013",
     loc: "Seattle",
     eras: [
       {
-        yr: "2010 — 2013",
+        yr: "2010–2013",
         team: "Windows & Surface",
         role: "UX Designer",
-        desc: "Shipped Windows Phone 7 and Surface V1 — helping define Microsoft's entry into mobile and the tablet era.",
+        desc: "Shipped Windows Phone 7 and Surface V1, helping define Microsoft's entry into mobile and the tablet era.",
       },
       {
         yr: "2010",
         team: "Xbox & Kinect",
         role: "UX Designer",
-        desc: "Designed motion and gesture interaction for Xbox Kinect — one of the fastest-selling consumer electronics devices ever made at launch.",
+        desc: "Designed motion and gesture interaction for Xbox Kinect, one of the fastest-selling consumer electronics devices ever made at launch.",
       },
       {
-        yr: "2011 — 2013",
+        yr: "2011–2013",
         team: "Bing & Research",
         role: "UX Designer",
-        desc: "Mapping, local search, and Photosynth V2 — bringing spatial and contextual intelligence to Bing's product suite.",
+        desc: "Mapping, local search, and Photosynth V2, bringing spatial and contextual intelligence to Bing's product suite.",
       },
     ],
   },
   {
     co: "New York University",
-    yr: "2007 — 2009",
+    yr: "2007–2009",
     loc: "New York",
     eras: [
       {
-        yr: "2007 — 2009",
+        yr: "2007–2009",
         team: "ITP Program",
         role: "Design Educator",
         desc: "Taught interaction design and helped build the foundations of human-centered design education at NYU's Tisch School of the Arts.",
