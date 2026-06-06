@@ -411,7 +411,7 @@ const CASES: CaseStudy[] = [
       },
       {
         year: "2022",
-        name: "Portrait Framing",
+        name: "Freeze & Enhance Backgrounds",
         desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience.",
         image: "/assets/portraitframing.gif",
         patent: "Patented",
