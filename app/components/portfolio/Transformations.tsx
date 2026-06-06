@@ -347,6 +347,12 @@ const CASES: CaseStudy[] = [
         name: "Course Kit",
         desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
         image: "/assets/coursekit.png",
+        links: [
+          {
+            label: "Google Blog",
+            url: "https://blog.google/products-and-platforms/products/education/introducing-course-kit-new-ways-collaborate-g-suite-your-lms-designed-higher-ed/",
+          },
+        ],
       },
     ],
   },
