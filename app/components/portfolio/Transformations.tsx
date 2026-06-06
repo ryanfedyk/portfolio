@@ -61,7 +61,7 @@ const CASES: CaseStudy[] = [
     n: "01",
     yearRange: "2026–Present",
     company: "Google Docs",
-    title: "Redefining the",
+    title: "Launching the",
     titleIt: "Future of Documents",
     narrative:
       "As AI reshapes every productivity surface, I led the design vision for Google Docs' next generation — helping define what documents look like when they become intelligent, real-time, and deeply collaborative at scale.",
@@ -225,18 +225,6 @@ const CASES: CaseStudy[] = [
       },
       {
         year: "2018",
-        name: "Perspective API",
-        desc: "ML toxicity-detection tool deployed with 200+ media partners to reduce online harassment at scale.",
-        image: "/assets/fighting%20disinfo.png",
-        links: [
-          {
-            label: "perspectiveapi.com",
-            url: "http://perspectiveapi.com/",
-          },
-        ],
-      },
-      {
-        year: "2018",
         name: "Outline VPN",
         desc: "Open-source VPN helping journalists and activists bypass government censorship in 30+ countries.",
         image: "/assets/represive%20censorship.png",
@@ -250,7 +238,7 @@ const CASES: CaseStudy[] = [
       {
         year: "2018",
         name: "Anti-Harassment Tools",
-        desc: "UX patterns and systems that protect at-risk communities by making online spaces safer by design.",
+        desc: "ML toxicity-detection tool deployed with 200+ media partners, and UX systems designed to protect at-risk communities — making online spaces safer by design.",
         image: "/assets/fightinharassment.png",
         links: [
           {
