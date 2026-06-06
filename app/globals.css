@@ -861,32 +861,16 @@ section {
   max-width: 66ch;
 }
 
-/* ── Patent banner — full-width strip, never shifts layout ─ */
-.cs-patent-badge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
+/* ── Patent label — inline next to the date ────────────── */
+.cs-inline-patent {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.18em;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 5px 12px;
-  text-align: center;
-  pointer-events: none;
-}
-
-.cs-patent-badge.granted {
-  background: color-mix(in oklch, var(--grad-a) 28%, oklch(0% 0 0 / 0.55));
   color: var(--grad-a);
-  border-bottom: 1px solid color-mix(in oklch, var(--grad-a) 50%, transparent);
-}
-
-.cs-patent-badge.pending {
-  background: color-mix(in oklch, var(--fg) 10%, oklch(0% 0 0 / 0.6));
-  color: var(--mute);
-  border-bottom: 1px solid var(--line);
+  opacity: 0.75;
+  margin-left: 8px;
+  vertical-align: middle;
 }
 
 .cs-hero-proj {
@@ -1074,7 +1058,6 @@ section {
 }
 
 .cs-launch-img {
-  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;

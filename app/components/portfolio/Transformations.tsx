@@ -644,14 +644,14 @@ export default function Transformations() {
                         alt={c.heroProject.name}
                       />
                     )}
-                    {c.heroProject.patent && (
-                      <span className={`cs-patent-badge ${c.heroProject.patent === "Patent Pending" ? "pending" : "granted"}`}>
-                        {c.heroProject.patent}
-                      </span>
-                    )}
                     <div className="cs-hero-proj-scrim" aria-hidden="true" />
                     <div className="cs-hero-proj-foot">
-                      <span className="cs-hero-proj-yr">{c.heroProject.year}</span>
+                      <span className="cs-hero-proj-yr">
+                        {c.heroProject.year}
+                        {c.heroProject.patent && (
+                          <span className="cs-inline-patent">{c.heroProject.patent}</span>
+                        )}
+                      </span>
                       <div className="cs-hero-proj-name">{c.heroProject.name}</div>
                       <p className="cs-hero-proj-desc">{c.heroProject.desc}</p>
                       {c.heroProject.links && c.heroProject.links.length > 0 && (
@@ -680,14 +680,14 @@ export default function Transformations() {
                       <div key={i} className="cs-launch">
                         <div className="cs-launch-img">
                           <img src={l.image} alt={l.name} />
-                          {l.patent && (
-                            <span className={`cs-patent-badge ${l.patent === "Patent Pending" ? "pending" : "granted"}`}>
-                              {l.patent}
-                            </span>
-                          )}
                         </div>
                         <div className="cs-launch-foot">
-                          <div className="cs-launch-yr">{l.year}</div>
+                          <div className="cs-launch-yr">
+                            {l.year}
+                            {l.patent && (
+                              <span className="cs-inline-patent">{l.patent}</span>
+                            )}
+                          </div>
                           <div className="cs-launch-name">{l.name}</div>
                           <p className="cs-launch-desc">{l.desc}</p>
                           {l.links && l.links.length > 0 && (
