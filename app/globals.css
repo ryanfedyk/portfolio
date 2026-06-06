@@ -1121,14 +1121,12 @@ section {
 .arch-row {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: 80px 2fr 1.5fr 1fr 120px;
+  grid-template-columns: 80px 2fr 1.5fr 130px 44px;
   gap: 24px;
   padding: 22px 28px;
   background: var(--card);
   align-items: center;
   transition: background .25s, padding-left .3s;
-  text-decoration: none;
-  color: inherit;
 }
 
 .arch-row:hover {
@@ -1162,12 +1160,30 @@ section {
   color: var(--fg-2);
 }
 
-.arch-role {
+.arch-press {
   font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--grad-a);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity .2s, color .2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arch-press:hover {
+  opacity: 1;
+  color: var(--grad-a);
+}
+
+.arch-press-none {
+  font-family: var(--mono);
+  font-size: 11px;
   color: var(--mute);
+  opacity: 0.25;
 }
 
 .arch-arr {
@@ -1175,7 +1191,9 @@ section {
   font-size: 12px;
   color: var(--fg-2);
   text-align: right;
-  transition: transform .3s;
+  text-decoration: none;
+  transition: transform .3s, color .2s;
+  display: block;
 }
 
 .arch-row:hover .arch-arr {
@@ -1211,11 +1229,11 @@ section {
 
 @media (max-width: 900px) {
   .arch-row {
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 60px 1fr 44px;
   }
   .arch-co,
-  .arch-role,
-  .arch-arr {
+  .arch-press,
+  .arch-press-none {
     display: none;
   }
 }

@@ -18,6 +18,7 @@ interface Launch {
   co: string;
   role: string;
   url: string;
+  press?: { label: string; url: string };
 }
 
 interface ResumeEra {
@@ -101,7 +102,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Docs",
     role: "Design Lead",
-    url: "https://workspace.googleblog.com/2026/05/new-ways-to-create-and-get-things-done-in-google-workspace.html",
+    url: "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+    press: { label: "WSJ", url: "https://muckrack.com/nicole-nguyen/articles#!" },
   },
   {
     yr: "2026",
@@ -109,7 +111,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Docs",
     role: "Design Lead",
-    url: "https://workspace.googleblog.com/2026/03/google-shares-gemini-updates-to-docs-sheets-slides-drive.html",
+    url: "https://blog.google/products-and-platforms/products/workspace/gemini-workspace-updates-march-2026/",
   },
   {
     yr: "2026",
@@ -118,6 +120,7 @@ const LAUNCHES: Launch[] = [
     co: "Google · Gemini",
     role: "Design Lead",
     url: "https://blog.google/products-and-platforms/products/shopping/google-shopping-cart/",
+    press: { label: "Forbes", url: "https://www.forbes.com/sites/claraludmir/2026/05/20/what-googles-universal-cart-launch-means-for-ai-led-shopping/" },
   },
   {
     yr: "2026",
@@ -125,7 +128,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Gemini",
     role: "Design Lead",
-    url: "https://blog.google/technology/developers/google-universal-commerce-protocol/",
+    url: "https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/",
   },
   // ── 2025 ──────────────────────────────────────────────────────────────────
   {
@@ -134,7 +137,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://techcrunch.com/2025/05/20/google-meet-is-getting-real-time-speech-translation/",
+    url: "https://blog.google/products-and-platforms/products/workspace/google-meet-langauge-translation-ai/",
+    press: { label: "PCMag", url: "https://www.pcmag.com/news/google-meet-real-time-live-language-translations-io-2025" },
   },
   {
     yr: "2025",
@@ -143,6 +147,7 @@ const LAUNCHES: Launch[] = [
     co: "Google · Meet",
     role: "Design Lead",
     url: "https://workspaceupdates.googleblog.com/2025/10/ai-powered-makeup-in-google-meet.html",
+    press: { label: "Mashable", url: "https://mashable.com/article/google-meet-ai-makeup-tool" },
   },
   {
     yr: "2025",
@@ -150,7 +155,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-google-meet.html",
+    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-for-google-meet.html",
+    press: { label: "Android Police", url: "https://www.androidpolice.com/new-dynamic-google-meet-layouts/" },
   },
   {
     yr: "2025",
@@ -158,7 +164,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-google-meet.html",
+    url: "https://workspaceupdates.googleblog.com/2025/03/dynamic-layouts-for-google-meet.html",
   },
   {
     yr: "2025",
@@ -166,7 +172,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2025/12/connect-room-google-meet-hardware.html",
+    url: "https://workspaceupdates.googleblog.com/2025/12/seamlessly-join-meet-hardware-connect-room.html",
   },
   // ── 2024 ──────────────────────────────────────────────────────────────────
   {
@@ -175,7 +181,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2024/06/generative-backgrounds-google-meet.html",
+    url: "https://workspace.google.com/blog/productivity-collaboration/bringing-your-best-self-more-meaningful-connections-google-meet",
+    press: { label: "Android Police", url: "https://www.androidpolice.com/google-meet-ai-chat-workspace-paid/" },
   },
   {
     yr: "2024",
@@ -183,7 +190,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2024/08/video-effects-google-meet.html",
+    url: "https://workspaceupdates.googleblog.com/2024/01/google-meet-improved-audio-and-video-combine-multiple-video-effects.html",
   },
   {
     yr: "2024",
@@ -191,7 +198,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2024/08/take-notes-for-me-google-meet.html",
+    url: "https://workspaceupdates.googleblog.com/2024/08/take-notes-for-me-google-meet-gemini.html",
+    press: { label: "PCMag", url: "https://www.pcmag.com/news/meeting-overload-gemini-ai-can-now-take-notes-for-you-in-google-meet" },
   },
   {
     yr: "2024",
@@ -199,7 +207,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2024/05/adaptive-audio-google-meet.html",
+    url: "https://workspaceupdates.googleblog.com/2024/05/google-meet-adaptive-audio.html",
+    press: { label: "TechRadar", url: "https://www.techradar.com/pro/google-meet-could-soon-help-you-create-meetings-out-of-nothing" },
   },
   // ── 2022 ──────────────────────────────────────────────────────────────────
   {
@@ -208,7 +217,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://blog.google/products/workspace/we-heart-behind-meeting-emoji-meet/",
+    url: "https://blog.google/products-and-platforms/products/workspace/we-heart-behind-meeting-emoji-meet/",
   },
   // ── 2021 ──────────────────────────────────────────────────────────────────
   {
@@ -217,7 +226,7 @@ const LAUNCHES: Launch[] = [
     titleIt: "Collaboration Device",
     co: "Google · Meet",
     role: "Design Lead",
-    url: "https://www.avocor.com/products/google-series-one-board-65/",
+    url: "https://workspaceupdates.googleblog.com/2021/09/coming-soon-new-google-meet-hardware.html",
   },
   // ── 2019 ──────────────────────────────────────────────────────────────────
   {
@@ -226,7 +235,7 @@ const LAUNCHES: Launch[] = [
     titleIt: "Redesign",
     co: "Google · Education",
     role: "Design Lead",
-    url: "https://blog.google/outreach-initiatives/education/new-year-new-classroom/",
+    url: "https://blog.google/products-and-platforms/products/education/new-google-classroom-features-make-it-easier-learn-teach-manage-and-build/",
   },
   // ── 2018 ──────────────────────────────────────────────────────────────────
   {
@@ -235,7 +244,7 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Google · Education",
     role: "Design Lead",
-    url: "https://workspaceupdates.googleblog.com/2018/07/introducing-course-kit-beta.html",
+    url: "https://blog.google/products-and-platforms/products/education/introducing-course-kit-new-ways-collaborate-g-suite-your-lms-designed-higher-ed/",
   },
   {
     yr: "2018",
@@ -243,7 +252,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Jigsaw",
     role: "Design Lead",
-    url: "https://jigsaw.google.com/the-current/outlineVPN/",
+    url: "https://medium.com/jigsaw/introducing-outline-making-it-safer-to-break-the-news-feda4d047b4",
+    press: { label: "PCMag", url: "https://www.pcmag.com/news/create-your-own-vpn-server-with-outline" },
   },
   // ── 2017 ──────────────────────────────────────────────────────────────────
   {
@@ -252,7 +262,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Jigsaw",
     role: "Design Lead",
-    url: "https://medium.com/jigsaw/toxicity-tone-not-the-same-thing-analyzing-the-new-google-api-on-toxicity-fd3e94685b22",
+    url: "https://medium.com/@carolinesinders/toxicity-and-tone-are-not-the-same-thing-analyzing-the-new-google-api-on-toxicity-perspectiveapi-14abe4e728b3",
+    press: { label: "PCMag UK", url: "https://uk.pcmag.com/gallery/119376/how-googles-jigsaw-is-trying-to-detoxify-the-internet" },
   },
   // ── 2013 ──────────────────────────────────────────────────────────────────
   {
@@ -261,7 +272,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Microsoft",
     role: "Designer",
-    url: "https://www.dpreview.com/articles/5688888145/photosynth-can-now-create-interactive-3d-scenes",
+    url: "https://www.microsoft.com/en-us/research/blog/new-spin-photosynth/",
+    press: { label: "DPReview", url: "https://www.dpreview.com/articles/6019900734/photosynth-new-features" },
   },
   // ── 2012 ──────────────────────────────────────────────────────────────────
   {
@@ -271,6 +283,7 @@ const LAUNCHES: Launch[] = [
     co: "Microsoft",
     role: "Designer",
     url: "https://en.wikipedia.org/wiki/Microsoft_Surface",
+    press: { label: "Engadget", url: "https://www.engadget.com/2012-06-19-editorial-engadget-on-microsofts-new-surface-tablet-line.html" },
   },
   // ── 2010 ──────────────────────────────────────────────────────────────────
   {
@@ -279,7 +292,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Microsoft",
     role: "Designer",
-    url: "https://en.wikipedia.org/wiki/Kinect",
+    url: "https://news.microsoft.com/source/2010/11/04/the-future-of-entertainment-starts-today-as-kinect-for-xbox-360-leaps-and-lands-at-retailers-nationwide/",
+    press: { label: "CNET", url: "https://www.cnet.com/tech/tech-industry/timeline-a-look-back-at-kinects-history/" },
   },
   {
     yr: "2010",
@@ -287,7 +301,8 @@ const LAUNCHES: Launch[] = [
     titleIt: null,
     co: "Microsoft",
     role: "Designer",
-    url: "https://en.wikipedia.org/wiki/Windows_Phone_7",
+    url: "https://www.prnewswire.com/news-releases/microsoft-and-partners-unveil-windows-phone-7-global-portfolio-104699784.html",
+    press: { label: "Engadget", url: "https://www.engadget.com/2010-07-19-windows-phone-7-in-depth-preview.html" },
   },
 ];
 
@@ -445,22 +460,35 @@ export default function Patents() {
 
           <div className="arch rv">
             {visibleLaunches.map((l, i) => (
-              <a
-                key={`${l.yr}-${i}`}
-                className="arch-row"
-                href={l.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <div key={`${l.yr}-${i}`} className="arch-row">
                 <span className="arch-yr">{l.yr}</span>
                 <span className="arch-ttl">
                   {l.title}
                   {l.titleIt ? <span className="it"> {l.titleIt}</span> : null}
                 </span>
                 <span className="arch-co">{l.co}</span>
-                <span className="arch-role">{l.role}</span>
-                <span className="arch-arr">↗</span>
-              </a>
+                {l.press ? (
+                  <a
+                    href={l.press.url}
+                    className="arch-press"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {l.press.label} ↗
+                  </a>
+                ) : (
+                  <span className="arch-press-none">—</span>
+                )}
+                <a
+                  href={l.url}
+                  className="arch-arr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${l.title}`}
+                >
+                  ↗
+                </a>
+              </div>
             ))}
           </div>
 
