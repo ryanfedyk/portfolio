@@ -180,6 +180,12 @@ const CASES: CaseStudy[] = [
         name: "Stackable Effects",
         desc: "Combine multiple video effects simultaneously — filters, backgrounds, lighting adjustments, and more — layered in real time for a fully personalised camera presence.",
         image: "/assets/stackableeffects.gif",
+        links: [
+          {
+            label: "Workspace Updates",
+            url: "https://workspaceupdates.googleblog.com/2024/01/google-meet-improved-audio-and-video-combine-multiple-video-effects.html",
+          },
+        ],
       },
       {
         year: "2025",
