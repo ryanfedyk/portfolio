@@ -176,6 +176,12 @@ const CASES: CaseStudy[] = [
         name: "Gemini in Meet",
         desc: "Embedded Gemini intelligence that surfaces insights, action items, and smart summaries throughout the meeting flow.",
         image: "/assets/aienhancedmeetings.gif",
+        links: [
+          {
+            label: "Gemini in Meet",
+            url: "https://workspace.google.com/intl/en_us/resources/ai-for-meetings/",
+          },
+        ],
       },
     ],
   },
