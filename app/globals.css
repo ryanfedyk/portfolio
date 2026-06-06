@@ -861,6 +861,34 @@ section {
   max-width: 66ch;
 }
 
+/* ── Patent badge — absolute, never shifts layout ──────── */
+.cs-patent-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 4px;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.cs-patent-badge.granted {
+  background: color-mix(in oklch, var(--grad-a) 22%, oklch(0% 0 0 / 0.5));
+  color: var(--grad-a);
+  border: 1px solid color-mix(in oklch, var(--grad-a) 45%, transparent);
+}
+
+.cs-patent-badge.pending {
+  background: color-mix(in oklch, var(--fg) 8%, oklch(0% 0 0 / 0.5));
+  color: var(--mute);
+  border: 1px solid var(--line);
+}
+
 .cs-hero-proj {
   position: relative;
   width: 100%;

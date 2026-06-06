@@ -21,6 +21,7 @@ interface CaseLaunch {
   image: string;
   video?: string;
   links?: CaseLink[];
+  patent?: "Patented" | "Patent Pending";
 }
 
 interface CaseStudy {
@@ -304,12 +305,14 @@ const CASES: CaseStudy[] = [
         name: "Shopping AI Pathways",
         desc: "Novel UX bringing LLM power to the product grid — letting users browse visually while naturally refining their search.",
         image: "/assets/shoppingaipathways.gif",
+        patent: "Patent Pending",
       },
       {
         year: "2025",
         name: "Outfit Agent",
-        desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media. Patented.",
+        desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media.",
         image: "/assets/outfitagent.gif",
+        patent: "Patented",
       },
     ],
   },
@@ -383,6 +386,7 @@ const CASES: CaseStudy[] = [
         name: "Dynamic Layouts",
         desc: "Rebuilt Meet's base grid to be more people-focused and equitable for hybrid rooms, reducing video-conferencing fatigue.",
         image: "/assets/dynamiclayouts.gif",
+        patent: "Patented",
         links: [
           {
             label: "Video Overview",
@@ -393,8 +397,9 @@ const CASES: CaseStudy[] = [
       {
         year: "2022",
         name: "Portrait Framing",
-        desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience. Patented.",
+        desc: "AI-powered framing creating consistent face sizes with natural cropping for a more human meeting experience.",
         image: "/assets/portraitframing.gif",
+        patent: "Patented",
       },
       {
         year: "2022",
@@ -406,13 +411,18 @@ const CASES: CaseStudy[] = [
             label: "Google Blog",
             url: "https://blog.google/products/workspace/we-heart-behind-meeting-emoji-meet/",
           },
+          {
+            label: "The Verge",
+            url: "https://www.theverge.com/2023/1/11/23550717/google-meet-emoji-launch",
+          },
         ],
       },
       {
         year: "2022",
         name: "Pop-up Rooms",
-        desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience. Patented.",
+        desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.",
         image: "/assets/roomsvisoin.gif",
+        patent: "Patented",
       },
       {
         year: "2022",
@@ -630,6 +640,11 @@ export default function Transformations() {
                         alt={c.heroProject.name}
                       />
                     )}
+                    {c.heroProject.patent && (
+                      <span className={`cs-patent-badge ${c.heroProject.patent === "Patent Pending" ? "pending" : "granted"}`}>
+                        {c.heroProject.patent}
+                      </span>
+                    )}
                     <div className="cs-hero-proj-scrim" aria-hidden="true" />
                     <div className="cs-hero-proj-foot">
                       <span className="cs-hero-proj-yr">{c.heroProject.year}</span>
@@ -661,6 +676,11 @@ export default function Transformations() {
                       <div key={i} className="cs-launch">
                         <div className="cs-launch-img">
                           <img src={l.image} alt={l.name} />
+                          {l.patent && (
+                            <span className={`cs-patent-badge ${l.patent === "Patent Pending" ? "pending" : "granted"}`}>
+                              {l.patent}
+                            </span>
+                          )}
                         </div>
                         <div className="cs-launch-foot">
                           <div className="cs-launch-yr">{l.year}</div>
