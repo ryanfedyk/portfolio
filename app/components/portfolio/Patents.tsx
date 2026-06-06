@@ -218,6 +218,7 @@ const LAUNCHES: Launch[] = [
     co: "Google · Meet",
     role: "Design Lead",
     url: "https://blog.google/products-and-platforms/products/workspace/we-heart-behind-meeting-emoji-meet/",
+    press: { label: "The Verge", url: "https://www.theverge.com/2023/1/11/23550717/google-meet-emoji-launch" },
   },
   // ── 2021 ──────────────────────────────────────────────────────────────────
   {
