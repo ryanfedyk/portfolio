@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface Philosophy {
   n: string;
@@ -39,48 +39,36 @@ interface CaseStudy {
   patentCount?: number;
 }
 
-interface ProductEntry {
-  co: string;
-  name: string;
-  role: string | null;
-  desc: string;
-  image: string | null;
-}
-
-const COMPANIES: { co: string; products: Omit<ProductEntry, "co">[] }[] = [
+const COMPANIES = [
   {
     co: "Google",
     products: [
-      { name: "Docs",      role: "Sr. Principal Design Lead",  desc: "Transforming Docs into an agent-forward, AI-native document platform.",                          image: "/assets/fod.gif" },
-      { name: "Meet",      role: "Sr. Principal Design Lead",  desc: "Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences.", image: "/assets/realtimespeech%20translation.gif" },
-      { name: "Gemini",    role: "Sr. Principal Designer",     desc: "End-to-end shopping experiences through conversational AI.",                                      image: "/assets/universal cart.png" },
-      { name: "Shopping",  role: "Sr. Principal Designer",     desc: "Implicit, personalized shopping powered by agentic AI.",                                          image: "/assets/shoppingaipathways.gif" },
-      { name: "Classroom", role: "UX Design Lead",             desc: "Redesigned Google Classroom for 50M+ teachers and students.",                                     image: "/assets/eduvision.gif" },
-      { name: "Search",    role: null,                         desc: "AI Shopping Agents in AI Mode.",                                                                   image: "/assets/outfitagent.gif" },
-      { name: "Glass",     role: null,                         desc: "Voice interfaces for wearables.",                                                                  image: "/assets/sonicboom.gif" },
+      { name: "Docs",      role: "Sr. Principal Design Lead",  desc: "Transforming Docs into an agent-forward, AI-native document platform." },
+      { name: "Meet",      role: "Sr. Principal Design Lead",  desc: "Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences." },
+      { name: "Gemini",    role: "Sr. Principal Designer",     desc: "End-to-end shopping experiences through conversational AI." },
+      { name: "Shopping",  role: "Sr. Principal Designer",     desc: "Implicit, personalized shopping powered by agentic AI." },
+      { name: "Classroom", role: "UX Design Lead",             desc: "Redesigned Google Classroom for 50M+ teachers and students." },
+      { name: "Search",    role: null,                         desc: "AI Shopping Agents in AI Mode." },
+      { name: "Glass",     role: null,                         desc: "Voice interfaces for wearables." },
     ],
   },
   {
     co: "Jigsaw",
     products: [
-      { name: "Perspective API", role: null, desc: "ML toxicity detection deployed with 200+ media partners.", image: "/assets/perspective.gif" },
-      { name: "Outline VPN",     role: null, desc: "Open-source VPN for journalists and activists in 30+ countries.", image: "/assets/represive%20censorship.png" },
-      { name: "Anti-Harassment", role: null, desc: "UX systems protecting at-risk communities by design.", image: "/assets/fightinharassment.png" },
+      { name: "Perspective API", role: null, desc: "ML toxicity detection deployed with 200+ media partners." },
+      { name: "Outline VPN",     role: null, desc: "Open-source VPN for journalists and activists in 30+ countries." },
+      { name: "Anti-Harassment", role: null, desc: "UX systems protecting at-risk communities by design." },
     ],
   },
   {
     co: "Microsoft",
     products: [
-      { name: "Xbox Kinect",   role: null, desc: "Motion and gesture interaction for living room gaming.", image: "/assets/VR_Training.gif" },
-      { name: "Windows Phone", role: null, desc: "Core UX design for Windows Phone 7.", image: null },
-      { name: "Bing Maps",     role: null, desc: "Mapping and local search experiences.", image: null },
+      { name: "Xbox Kinect",   role: null, desc: "Motion and gesture interaction for living room gaming." },
+      { name: "Windows Phone", role: null, desc: "Core UX design for Windows Phone 7." },
+      { name: "Bing Maps",     role: null, desc: "Mapping and local search experiences." },
     ],
   },
 ];
-
-const ALL_PRODUCTS: ProductEntry[] = COMPANIES.flatMap(({ co, products }) =>
-  products.map(p => ({ co, ...p }))
-);
 
 const PHILOSOPHY: Philosophy[] = [
   {
@@ -557,23 +545,6 @@ function renderPhilHeading(h: string, hIt: string | null) {
 
 export default function Transformations() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
-
-  const activeProduct = ALL_PRODUCTS[activeIdx];
-
-  // Auto-play through all products when not hovering
-  useEffect(() => {
-    if (isHovering) {
-      clearInterval(timerRef.current);
-      return;
-    }
-    timerRef.current = setInterval(() => {
-      setActiveIdx(i => (i + 1) % ALL_PRODUCTS.length);
-    }, 2800);
-    return () => clearInterval(timerRef.current);
-  }, [isHovering]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -620,65 +591,32 @@ export default function Transformations() {
             </div>
           </div>
 
-          <div className="co-showcase rv">
-            {/* ── Left: chips ─────────────────────────────── */}
-            <div className="co-chips-panel">
-              {COMPANIES.map(({ co, products }) => (
-                <div key={co} className="co-row">
-                  <span className="co-label">{co}</span>
-                  <div className="co-chips">
-                    {products.map((p) => {
-                      const idx = ALL_PRODUCTS.findIndex(
-                        ap => ap.co === co && ap.name === p.name
-                      );
-                      const isActive = idx === activeIdx;
-                      return (
-                        <div
-                          key={p.name}
-                          className={`co-chip${isActive ? " active" : ""}`}
-                          onMouseEnter={() => {
-                            setIsHovering(true);
-                            setActiveIdx(idx);
-                          }}
-                          onMouseLeave={() => setIsHovering(false)}
-                        >
-                          {p.name}
-                          {isActive && (
-                            <span
-                              className="co-chip-prog"
-                              key={`prog-${activeIdx}`}
-                            />
-                          )}
-                        </div>
-                      );
-                    })}
+          {(() => {
+            let chipIdx = 0;
+            return (
+              <div className="co-companies rv">
+                {COMPANIES.map(({ co, products }) => (
+                  <div key={co} className="co-row">
+                    <span className="co-label">{co}</span>
+                    <div className="co-chips">
+                      {products.map(({ name }) => {
+                        const i = chipIdx++;
+                        return (
+                          <div
+                            key={name}
+                            className="co-chip"
+                            style={{ "--i": i } as React.CSSProperties}
+                          >
+                            {name}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* ── Right: preview card ──────────────────────── */}
-            <div className="co-preview-panel">
-              <div className="co-preview-card" key={activeIdx}>
-                <div className="co-preview-img">
-                  {activeProduct.image ? (
-                    <img src={activeProduct.image} alt={activeProduct.name} />
-                  ) : (
-                    <div className="co-preview-placeholder" />
-                  )}
-                </div>
-                <div className="co-preview-body">
-                  <span className="co-preview-co">
-                    {activeProduct.co} · {activeProduct.name}
-                  </span>
-                  {activeProduct.role && (
-                    <span className="co-preview-role">{activeProduct.role}</span>
-                  )}
-                  <p className="co-preview-desc">{activeProduct.desc}</p>
-                </div>
+                ))}
               </div>
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </section>
 

@@ -506,20 +506,12 @@ section {
   }
 }
 
-/* ── Two-panel showcase ─────────────────────────────────── */
-.co-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: clamp(32px, 5vw, 64px);
-  align-items: start;
-  margin-top: clamp(32px, 4vw, 52px);
-  margin-bottom: clamp(40px, 6vw, 72px);
-}
-
-.co-chips-panel {
+.co-companies {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-top: clamp(32px, 4vw, 52px);
+  margin-bottom: clamp(40px, 6vw, 72px);
 }
 
 .co-row {
@@ -545,6 +537,7 @@ section {
   gap: 8px;
 }
 
+/* Chips start hidden; draw in sequentially when parent gets .in */
 .co-chip {
   position: relative;
   overflow: hidden;
@@ -558,117 +551,31 @@ section {
   border-radius: 100px;
   background: var(--card);
   white-space: nowrap;
-  cursor: default;
-  transition: color .25s, border-color .25s, background .25s;
+  /* Each chip starts clipped (invisible) */
+  clip-path: inset(0 100% 0 0 round 100px);
+  opacity: 0;
 }
 
-.co-chip.active {
-  color: var(--hi);
-  border-color: var(--grad-a);
-  background: color-mix(in oklch, var(--grad-a) 10%, var(--card));
+.co-chip:hover {
+  color: var(--fg);
+  border-color: color-mix(in oklch, var(--grad-a) 60%, var(--line));
+  background: color-mix(in oklch, var(--grad-a) 6%, var(--card));
 }
 
-/* Progress sweep on active chip */
-.co-chip-prog {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--grad-a);
-  transform-origin: left center;
-  transform: scaleX(0);
-  animation: chip-prog 2.8s linear forwards;
+/* When section scrolls in, draw chips one at a time */
+.co-companies.in .co-chip {
+  animation: chip-draw 0.5s cubic-bezier(.4, 0, .2, 1) both;
+  animation-delay: calc(0.05s + var(--i, 0) * 0.055s);
 }
 
-@keyframes chip-prog {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-/* ── Preview card ───────────────────────────────────────── */
-.co-preview-panel {
-  position: sticky;
-  top: 90px;
-}
-
-.co-preview-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow:
-    0 4px 12px oklch(0% 0 0 / 0.25),
-    0 16px 40px oklch(0% 0 0 / 0.3);
-  animation: co-preview-in .4s cubic-bezier(.2, .7, .2, 1) both;
-}
-
-@keyframes co-preview-in {
-  from { opacity: 0; transform: translateY(12px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.co-preview-img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--bg-2);
-}
-
-.co-preview-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.co-preview-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklch, var(--grad-a) 8%, var(--bg-2)) 0%,
-    var(--bg-2) 100%
-  );
-}
-
-.co-preview-body {
-  padding: 18px 22px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.co-preview-co {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-.co-preview-role {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.2;
-  color: var(--grad-a);
-}
-
-.co-preview-desc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--fg-2);
-  margin-top: 2px;
-}
-
-@media (max-width: 760px) {
-  .co-showcase {
-    grid-template-columns: 1fr;
+@keyframes chip-draw {
+  from {
+    clip-path: inset(0 100% 0 0 round 100px);
+    opacity: 0;
   }
-  .co-preview-panel {
-    position: static;
-    order: -1;
+  to {
+    clip-path: inset(0 0% 0 0 round 100px);
+    opacity: 1;
   }
 }
 
