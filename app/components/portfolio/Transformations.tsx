@@ -432,7 +432,7 @@ const CASES: CaseStudy[] = [
         year: "2022",
         name: "Vibe Check",
         desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile — making emotional presence visible in hybrid meetings.",
-        image: "/assets/sonicboom.gif",
+        image: "/assets/vibecheck.gif",
         patent: "Patent Pending",
       },
       {
