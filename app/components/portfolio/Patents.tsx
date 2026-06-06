@@ -267,16 +267,16 @@ const RESUME: ResumeCompany[] = [
         desc: "Shipped hybrid work for 3B+ users, then pivoted the team toward AI-powered experiences: real-time speech translation, generative backgrounds, and intelligent notetaking.",
       },
       {
-        yr: "2016–2019",
-        team: "Classroom",
-        role: "UX Design Lead",
-        desc: "Rebuilt Google Classroom from the ground up for 50M+ teachers and students, doubling the user base and setting a new bar for ed-tech UX.",
-      },
-      {
         yr: "2017–2020",
         team: "Jigsaw",
         role: "Design Lead",
         desc: "Built the design team from scratch and redirected its mission around user-centered design. Created tools to fight censorship, harassment, and disinformation worldwide.",
+      },
+      {
+        yr: "2016–2019",
+        team: "Classroom",
+        role: "UX Design Lead",
+        desc: "Rebuilt Google Classroom from the ground up for 50M+ teachers and students, doubling the user base and setting a new bar for ed-tech UX.",
       },
     ],
   },
@@ -307,11 +307,11 @@ const RESUME: ResumeCompany[] = [
   },
   {
     co: "New York University",
-    yr: "2007–2009",
+    yr: "2019–Present",
     loc: "New York",
     eras: [
       {
-        yr: "2007–2009",
+        yr: "2019–Present",
         team: "ITP Program",
         role: "Design Educator",
         desc: "Taught interaction design and helped build the foundations of human-centered design education at NYU's Tisch School of the Arts.",

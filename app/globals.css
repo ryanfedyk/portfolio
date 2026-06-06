@@ -795,6 +795,44 @@ section {
   color: var(--fg);
 }
 
+.case-vitals {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklch, var(--line) 55%, transparent);
+}
+
+.case-vital-role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--fg);
+}
+
+.case-vital {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.case-vital-lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.case-vital-val {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--grad-a);
+  letter-spacing: 0.04em;
+}
+
 .case-tags {
   display: flex;
   flex-direction: column;

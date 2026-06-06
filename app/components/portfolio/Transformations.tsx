@@ -34,6 +34,9 @@ interface CaseStudy {
   heroProject: CaseLaunch;
   tags: string[];
   launches: CaseLaunch[];
+  role?: string;
+  teamSize?: number;
+  patentCount?: number;
 }
 
 const PHILOSOPHY: Philosophy[] = [
@@ -83,6 +86,9 @@ const CASES: CaseStudy[] = [
         },
       ],
     },
+    role: "Sr. Principal Design Manager",
+    teamSize: 8,
+    patentCount: 2,
     tags: ["AI", "Documents", "Product Vision", "Design Leadership"],
     launches: [
       {
@@ -132,6 +138,9 @@ const CASES: CaseStudy[] = [
         },
       ],
     },
+    role: "Sr. Principal Design Manager",
+    teamSize: 12,
+    patentCount: 20,
     tags: ["AI", "Generative UX", "Design Leadership", "Patents"],
     launches: [
       {
@@ -301,6 +310,8 @@ const CASES: CaseStudy[] = [
         },
       ],
     },
+    role: "Sr. Principal Designer",
+    patentCount: 3,
     tags: ["Agentic AI", "Vision", "Patents", "Generative UI"],
     launches: [
       {
@@ -346,6 +357,8 @@ const CASES: CaseStudy[] = [
       image: "/assets/eduvision.gif",
       video: "/assets/eduvision_small.mp4",
     },
+    role: "Design Lead / Manager",
+    teamSize: 8,
     tags: ["Education Tech", "Product Strategy", "Design Systems"],
     launches: [
       {
@@ -394,6 +407,9 @@ const CASES: CaseStudy[] = [
         },
       ],
     },
+    role: "Sr. Principal Design Manager",
+    teamSize: 12,
+    patentCount: 20,
     tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
     launches: [
       {
@@ -628,6 +644,23 @@ export default function Transformations() {
                 <div className="case-meta">
                   <span className="case-num">{c.n}</span>
                   <span className="case-year">{c.yearRange}</span>
+                  {(c.role || c.teamSize || c.patentCount) && (
+                    <div className="case-vitals">
+                      {c.role && <span className="case-vital-role">{c.role}</span>}
+                      {c.teamSize && (
+                        <div className="case-vital">
+                          <span className="case-vital-lbl">Team size</span>
+                          <span className="case-vital-val">{c.teamSize}</span>
+                        </div>
+                      )}
+                      {c.patentCount && (
+                        <div className="case-vital">
+                          <span className="case-vital-lbl">Patents</span>
+                          <span className="case-vital-val">{c.patentCount}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <div className="case-tags">
                     {c.tags.map((t) => (
                       <span key={t} className="case-tag">
