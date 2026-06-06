@@ -176,6 +176,12 @@ const CASES: CaseStudy[] = [
         ],
       },
       {
+        year: "2024",
+        name: "Stackable Effects",
+        desc: "Combine multiple video effects simultaneously — filters, backgrounds, lighting adjustments, and more — layered in real time for a fully personalised camera presence.",
+        image: "/assets/stackableeffects.gif",
+      },
+      {
         year: "2025",
         name: "Gemini in Meet",
         desc: "Embedded Gemini intelligence that surfaces insights, action items, and smart summaries throughout the meeting flow.",
