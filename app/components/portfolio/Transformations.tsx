@@ -332,7 +332,7 @@ const CASES: CaseStudy[] = [
     launches: [
       {
         year: "2019",
-        name: "Classroom Redesign",
+        name: "Rearchitecting Classroom",
         desc: "Complete ground-up redesign that improved core workflows for 50M+ teachers and students worldwide.",
         image: "/assets/Google Classroom Redesign.webp",
         links: [
@@ -366,9 +366,15 @@ const CASES: CaseStudy[] = [
       "During the pandemic video conferencing evolved dramatically but no one knew how to bring that back into the office. My team delivered the promise of hybrid work to Meet's 242 million users and established hybrid as the future of work.",
     heroProject: {
       year: "2022",
-      name: "Hybrid Work",
-      desc: "Led 7 key feature launches to deliver a successful return to office — blending physical rooms and digital presence into one seamless meeting.",
+      name: "Adaptive Audio",
+      desc: "A breakthrough in multi-device meeting audio — letting multiple laptops in the same room join a call without echo or feedback, enabling spontaneous hybrid collaboration.",
       image: "/assets/audiomesh.gif",
+      links: [
+        {
+          label: "Google Blog",
+          url: "https://blog.google/products-and-platforms/products/workspace/adaptive-audio-google-meet/",
+        },
+      ],
     },
     tags: ["Hybrid Work", "Devices", "Design Leadership", "Team Building"],
     launches: [
