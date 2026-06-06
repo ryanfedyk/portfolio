@@ -1121,7 +1121,7 @@ section {
 .arch-row {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: 80px 2fr 1.5fr 130px 44px;
+  grid-template-columns: 80px 2fr 1.5fr 130px;
   gap: 24px;
   padding: 22px 28px;
   background: var(--card);
@@ -1148,11 +1148,22 @@ section {
   font-family: var(--serif);
   font-size: 20px;
   color: var(--hi);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.arch-ttl:hover {
+  color: var(--grad-a);
 }
 
 .arch-ttl .it {
   font-style: italic;
   color: var(--fg-2);
+  transition: color .2s;
+}
+
+.arch-ttl:hover .it {
+  color: var(--grad-a);
 }
 
 .arch-co {
@@ -1229,7 +1240,7 @@ section {
 
 @media (max-width: 900px) {
   .arch-row {
-    grid-template-columns: 60px 1fr 44px;
+    grid-template-columns: 60px 1fr;
   }
   .arch-co,
   .arch-press,

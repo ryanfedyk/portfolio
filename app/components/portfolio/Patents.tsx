@@ -462,10 +462,15 @@ export default function Patents() {
             {visibleLaunches.map((l, i) => (
               <div key={`${l.yr}-${i}`} className="arch-row">
                 <span className="arch-yr">{l.yr}</span>
-                <span className="arch-ttl">
+                <a
+                  href={l.url}
+                  className="arch-ttl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {l.title}
                   {l.titleIt ? <span className="it"> {l.titleIt}</span> : null}
-                </span>
+                </a>
                 <span className="arch-co">{l.co}</span>
                 {l.press ? (
                   <a
@@ -479,15 +484,6 @@ export default function Patents() {
                 ) : (
                   <span className="arch-press-none">—</span>
                 )}
-                <a
-                  href={l.url}
-                  className="arch-arr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${l.title}`}
-                >
-                  ↗
-                </a>
               </div>
             ))}
           </div>
