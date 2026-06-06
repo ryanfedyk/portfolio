@@ -90,6 +90,7 @@ const CASES: CaseStudy[] = [
         name: "Future of Docs",
         desc: "A long-range product vision redefining how AI transforms collaborative documents — from static canvases to dynamic, intelligent workspaces that understand context and intent.",
         image: "/assets/fod.gif",
+        patent: "Patented",
       },
       {
         year: "2026",
@@ -119,6 +120,7 @@ const CASES: CaseStudy[] = [
       desc: "Embedded AI that transcribes, translates, and surfaces meeting insights across 60+ languages in real time.",
       image: "/assets/realtimespeech%20translation.gif",
       video: "/assets/utdemo_small.mp4",
+      patent: "Patented",
       links: [
         {
           label: "Google Blog",
@@ -137,6 +139,7 @@ const CASES: CaseStudy[] = [
         name: "Generative Backgrounds",
         desc: "Personalized AI-generated backgrounds that adapt to meeting context and let personality show through.",
         image: "/assets/generativebackgrounds.gif",
+        patent: "Patented",
         links: [
           {
             label: "The Verge",
@@ -406,6 +409,7 @@ const CASES: CaseStudy[] = [
         name: "Gamified Reactions",
         desc: "Expressive in-meeting reactions that bring energy and non-verbal communication back to hybrid and remote meetings.",
         image: "/assets/reactions.gif",
+        patent: "Patented",
         links: [
           {
             label: "Google Blog",
