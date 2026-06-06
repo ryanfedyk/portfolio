@@ -120,6 +120,10 @@ const CASES: CaseStudy[] = [
       video: "/assets/utdemo_small.mp4",
       links: [
         {
+          label: "Google Blog",
+          url: "https://blog.google/products-and-platforms/products/workspace/google-meet-langauge-translation-ai/",
+        },
+        {
           label: "TechCrunch",
           url: "https://techcrunch.com/2025/05/20/google-meet-is-getting-real-time-speech-translation/",
         },
