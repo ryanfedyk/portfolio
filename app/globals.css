@@ -1154,8 +1154,7 @@ section {
 
 .arch-ttl::after {
   content: " ↗";
-  font-family: var(--mono);
-  font-size: 11px;
+  font-size: 0.75em;
   opacity: 0.4;
   display: inline-block;
   transition: opacity .2s, transform .2s;
