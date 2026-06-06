@@ -2,15 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface Patent {
-  id: string;
-  title: string;
-  product: string;
-  status: string;
-  desc: string;
-  image: string;
-}
-
 interface Launch {
   yr: string;
   title: string;
@@ -34,65 +25,6 @@ interface ResumeCompany {
   loc: string;
   eras: ResumeEra[];
 }
-
-const PATENTS: Patent[] = [
-  {
-    id: "PAT-001",
-    title: "Portrait Framing with Background Freeze",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Larger, more consistent face sizes with natural cropping while maintaining authenticity of natural backgrounds.",
-    image: "/assets/portraitframing.gif",
-  },
-  {
-    id: "PAT-002",
-    title: "Reinventing the Self View",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Quick-access self view which reduces distraction and VC fatigue, optimized for intentional moments of self-looking.",
-    image: "/assets/screenshare.png",
-  },
-  {
-    id: "PAT-003",
-    title: "Dynamic Layouts",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "Rebuild Meet's layout logic to support new hybrid technologies which improve equity and reduce VC fatigue.",
-    image: "/assets/dynamiclayouts.gif",
-  },
-  {
-    id: "PAT-004",
-    title: "Pop-up Rooms",
-    product: "Google Meet",
-    status: "Patented",
-    desc: "A hybrid meeting powered by a spatial arrangement of personal devices that creates a single, more natural meeting experience.",
-    image: "/assets/roomsvisoin.gif",
-  },
-  {
-    id: "PAT-005",
-    title: "Vibe Check",
-    product: "Google Meet",
-    status: "Patent Pending",
-    desc: "Using AI to detect non-verbal cues and amplify the colors and visual treatment in each participant's tile.",
-    image: "/assets/sonicboom.gif",
-  },
-  {
-    id: "PAT-006",
-    title: "Shopping AI Pathways",
-    product: "Google Shopping",
-    status: "Patent Pending",
-    desc: "Novel UX pattern that brings LLM power to the product grid, empowering users to visually browse while refining their search.",
-    image: "/assets/shoppingaipathways.gif",
-  },
-  {
-    id: "PAT-007",
-    title: "Outfit Agent",
-    product: "Google Shopping",
-    status: "Patented",
-    desc: "A modern take on the catalog mailer curated by a shopping agent to drive re-engagement with contextual, generative media.",
-    image: "/assets/outfitagent.gif",
-  },
-];
 
 const LAUNCHES: Launch[] = [
   // ── 2026 ──────────────────────────────────────────────────────────────────
@@ -388,10 +320,6 @@ const RESUME: ResumeCompany[] = [
   },
 ];
 
-function statusClass(status: string): string {
-  return status.toLowerCase().includes("pending") ? "pending" : "granted";
-}
-
 export default function Patents() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [showAll, setShowAll] = useState(false);
@@ -424,34 +352,6 @@ export default function Patents() {
 
   return (
     <div ref={rootRef}>
-      <section id="patents">
-        <div className="wrap">
-          <div className="sec-head rv">
-            <h2 className="sec-title">
-              IP &amp; <span className="it">Launches</span>
-            </h2>
-          </div>
-
-          <div className="pat-grid">
-            {PATENTS.map((p) => (
-              <div key={p.id} className="pat-card rv">
-                <div className="pat-img">
-                  <img src={p.image} alt={p.title} />
-                </div>
-                <div className="pat-body">
-                  <span className={"pat-status " + statusClass(p.status)}>
-                    {p.status}
-                  </span>
-                  <p className="pat-product">{p.product}</p>
-                  <h4 className="pat-title">{p.title}</h4>
-                  <p className="pat-desc">{p.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section>
         <div className="wrap">
           <div className="sec-head rv">
