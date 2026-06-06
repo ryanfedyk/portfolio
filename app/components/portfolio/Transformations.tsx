@@ -73,6 +73,10 @@ const CASES: CaseStudy[] = [
       video: "/assets/docslive_announcement.mp4",
       links: [
         {
+          label: "Blog Announcement",
+          url: "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        },
+        {
           label: "Watch Announcement",
           url: "https://www.youtube.com/live/wYSncx9zLIU?si=smd5fX8PDfJvcfsK&t=541",
         },
