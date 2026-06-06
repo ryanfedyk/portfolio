@@ -649,7 +649,7 @@ export default function Transformations() {
                       {c.role && <span className="case-vital-role">{c.role}</span>}
                       {c.teamSize && (
                         <div className="case-vital">
-                          <span className="case-vital-lbl">Team size</span>
+                          <span className="case-vital-lbl">Reports</span>
                           <span className="case-vital-val">{c.teamSize}</span>
                         </div>
                       )}
