@@ -112,6 +112,7 @@ const LAUNCHES: Launch[] = [
     co: "Google · Docs",
     role: "Design Lead",
     url: "https://blog.google/products-and-platforms/products/workspace/gemini-workspace-updates-march-2026/",
+    press: { label: "The Verge", url: "https://www.theverge.com/tech/890996/google-workspace-gemini-ai-docs-sheets-drive" },
   },
   {
     yr: "2026",
