@@ -66,7 +66,7 @@ const CASES: CaseStudy[] = [
     narrative:
       "As AI reshapes every productivity surface, I led the design vision for Google Docs' next generation — helping define what documents look like when they become intelligent, real-time, and deeply collaborative at scale.",
     heroProject: {
-      year: "2025",
+      year: "2026",
       name: "Docs Live",
       desc: "A real-time, AI-native document experience that transforms static pages into living, collaborative workspaces — announced at Google I/O 2025.",
       image: "/assets/docslive.gif",
@@ -81,7 +81,7 @@ const CASES: CaseStudy[] = [
     tags: ["AI", "Documents", "Product Vision", "Design Leadership"],
     launches: [
       {
-        year: "2025",
+        year: "2026",
         name: "Future of Docs",
         desc: "A long-range product vision redefining how AI transforms collaborative documents — from static canvases to dynamic, intelligent workspaces that understand context and intent.",
         image: "/assets/fod.gif",
@@ -292,19 +292,19 @@ const CASES: CaseStudy[] = [
         image: "/assets/agenticshopping.png",
       },
       {
-        year: "2024",
+        year: "2025",
         name: "Implicit Interfaces",
         desc: "A strategic framework for the next frontier in UX — where interfaces anticipate needs and act on them before users have to ask.",
         image: "/assets/implicit shopping.png",
       },
       {
-        year: "2024",
+        year: "2025",
         name: "Shopping AI Pathways",
         desc: "Novel UX bringing LLM power to the product grid — letting users browse visually while naturally refining their search.",
         image: "/assets/shoppingaipathways.gif",
       },
       {
-        year: "2024",
+        year: "2025",
         name: "Outfit Agent",
         desc: "A modern take on the catalog mailer — curated by a shopping agent using contextual, generative media. Patented.",
         image: "/assets/outfitagent.gif",
@@ -341,7 +341,7 @@ const CASES: CaseStudy[] = [
         ],
       },
       {
-        year: "2020",
+        year: "2019",
         name: "Course Kit",
         desc: "LMS integration tools connecting Classroom to university platforms, expanding reach across higher education.",
         image: "/assets/coursekit.png",
