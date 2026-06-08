@@ -46,6 +46,7 @@ html.ee-light {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1738,7 +1739,7 @@ section {
 }
 
 .mq {
-  overflow: hidden;
+  overflow: clip;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 18px 0;

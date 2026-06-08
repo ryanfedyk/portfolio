@@ -696,7 +696,7 @@ export default function Transformations() {
         <div className="wrap">
           <div className="sec-head rv">
             <h2 className="sec-title">
-              Three things I <span className="it">live by</span>
+              Three things <span className="it">important to me</span>
             </h2>
           </div>
 
