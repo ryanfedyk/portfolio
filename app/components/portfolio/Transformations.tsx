@@ -752,11 +752,14 @@ export default function Transformations() {
                   </div>
                 </div>
 
-                <div className="case-body">
+                <div className="case-header">
                   <div className="case-co">{c.company}</div>
                   <h3 className="case-title">
                     {c.title} <span className="it">{c.titleIt}</span>
                   </h3>
+                </div>
+
+                <div className="case-body">
                   <p className="case-narrative">{c.narrative}</p>
 
                   <div className="cs-hero-proj">
