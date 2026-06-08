@@ -938,31 +938,29 @@ section {
     margin-bottom: 20px;
   }
 
-  /* Row 1: year */
-  .case-mo-year {
-    display: block;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--mute);
-    margin-bottom: 10px;
-  }
-
-  /* Row 2: company name (left) + reports/patents (right) */
+  /* Row 1: product name (left) + date range (right) */
   .case-co-row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 10px;
   }
 
-  /* Mobile stats (right-side of co row) */
+  .case-mo-year {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mute);
+    flex-shrink: 0;
+  }
+
+  /* Below description: reports + patents */
   .case-mo-stats {
     display: flex;
     gap: 10px;
-    flex-shrink: 0;
+    margin-top: 16px;
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 0.12em;

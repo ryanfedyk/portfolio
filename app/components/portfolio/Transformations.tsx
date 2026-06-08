@@ -753,17 +753,10 @@ export default function Transformations() {
                 </div>
 
                 <div className="case-header">
-                  {/* mobile-only year */}
-                  <div className="case-mo-year">{c.yearRange}</div>
-                  {/* company + right-justified stats */}
+                  {/* mobile row 1: product name + date range */}
                   <div className="case-co-row">
                     <div className="case-co">{c.company}</div>
-                    {(c.teamSize || c.patentCount) && (
-                      <div className="case-mo-stats">
-                        {c.teamSize && <span>{c.teamSize} Reports</span>}
-                        {c.patentCount && <span>{c.patentCount} Patents</span>}
-                      </div>
-                    )}
+                    <div className="case-mo-year">{c.yearRange}</div>
                   </div>
                   <h3 className="case-title">
                     {c.title} <span className="it">{c.titleIt}</span>
@@ -772,6 +765,13 @@ export default function Transformations() {
 
                 <div className="case-body">
                   <p className="case-narrative">{c.narrative}</p>
+                  {/* mobile-only stats below description */}
+                  {(c.teamSize || c.patentCount) && (
+                    <div className="case-mo-stats">
+                      {c.teamSize && <span>{c.teamSize} Reports</span>}
+                      {c.patentCount && <span>{c.patentCount} Patents</span>}
+                    </div>
+                  )}
 
                   <div className="cs-hero-proj">
                     {c.heroProject.video ? (
