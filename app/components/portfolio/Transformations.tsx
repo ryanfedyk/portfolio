@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Philosophy {
   n: string;
@@ -43,29 +43,30 @@ const COMPANIES = [
   {
     co: "Google",
     products: [
-      { name: "Docs",      role: "Sr. Principal Design Lead",  desc: "Transforming Docs into an agent-forward, AI-native document platform." },
-      { name: "Meet",      role: "Sr. Principal Design Lead",  desc: "Redefined WFH, brought users back to the office, and shifted to AI-focused meeting experiences." },
-      { name: "Gemini",    role: "Sr. Principal Designer",     desc: "End-to-end shopping experiences through conversational AI." },
-      { name: "Shopping",  role: "Sr. Principal Designer",     desc: "Implicit, personalized shopping powered by agentic AI." },
-      { name: "Classroom", role: "UX Design Lead",             desc: "Redesigned Google Classroom for 50M+ teachers and students." },
-      { name: "Search",    role: null,                         desc: "AI Shopping Agents in AI Mode." },
-      { name: "Glass",     role: null,                         desc: "Voice interfaces for wearables." },
+      { name: "Docs",      logo: "/assets/logos/docs.svg",           role: "Sr. Principal Design Lead",  desc: "Redefining documents as intelligent, agent-forward workspaces." },
+      { name: "Meet",      logo: "/assets/logos/meet.svg",           role: "Sr. Principal Design Lead",  desc: "Brought hybrid work to 3B+ users, then made AI the differentiator." },
+      { name: "Gemini",    logo: "/assets/logos/gemini.svg",         role: "Sr. Principal Designer",     desc: "End-to-end shopping journeys powered by conversational AI." },
+      { name: "Shopping",  logo: "/assets/logos/shopping.svg",       role: "Sr. Principal Designer",     desc: "Agentic, implicit commerce that anticipates before you ask." },
+      { name: "Classroom", logo: "/assets/logos/classroom.svg",      role: "UX Design Lead",             desc: "Ground-up redesign serving 50M+ teachers and students worldwide." },
+      { name: "Search",    logo: "/assets/logos/Google Search.svg",  role: "Sr. Principal Designer",     desc: "AI Shopping Agents embedded directly into AI Mode." },
+      { name: "Glass",     logo: "/assets/logos/Glass.svg",          role: "Sr. Principal Designer",     desc: "Voice-first interaction design for wearable hardware." },
     ],
   },
   {
     co: "Jigsaw",
     products: [
-      { name: "Perspective API", role: null, desc: "ML toxicity detection deployed with 200+ media partners." },
-      { name: "Outline VPN",     role: null, desc: "Open-source VPN for journalists and activists in 30+ countries." },
-      { name: "Anti-Harassment", role: null, desc: "UX systems protecting at-risk communities by design." },
+      { name: "Perspective API", logo: "/assets/logos/perspective.svg",   role: "Design Lead",  desc: "ML toxicity detection deployed across 200+ media partners." },
+      { name: "Outline VPN",     logo: "/assets/logos/outline.svg",        role: "Design Lead",  desc: "Open-source VPN for journalists in 30+ censored countries." },
+      { name: "Anti-Harassment", logo: "/assets/logos/antiharassment.svg", role: "Design Lead",  desc: "UX systems built to protect at-risk communities by design." },
     ],
   },
   {
     co: "Microsoft",
     products: [
-      { name: "Xbox Kinect",   role: null, desc: "Motion and gesture interaction for living room gaming." },
-      { name: "Windows Phone", role: null, desc: "Core UX design for Windows Phone 7." },
-      { name: "Bing Maps",     role: null, desc: "Mapping and local search experiences." },
+      { name: "Xbox Kinect",   logo: "/assets/logos/xbox.svg",          role: "Senior Designer",  desc: "Motion and gesture UX for a new era of living room gaming." },
+      { name: "Windows Phone", logo: "/assets/logos/windows phone.svg",  role: "Senior Designer",  desc: "Core interaction design for Windows Phone 7." },
+      { name: "Bing Maps",     logo: "/assets/logos/bing.svg",           role: "Senior Designer",  desc: "Mapping and local search at Microsoft scale." },
+      { name: "Photosynth",    logo: "/assets/logos/photosynth.svg",     role: "Senior Designer",  desc: "3D scene reconstruction and panoramic stitching from photos." },
     ],
   },
 ];
@@ -543,8 +544,22 @@ function renderPhilHeading(h: string, hIt: string | null) {
   );
 }
 
+type Product = { co: string; name: string; logo: string; role: string; desc: string };
+
+const ALL_PRODUCTS: Product[] = COMPANIES.flatMap(({ co, products }) =>
+  products.map((p) => ({ co, ...p }))
+);
+
 export default function Transformations() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [autoIdx, setAutoIdx] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [hovered, setHovered] = useState<Product | null>(null);
+  const [animKey, setAnimKey] = useState(0);
+  const prevKeyRef = useRef<string>("");
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const active = isHovering ? hovered : ALL_PRODUCTS[autoIdx];
 
   useEffect(() => {
     const root = rootRef.current;
@@ -569,6 +584,29 @@ export default function Transformations() {
     return () => io.disconnect();
   }, []);
 
+  // Ambient auto-cycle; pause while user is hovering
+  useEffect(() => {
+    if (isHovering) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      return;
+    }
+    intervalRef.current = setInterval(() => {
+      setAutoIdx((i) => (i + 1) % ALL_PRODUCTS.length);
+    }, 10000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isHovering]);
+
+  // Bump animKey whenever the displayed product changes so animations replay
+  useEffect(() => {
+    const key = active ? `${active.co}:${active.name}` : "";
+    if (key && key !== prevKeyRef.current) {
+      prevKeyRef.current = key;
+      setAnimKey((k) => k + 1);
+    }
+  }, [active]);
+
   return (
     <div ref={rootRef}>
       <section id="about">
@@ -591,32 +629,66 @@ export default function Transformations() {
             </div>
           </div>
 
-          {(() => {
-            let chipIdx = 0;
-            return (
-              <div className="co-companies rv">
-                {COMPANIES.map(({ co, products }) => (
-                  <div key={co} className="co-row">
-                    <span className="co-label">{co}</span>
-                    <div className="co-chips">
-                      {products.map(({ name }) => {
-                        const i = chipIdx++;
-                        return (
-                          <div
-                            key={name}
-                            className="co-chip"
-                            style={{ "--i": i } as React.CSSProperties}
-                          >
-                            {name}
-                          </div>
-                        );
-                      })}
+          <div className="co-showcase-wrap rv">
+            <div className="co-left">
+              {(() => {
+                let chipIdx = 0;
+                return (
+                  <div className="co-companies">
+                    {COMPANIES.map(({ co, products }) => (
+                      <div key={co} className="co-row">
+                        <span className="co-label">{co}</span>
+                        <div className="co-chips">
+                          {products.map(({ name, logo, role, desc }) => {
+                            const i = chipIdx++;
+                            const isActive = active?.co === co && active?.name === name;
+                            return (
+                              <div
+                                key={name}
+                                className={`co-chip${isActive ? " co-chip--active" : ""}`}
+                                style={{ "--i": i } as React.CSSProperties}
+                                onMouseEnter={() => {
+                                  setIsHovering(true);
+                                  setHovered({ co, name, logo, role, desc });
+                                }}
+                                onMouseLeave={() => {
+                                  setIsHovering(false);
+                                  setHovered(null);
+                                }}
+                              >
+                                {name}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })()}
+            </div>
+
+            <div className="co-right">
+              {active && (
+                <div className="co-panel" key={animKey}>
+                  <div className="co-panel-top">
+                    <div className="co-panel-logo-wrap">
+                      <img className="co-panel-logo" src={active.logo} alt={active.name} />
+                    </div>
+                    <div className="co-panel-header">
+                      <div className="co-panel-meta">
+                        <span className="co-panel-co">{active.co}</span>
+                        <span className="co-panel-sep">·</span>
+                        <span className="co-panel-name">{active.name}</span>
+                      </div>
+                      <div className="co-panel-role">{active.role}</div>
                     </div>
                   </div>
-                ))}
-              </div>
-            );
-          })()}
+                  <p className="co-panel-desc">{active.desc}</p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 

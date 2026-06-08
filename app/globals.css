@@ -540,7 +540,6 @@ section {
 /* Chips start hidden; draw in sequentially when parent gets .in */
 .co-chip {
   position: relative;
-  overflow: hidden;
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.12em;
@@ -551,19 +550,180 @@ section {
   border-radius: 100px;
   background: var(--card);
   white-space: nowrap;
-  /* Each chip starts clipped (invisible) */
   clip-path: inset(0 100% 0 0 round 100px);
   opacity: 0;
+  transition: color .2s, border-color .2s, background .2s;
 }
 
-.co-chip:hover {
+.co-chip:hover,
+.co-chip--active {
   color: var(--fg);
   border-color: color-mix(in oklch, var(--grad-a) 60%, var(--line));
   background: color-mix(in oklch, var(--grad-a) 6%, var(--card));
 }
 
+.co-chip::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 6px;
+  right: 6px;
+  height: 1.5px;
+  background: var(--grad-a);
+  border-radius: 100px;
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 0;
+}
+
+.co-chip--active::after {
+  opacity: 0.7;
+  animation: chip-progress 10s linear forwards;
+}
+
+@keyframes chip-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Two-column showcase layout ─────────────────────── */
+.co-showcase-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 2.5vw, 36px);
+}
+
+.co-left {
+  min-width: 0;
+}
+
+.co-right {
+  margin-top: clamp(32px, 4vw, 52px);
+  flex-shrink: 0;
+  width: 260px;
+  height: 130px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 0.5s ease;
+}
+
+
+/* ── Panel ──────────────────────────────────────────── */
+.co-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Top row: logo + header side-by-side */
+.co-panel-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+/* Logo — radial reveal from center + scale */
+.co-panel-logo-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logo-radial 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.co-panel-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  animation: logo-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes logo-radial {
+  from { clip-path: circle(0% at 50% 50%); }
+  to   { clip-path: circle(80% at 50% 50%); }
+}
+
+@keyframes logo-pop {
+  0%   { opacity: 0; transform: scale(0.55) rotate(-8deg); filter: blur(6px); }
+  60%  { opacity: 1; transform: scale(1.08) rotate(1deg);  filter: blur(0); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Header text */
+.co-panel-header {
+  min-width: 0;
+  animation: panel-text-in 0.45s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.co-panel-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.co-panel-co {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.co-panel-sep {
+  color: var(--line);
+  font-size: 10px;
+}
+
+.co-panel-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.co-panel-role {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--grad-a);
+  line-height: 1.3;
+}
+
+/* Description */
+.co-panel-desc {
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  margin-top: auto;
+  animation: panel-text-in 0.45s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes panel-text-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
 /* When section scrolls in, draw chips one at a time */
-.co-companies.in .co-chip {
+.co-showcase-wrap.in .co-chip {
   animation: chip-draw 0.5s cubic-bezier(.4, 0, .2, 1) both;
   animation-delay: calc(0.05s + var(--i, 0) * 0.055s);
 }
@@ -593,6 +753,15 @@ section {
 @media (max-width: 900px) {
   .about-block {
     grid-column: span 12;
+  }
+
+  .co-showcase-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .co-right {
+    position: static;
+    order: -1;
   }
 }
 
