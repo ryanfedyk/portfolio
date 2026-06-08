@@ -914,26 +914,96 @@ section {
 .case-header { grid-column: 2; grid-row: 1; }
 .case-body   { grid-column: 2; grid-row: 2; }
 
-@media (max-width: 900px) {
+@media (max-width: 760px) {
   .case {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 0;
   }
-  .case-meta, .case-header, .case-body { grid-column: 1; grid-row: auto; }
-  .case-header { order: 1; }
-  .case-meta   { order: 2; }
-  .case-body   { order: 3; }
-}
 
-@media (max-width: 640px) {
-  .case {
-    padding: clamp(36px, 8vw, 64px) 0;
-    gap: 14px;
+  /* 1 — Company + title */
+  .case .case-header {
+    order: 1;
+    padding-bottom: 20px;
   }
-  .case-narrative {
-    font-size: 15px;
+
+  /* 2 — Compact metadata strip */
+  .case .case-meta {
+    order: 2;
+    display: block;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     margin-bottom: 20px;
+  }
+
+  /* Num + year inline on one line */
+  .case .case-num {
+    display: inline;
+    font-size: 10px;
+  }
+  .case .case-num::after {
+    content: " · ";
+    color: var(--mute);
+  }
+  .case .case-year {
+    display: inline;
+    font-size: 10px;
+  }
+
+  /* Vitals: role on its own line, stats horizontal beneath */
+  .case .case-vitals {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    margin-top: 10px;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .case .case-vital-role {
+    flex-basis: 100%;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .case .case-vital {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .case .case-vital + .case-vital::before {
+    content: "·";
+    color: var(--mute);
+    font-size: 10px;
+    align-self: center;
+    margin-right: 4px;
+  }
+
+  .case .case-vital-lbl {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .case .case-vital-val {
+    font-size: 12px;
+  }
+
+  .case .case-tags { display: none; }
+
+  /* 3 — Narrative + hero + launches */
+  .case .case-body {
+    order: 3;
+  }
+
+  .case .case-narrative {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
   }
 }
 
@@ -1016,17 +1086,6 @@ section {
   width: fit-content;
 }
 
-/* Mobile case-meta overrides (after base rules so cascade is correct) */
-@media (max-width: 640px) {
-  .case-tags { display: none; }
-  .case-meta {
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 0;
-  }
-}
 
 .case-header {
   min-width: 0;
