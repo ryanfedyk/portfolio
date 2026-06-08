@@ -914,90 +914,76 @@ section {
 .case-header { grid-column: 2; grid-row: 1; }
 .case-body   { grid-column: 2; grid-row: 2; }
 
+/* ── Mobile-only elements (hidden on desktop) ─────── */
+.case-mo-year,
+.case-co-row,
+.case-mo-stats { display: none; }
+
 @media (max-width: 760px) {
+  /* Hide desktop sidebar entirely */
+  .case .case-meta { display: none; }
+
   .case {
     display: flex;
     flex-direction: column;
-    padding: 40px 0;
+    padding: 36px 0;
     gap: 0;
   }
 
-  /* 1 — Company + title */
+  /* case-header becomes the full mobile layout */
   .case .case-header {
-    order: 1;
-    padding-bottom: 20px;
-  }
-
-  /* 2 — Compact metadata strip */
-  .case .case-meta {
-    order: 2;
-    display: block;
-    padding: 14px 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-bottom: 20px;
   }
 
-  /* Num + year inline on one line */
-  .case .case-num {
-    display: inline;
+  /* Row 1: year */
+  .case-mo-year {
+    display: block;
+    font-family: var(--mono);
     font-size: 10px;
-  }
-  .case .case-num::after {
-    content: " · ";
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--mute);
-  }
-  .case .case-year {
-    display: inline;
-    font-size: 10px;
+    margin-bottom: 10px;
   }
 
-  /* Vitals: role on its own line, stats horizontal beneath */
-  .case .case-vitals {
+  /* Row 2: company name (left) + reports/patents (right) */
+  .case-co-row {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: baseline;
-    gap: 4px 10px;
-    margin-top: 10px;
-    padding-top: 0;
-    border-top: none;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
   }
 
-  .case .case-vital-role {
-    flex-basis: 100%;
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-
-  .case .case-vital {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 4px;
-  }
-
-  .case .case-vital + .case-vital::before {
-    content: "·";
-    color: var(--mute);
-    font-size: 10px;
-    align-self: center;
-    margin-right: 4px;
-  }
-
-  .case .case-vital-lbl {
+  /* Mobile stats (right-side of co row) */
+  .case-mo-stats {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: var(--mono);
     font-size: 9px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mute);
   }
 
-  .case .case-vital-val {
-    font-size: 12px;
+  /* company name: remove desktop bottom margin, handled by flex gap */
+  .case .case-co {
+    margin-bottom: 0;
   }
 
-  .case .case-tags { display: none; }
+  /* Row 3: title */
+  .case .case-title {
+    margin-bottom: 0;
+    font-size: clamp(22px, 6vw, 32px);
+  }
 
-  /* 3 — Narrative + hero + launches */
+  /* Row 4: narrative */
   .case .case-body {
-    order: 3;
+    padding: 0;
   }
 
   .case .case-narrative {

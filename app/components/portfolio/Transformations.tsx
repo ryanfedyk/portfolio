@@ -753,7 +753,18 @@ export default function Transformations() {
                 </div>
 
                 <div className="case-header">
-                  <div className="case-co">{c.company}</div>
+                  {/* mobile-only year */}
+                  <div className="case-mo-year">{c.yearRange}</div>
+                  {/* company + right-justified stats */}
+                  <div className="case-co-row">
+                    <div className="case-co">{c.company}</div>
+                    {(c.teamSize || c.patentCount) && (
+                      <div className="case-mo-stats">
+                        {c.teamSize && <span>{c.teamSize} Reports</span>}
+                        {c.patentCount && <span>{c.patentCount} Patents</span>}
+                      </div>
+                    )}
+                  </div>
                   <h3 className="case-title">
                     {c.title} <span className="it">{c.titleIt}</span>
                   </h3>
