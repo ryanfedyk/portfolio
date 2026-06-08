@@ -46,14 +46,14 @@ html.ee-light {
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--sans);
   background: var(--bg);
   color: var(--fg);
-  overflow-x: hidden;
+  overflow-x: clip;
   line-height: 1.5;
   cursor: none;
   -webkit-font-smoothing: antialiased;
@@ -960,7 +960,8 @@ section {
   .case-mo-stats {
     display: flex;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 8px;
+    margin-bottom: 28px;
     font-family: var(--mono);
     font-size: 9px;
     letter-spacing: 0.12em;
@@ -1235,7 +1236,7 @@ section {
 /* (placed after base rules so cascade is correct)           */
 @media (max-width: 640px) {
   .cs-hero-proj {
-    width: 100vw;
+    width: calc(100% + 2 * clamp(20px, 4vw, 56px));
     margin-left: calc(-1 * clamp(20px, 4vw, 56px));
     border-radius: 0;
     aspect-ratio: 4 / 3;
