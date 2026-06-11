@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from '@next/third-parties/google'; // <-- Add this import
+import Script from "next/script"; // <-- Built into Next.js by default
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,8 +29,20 @@ export default function RootLayout({
         <div className="page-veil" aria-hidden="true" />
         {children}
       </body>
-      {/* Google Analytics - Drops the script safely without blocking page load */}
-      <GoogleAnalytics gaId="G-GE6Q3R84HJ" /> 
+      
+      {/* Google Analytics Global Site Tag */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-GE6Q3R84HJ"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-GE6Q3R84HJ');
+        `}
+      </Script>
     </html>
   );
 }
