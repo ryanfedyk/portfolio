@@ -1,3 +1,10 @@
 .claude/
 out/
 .firebase/
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+npm-debug.log*
+.env*.local

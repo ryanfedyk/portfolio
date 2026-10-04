@@ -2,15 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const MARQUEE = [
-  "Building teams",
-  "Designing for the 126th visit",
-  "AI-forward products",
-  "Hybrid productivity",
-  "User-centered design",
-  "Real impact at scale",
-];
-
 const NAV_LINKS = [
   { href: "#about",   label: "About"   },
   { href: "#process", label: "Process" },
@@ -362,14 +353,6 @@ export default function Hero() {
           </dl>
         </div>
       </section>
-
-      <div className="mq" aria-hidden="true">
-        <div className="mq-track">
-          {[0, 1, 2, 3].map((rep) =>
-            MARQUEE.map((m, i) => <span key={`${rep}-${i}`}>{m}</span>)
-          )}
-        </div>
-      </div>
     </>
   );
 }
