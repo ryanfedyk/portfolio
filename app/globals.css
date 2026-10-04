@@ -1826,41 +1826,6 @@ section {
   }
 }
 
-.mq {
-  overflow: clip;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 18px 0;
-  background: var(--bg-2);
-}
-
-.mq-track {
-  display: flex;
-  gap: 56px;
-  white-space: nowrap;
-  animation: mq 40s linear infinite;
-  will-change: transform;
-}
-
-.mq-track span {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(22px, 3vw, 36px);
-  color: var(--fg-2);
-  display: inline-flex;
-  align-items: center;
-  gap: 56px;
-}
-
-.mq-track span::after {
-  content: "✦";
-  color: var(--grad-a);
-  font-style: normal;
-  font-size: 0.7em;
-  opacity: .8;
-}
-
-
 a,
 button {
   cursor: none;
@@ -1884,15 +1849,6 @@ button {
   }
 }
 
-@keyframes mq {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -1910,15 +1866,6 @@ button {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 
