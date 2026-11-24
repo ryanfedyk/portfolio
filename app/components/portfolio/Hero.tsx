@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
   { href: "#about",   label: "About"   },
@@ -30,81 +30,6 @@ function useScrollY(): number {
   }, []);
 
   return y;
-}
-
-function useCursor() {
-  useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
-    const dot = document.querySelector<HTMLElement>(".cur");
-    const ring = document.querySelector<HTMLElement>(".cur-ring");
-    if (!dot || !ring) return;
-
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let dx = mx;
-    let dy = my;
-    let rx = mx;
-    let ry = my;
-    let raf = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-    };
-
-    const onDown = () => {
-      dot.classList.add("lg");
-      ring.classList.add("lg");
-    };
-
-    const onUp = () => {
-      dot.classList.remove("lg");
-      ring.classList.remove("lg");
-    };
-
-    const onOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && target.closest("a,button,[data-cursor]")) {
-        dot.classList.add("lg");
-        ring.classList.add("lg");
-      }
-    };
-
-    const onOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (target && target.closest("a,button,[data-cursor]")) {
-        dot.classList.remove("lg");
-        ring.classList.remove("lg");
-      }
-    };
-
-    const loop = () => {
-      dx += (mx - dx) * 0.5;
-      dy += (my - dy) * 0.5;
-      rx += (mx - rx) * 0.15;
-      ry += (my - ry) * 0.15;
-      dot.style.transform = `translate(${dx}px,${dy}px) translate(-50%,-50%)`;
-      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
-      raf = requestAnimationFrame(loop);
-    };
-
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    window.addEventListener("mouseover", onOver);
-    window.addEventListener("mouseout", onOut);
-    raf = requestAnimationFrame(loop);
-
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-      window.removeEventListener("mouseover", onOver);
-      window.removeEventListener("mouseout", onOut);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 }
 
 function useReveal() {
@@ -223,7 +148,6 @@ function Nav({ scrolled }: { scrolled: boolean }) {
     <>
       <header className={"nav" + (scrolled ? " scrolled" : "")}>
         <div className="nav-id">
-          <span className="nav-dot" />
           Ryan Fedyk
         </div>
 
@@ -295,16 +219,9 @@ function Blobs({ y }: { y: number }) {
 export default function Hero() {
   const y = useScrollY();
   useReveal();
-  useCursor();
-
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <div ref={dotRef} className="cur" aria-hidden="true" />
-      <div ref={ringRef} className="cur-ring" aria-hidden="true" />
-
       <Nav scrolled={y > 40} />
 
       <section className="hero">
@@ -326,7 +243,7 @@ export default function Hero() {
           </div>
 
           <h1 className="rv rv-d1">
-            Designing <span className="it">experiences</span> to
+            Designing experiences to
             <br />
             improve people&apos;s
             <br />

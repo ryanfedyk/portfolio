@@ -142,6 +142,18 @@ const CASES: CaseStudy[] = [
           },
         ],
       },
+      {
+        year: "2026",
+        name: "Agentic Collaboration",
+        desc: "Collaborate directly with Agents the same way you'd collaborate with humans and watch them work in real time.",
+        image: "/assets/agenticcollaboration.gif",
+        links: [
+          {
+            label: "Google Cloud Blog",
+            url: "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+          },
+        ],
+      },
     ],
   },
   {

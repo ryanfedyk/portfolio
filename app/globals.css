@@ -19,29 +19,10 @@
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
 }
 
-html.ee-light {
-  --bg: oklch(96.5% 0.012 70);
-  --bg-2: oklch(93% 0.018 65);
-  --fg: oklch(20% 0.025 50);
-  --fg-2: oklch(38% 0.02 55);
-  --mute: oklch(58% 0.015 60);
-  --line: oklch(85% 0.018 60);
-  --card: oklch(98% 0.008 70);
-  --hi: oklch(22% 0.025 50);
-  --grad-opacity: 0.20;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  cursor: none !important;
-}
-
-@media (pointer: coarse) {
-  * {
-    cursor: auto !important;
-  }
 }
 
 html {
@@ -55,7 +36,6 @@ body {
   color: var(--fg);
   overflow-x: clip;
   line-height: 1.5;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -143,24 +123,6 @@ h1, h2, h3, h4 {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg);
-}
-
-.nav-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--grad-a);
-  position: relative;
-}
-
-.nav-dot::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: var(--grad-a);
-  opacity: .35;
-  animation: pulse 2.4s ease-in-out infinite;
 }
 
 .nav-links {
@@ -325,6 +287,19 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
+/* Fade the background video to the page colour so the hero blends into the next section */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -348,16 +323,12 @@ h1, h2, h3, h4 {
 }
 
 .hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(52px, 8.5vw, 132px);
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(48px, 7.5vw, 116px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
   color: var(--hi);
-}
-
-.hero h1 .it {
-  font-style: italic;
-  color: var(--fg-2);
 }
 
 .hero-sub {
@@ -1776,79 +1747,6 @@ section {
 .hero .rv-d1   { transition-delay: .65s; }
 .hero .rv-d2   { transition-delay: .82s; }
 
-.cur {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--grad-a);
-  transform: translate(-50%, -50%);
-  transition: width .25s, height .25s;
-  will-change: transform;
-  opacity: 1;
-}
-
-.cur.lg {
-  width: 64px;
-  height: 64px;
-  opacity: .8;
-}
-
-.cur-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid color-mix(in oklch, var(--grad-a) 55%, transparent);
-  transform: translate(-50%, -50%);
-  transition: width .3s, height .3s, opacity .3s;
-  will-change: transform;
-}
-
-.cur-ring.lg {
-  width: 84px;
-  height: 84px;
-  opacity: 0;
-}
-
-@media (pointer: coarse) {
-  .cur,
-  .cur-ring {
-    display: none;
-  }
-}
-
-a,
-button {
-  cursor: none;
-}
-
-@media (pointer: coarse) {
-  a,
-  button {
-    cursor: auto;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(.7);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.6);
-    opacity: .25;
-  }
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -1916,218 +1814,4 @@ button {
     animation: none !important;
     opacity: 1 !important;
   }
-}
-
-/* ─── Easter Eggs ──────────────────────────────────────────────────────── */
-
-/* Help button */
-.ee-btn {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 60;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--mute);
-  font-family: var(--mono);
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color .2s, color .2s, background .2s, transform .2s;
-  animation: ee-btn-breathe 3.5s ease-in-out 2s 3;
-}
-
-.ee-btn:hover,
-.ee-btn.open {
-  border-color: var(--fg);
-  color: var(--fg);
-  background: var(--bg);
-}
-
-.ee-btn.open {
-  transform: rotate(0deg);
-  font-size: 20px;
-}
-
-@keyframes ee-btn-breathe {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--grad-a) 0%, transparent); }
-  50%       { box-shadow: 0 0 0 6px color-mix(in oklch, var(--grad-a) 35%, transparent); }
-}
-
-/* Modal — anchored bottom-right above the button */
-.ee-modal {
-  position: fixed;
-  bottom: 84px;
-  right: 32px;
-  z-index: 70;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px) scale(0.97);
-  transform-origin: bottom right;
-  transition: opacity .25s ease, transform .3s cubic-bezier(.3, .7, .4, 1);
-}
-
-.ee-modal.on {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0) scale(1);
-}
-
-.ee-modal-box {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 24px 28px 28px;
-  width: 320px;
-  box-shadow:
-    0 4px 6px -2px color-mix(in oklch, var(--fg) 6%, transparent),
-    0 24px 48px -12px color-mix(in oklch, var(--fg) 14%, transparent);
-}
-
-.ee-modal-hd {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.ee-modal-title {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-family: var(--serif);
-  font-size: 24px;
-  line-height: 1;
-  color: var(--hi);
-}
-
-.ee-modal-eyebrow {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-
-.ee-modal-x {
-  font-size: 22px;
-  color: var(--mute);
-  background: none;
-  border: none;
-  line-height: 1;
-  padding: 0;
-  margin-top: -2px;
-  transition: color .2s;
-}
-
-.ee-modal-x:hover { color: var(--fg); }
-
-.ee-modal-sub {
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--fg-2);
-  margin-bottom: 22px;
-}
-
-.ee-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.ee-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
-}
-
-.ee-row:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.ee-icon {
-  font-size: 20px;
-  line-height: 1.3;
-  flex-shrink: 0;
-}
-
-.ee-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--fg);
-  margin-bottom: 3px;
-}
-
-.ee-hint {
-  font-size: 12px;
-  color: var(--mute);
-  line-height: 1.5;
-}
-
-/* Toast */
-.ee-toast {
-  position: fixed;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  z-index: 90;
-  background: var(--hi);
-  color: var(--bg);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  padding: 10px 22px;
-  border-radius: 999px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s ease, transform .35s cubic-bezier(.3, .7, .4, 1);
-  box-shadow: 0 8px 24px -6px color-mix(in oklch, var(--fg) 20%, transparent);
-}
-
-.ee-toast.on {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* Confetti canvas */
-.ee-confetti {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9998;
-}
-
-/* Dark mode override */
-html.ee-dark {
-  --bg: oklch(13% 0.008 55);
-  --bg-2: oklch(17% 0.012 55);
-  --fg: oklch(88% 0.012 70);
-  --fg-2: oklch(68% 0.014 65);
-  --mute: oklch(46% 0.012 60);
-  --line: oklch(27% 0.018 55);
-  --card: oklch(17% 0.01 55);
-  --hi: oklch(93% 0.008 68);
-  --grad-opacity: 0.08;
-}
-
-/* Rainbow cursor */
-html.ee-rainbow .cur-ring {
-  border-color: oklch(72% 0.25 0) !important;
-  animation: ee-hue 1.4s linear infinite !important;
-}
-
-@keyframes ee-hue {
-  from { filter: hue-rotate(0deg); }
-  to   { filter: hue-rotate(360deg); }
 }
